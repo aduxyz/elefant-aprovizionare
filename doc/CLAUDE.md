@@ -131,26 +131,11 @@ AL-AT : REEDITARE, Nr_Editii, Alte_EAN, Chilipir, Spike_vz, Suprastoc, Ruptură,
 
 Implementare JS identică în `evalQuantity_()` (folosită pentru sortare înainte de scriere).
 
-### Optimizare performanță: _proc_helper
+### Scriere aprovizionare (v2.45+)
 
-Scriere în aprovizionare se face în doi pași pentru a evita transferul a ~400k celule prin API:
+Toate cele 46 de coloane sunt construite în JS din `sortedRows[i]` (date MAIN) + `sortedSums[i]` (sume reeditări) + `sortedExtra[i]` (flag-uri), apoi scrise printr-un singur `setValues`. Apoi `setFormulas` suprascrie J, K, L, S cu formulele live.
 
-1. **Script scrie** în `_proc_helper` (sheet ascuns, persistent):
-   - Col A: indici rânduri MAIN
-   - Cols 11-13: Necesar, Cantitate, DOS (valori JS, înlocuite ulterior cu formule)
-   - Cols 15-20: Sales sums + VZ/zi
-   - Cols 39-47: flag-uri extra
-
-2. **ARRAYFORMULA** în `_proc_helper` row 1 citește MAIN direct în Sheets (server-side, fără API):
-   - Cols 2-10: MAIN[0..8]
-   - Col 14: MAIN[9]
-   - Cols 21-38: MAIN[15..32]
-
-3. **copyTo** (server-side, PASTE_VALUES) copiază tot din helper → aprovizionare
-
-4. **setFormulas** restaurează formulele pentru J, K, L, S
-
-Rezultat: ~46s în loc de ~118s pentru ~9000 rânduri.
+Nu mai există `_proc_helper` sau ARRAYFORMULA — elimina un bug de sincronizare în care ARRAYFORMULA evalua asincron față de setValues și producea mix de date din rânduri diferite în același rând din aprovizionare.
 
 ### _log sheet
 

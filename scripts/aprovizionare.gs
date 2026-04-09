@@ -1,5 +1,5 @@
 // ============================================================
-const VERSION = 'v2.44'; // 2026-04-09 12:48:20
+const VERSION = 'v2.45'; // 2026-04-09 14:30:00
 const RECENT_TITLES = 30; // days — titles with SalesLY=0 created within this window are included
 const MOQ = 2;            // Minimum Order Quantity — applied when Cantitate > 0
 //
@@ -665,24 +665,13 @@ function computeExtraData_(filteredRows, reissueMap) {
 
 // ============================================================
 // SHEET: aprovizionare (procurement)
-// 45 columns written by script in sorted order; errors cleaned.
+// 46 columns written by script in sorted order; errors cleaned.
 // Layout: 37 derived cols (33 MAIN + 4 calculated: J=Necesar, K=Cantitate,
-//          L=DOS, S=VZ medie/zi) followed by 8 extra flag cols (AL–AS).
+//          L=DOS, S=VZ medie/zi) followed by 9 extra flag cols (AL–AT).
 // Calculated cols are highlighted with yellow background.
+// All 46 cols are built in JS from sortedRows and written via one setValues call;
+// then J, K, L, S are overwritten with live formula strings via setFormulas.
 // ============================================================
-// ── Helper layout for _proc_helper (col numbers 1-based) ──────────────────
-//  Col  1 (A)   : MAIN row index (written by script)
-//  Cols 2-10    : aprovizionare cols A-I  = MAIN[0..8]   (ARRAYFORMULA)
-//  Col  11      : aprovizionare col  J    = Necesar       (script value)
-//  Col  12      : aprovizionare col  K    = Cantitate     (script value)
-//  Col  13      : aprovizionare col  L    = DOS           (script value)
-//  Col  14      : aprovizionare col  M    = MAIN[9]       (ARRAYFORMULA)
-//  Cols 15-19   : aprovizionare cols N-R  = Sales sums    (script values)
-//  Col  20      : aprovizionare col  S    = VZ/zi         (script value)
-//  Cols 21-38   : aprovizionare cols T-AK = MAIN[15..32]  (ARRAYFORMULA)
-//  Cols 39-47   : aprovizionare cols AL-AT= extra flags   (script values)
-// copyTo copies helper cols 2-47 → aprovizionare cols 1-46 (server-side)
-// ──────────────────────────────────────────────────────────────────────────
 function generateProcurement_(ss, sortedRows, sortedExtra, sortedSums, sortedOrigIdx, sortedQty, T) {
   const { sheet, isNew } = getOrCreateSheet_(ss, APROVIZIONARE_SHEET_NAME);
   T.lap(isNew ? 'created procurement sheet' : 'reusing procurement sheet');
@@ -705,102 +694,42 @@ function generateProcurement_(ss, sortedRows, sortedExtra, sortedSums, sortedOri
   if (sortedRows.length === 0) return;
   const n = sortedRows.length;
 
-  // ── Step 1: Get or create persistent helper sheet ───────────
-  // Strategy: script writes only computed cols (J,K,L,N-S,AL-AT) via setValues;
-  // MAIN cols (A-I, M, T-AK) are fetched server-side via ARRAYFORMULA + copyTo,
-  // avoiding sending ~26 cols × n rows through the Apps Script ↔ Sheets API.
-  const HELPER_NAME = '_proc_helper';
-  let helperSheet = ss.getSheetByName(HELPER_NAME);
-  if (!helperSheet) {
-    helperSheet = ss.insertSheet(HELPER_NAME);
-    helperSheet.hideSheet();
-    T.lap('created helper sheet');
-  } else {
-    // Clear data rows only — ARRAYFORMULAs live in row 1
-    const lastHelperRow = helperSheet.getLastRow();
-    if (lastHelperRow >= 2) {
-      helperSheet.getRange(2, 1, lastHelperRow - 1, helperSheet.getMaxColumns()).clearContent();
-    }
-    T.lap('reusing helper sheet');
-  }
-
-  // ── Step 2: Set ARRAYFORMULAs (every run — tolerant of stale helper) ──────
-  // Key fix vs. previous version: use $A1:$A instead of $A2:$A.
-  // With $A1:$A the formula cell (row 1) spills "" for empty A1,
-  // so the first real data result lands in row 2 — matching copyTo start row.
-  // With $A2:$A the first result landed in row 1 (the formula cell itself),
-  // so copyTo from row 2 was off by one and the first row was always lost.
-  {
-    const fA = [];
-    for (let m = 0; m <= 8; m++) {
-      const ml = colToLetter_(m + 1);
-      fA.push(`=ARRAYFORMULA(IF($A1:$A="","",INDEX('${MAIN_SHEET_NAME}'!$${ml}:$${ml},$A1:$A)))`);
-    }
-    helperSheet.getRange(1, 2, 1, 9).setFormulas([fA]);
-
-    const ml9 = colToLetter_(10);
-    helperSheet.getRange(1, 14).setFormula(
-      `=ARRAYFORMULA(IF($A1:$A="","",INDEX('${MAIN_SHEET_NAME}'!$${ml9}:$${ml9},$A1:$A)))`
-    );
-
-    const fC = [];
-    for (let m = 15; m <= 32; m++) {
-      const ml = colToLetter_(m + 1);
-      fC.push(`=ARRAYFORMULA(IF($A1:$A="","",INDEX('${MAIN_SHEET_NAME}'!$${ml}:$${ml},$A1:$A)))`);
-    }
-    helperSheet.getRange(1, 21, 1, 18).setFormulas([fC]);
-    T.lap('set ARRAYFORMULAs in helper');
-  }
-
-  // ── Step 3: Compute derived values in JS ────────────────────
-  const idxData   = [];  // col A: MAIN row index
-  const calcData  = [];  // cols 11-13: Necesar, Cantitate, DOS
-  const salesData = [];  // cols 15-20: SalesL1W..SalesLY + VZ/zi
-
+  // ── Step 1: Build complete output array in JS and write in one shot ────────
+  // All 46 columns are assembled from sortedRows[i] (MAIN data) + sortedSums[i]
+  // (reissue group sales sums) + sortedExtra[i] (flag columns).
+  // J/K/L/S placeholders are written here so the sheet isn't empty while
+  // setFormulas runs next; they are immediately overwritten by Step 2.
+  const outputData = [];
   for (let i = 0; i < n; i++) {
     const r    = sortedRows[i];
     const sums = sortedSums[i];
+    const ex   = sortedExtra[i];
     const N  = sums ? sums.sumL1W : (Number(r[C.SalesL1W]) || 0);
     const O  = sums ? sums.sumLM  : (Number(r[C.SalesLM])  || 0);
     const P  = sums ? sums.sumL2M : (Number(r[C.SalesL2M]) || 0);
     const Qs = sums ? sums.sumLS  : (Number(r[C.SalesLS])  || 0);
     const R  = sums ? sums.sumLY  : (Number(r[C.SalesLY])  || 0);
     const I  = Number(r[C.OnlineStock]) || 0;
-    const qty   = sortedQty[i];
-    const vzzi  = N / 7 * 0.6 + Math.max(0, (P - O) / 30) * 0.4;
-    const dos   = vzzi > 0 ? (qty + I) / vzzi : 0;
-    const necesar = O - I;
-
-    idxData.push([sortedOrigIdx[i] + 2]);       // 1-based MAIN row
-    calcData.push([necesar, qty, dos]);          // J, K, L
-    salesData.push([N, O, P, Qs, R, vzzi]);      // N, O, P, Q, R, S
+    const qty  = sortedQty[i];
+    const vzzi = N / 7 * 0.6 + Math.max(0, (P - O) / 30) * 0.4;
+    const dos  = vzzi > 0 ? (qty + I) / vzzi : 0;
+    outputData.push([
+      r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],r[8],  // A-I: MAIN[0..8]
+      O - I, qty, dos,                                 // J,K,L (placeholder values)
+      r[9],                                            // M: MAIN[9] = Disp. Rec.
+      N, O, P, Qs, R,                                  // N-R: sales sums
+      vzzi,                                            // S (placeholder value)
+      r[15],r[16],r[17],r[18],r[19],r[20],r[21],r[22],// T-AA: MAIN[15..22]
+      r[23],r[24],r[25],r[26],r[27],r[28],r[29],r[30],r[31],r[32], // AB-AK: MAIN[23..32]
+      ...ex                                            // AL-AT: extra flags
+    ]);
   }
+  sheet.getRange(2, 1, n, allHeaders.length).setValues(outputData);
+  T.lap('setValues aprovizionare (' + (n * allHeaders.length) + ' cells)');
 
-  // ── Step 4: Write computed data to helper ───────────────────
-  helperSheet.getRange(2, 1,  n, 1).setValues(idxData);             // col A: indices
-  helperSheet.getRange(2, 11, n, 3).setValues(calcData);            // cols K-M: Necesar, Cantitate, DOS
-  helperSheet.getRange(2, 15, n, 6).setValues(salesData);           // cols O-T: sales + VZ/zi
-  helperSheet.getRange(2, 39, n, NUM_EXTRA).setValues(sortedExtra); // cols AM-AU: flags
-  T.lap('setValues helper (' + (n * (1 + 3 + 6 + NUM_EXTRA)) + ' cells)');
-
-  // ── Step 5: flush + server-side copyTo ──────────────────────
-  SpreadsheetApp.flush();
-  T.lap('flush()');
-
-  // Force synchronous ARRAYFORMULA evaluation: getValues() on a spill cell
-  // blocks until Sheets recalculates formula dependencies.
-  helperSheet.getRange(2, 2,  n, 1).getValues(); // group A: MAIN[0..8]
-  helperSheet.getRange(2, 14, n, 1).getValues(); // group B: MAIN[9]
-  helperSheet.getRange(2, 21, n, 1).getValues(); // group C: MAIN[15..32]
-  T.lap('ARRAYFORMULA readback (sync)');
-
-  helperSheet.getRange(2, 2, n, allHeaders.length)
-    .copyTo(sheet.getRange(2, 1), SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
-  T.lap('copyTo aprovizionare (server-side)');
-
-  // ── Step 6: Restore formula strings for calculated columns ───
-  // copyTo pastes values; overwrite J, K, L, S with live formula strings
-  // so the user can inspect and the cells auto-recalculate if MAIN is edited.
+  // ── Step 2: Overwrite J, K, L, S with live formula strings ─────────────────
+  // setValues wrote placeholder numbers; replace with real formulas so the user
+  // can inspect them and they auto-recalculate if MAIN is edited.
   {
     const reqF = [], qtyF = [], dosF = [], vzF = [];
     for (let i = 0; i < n; i++) {
@@ -817,7 +746,7 @@ function generateProcurement_(ss, sortedRows, sortedExtra, sortedSums, sortedOri
     T.lap('setFormulas J,K,L,S (' + n + ' rows)');
   }
 
-  // ── Step 7: Formatting ───────────────────────────────────────
+  // ── Step 3: Formatting ───────────────────────────────────────
   const lastDataRow = n + 1;
   sheet.getRangeList([
     `I2:I${lastDataRow}`, `J2:J${lastDataRow}`, `K2:K${lastDataRow}`,
@@ -830,7 +759,7 @@ function generateProcurement_(ss, sortedRows, sortedExtra, sortedSums, sortedOri
   sheet.getRange(2, 11, n, 1).setBackground('#d9ead3').setFontWeight('bold');
   T.lap('styling procurement');
 
-  // ── Step 8: CF (every run) ───────────────────────────────────
+  // ── Step 4: CF (every run) ───────────────────────────────────
   const cfFullRow   = sheet.getRange(2, 1, n, allHeaders.length);
   const noutatiCol  = colToLetter_(NUM_APROV_DERIVED + 1 + EX.NOUTATI);
   const bargainCol  = colToLetter_(NUM_APROV_DERIVED + 1 + EX.BARGAIN);
@@ -1446,4 +1375,4 @@ function doExportSupplier_(ss, supplierName, headerValues, dataValues) {
     listaSheet.getRange(2, 3).setValue(baseUrl);
   }
 }
-// v2.44 (2026-04-09 12:48:20)
+// v2.45 (2026-04-09 14:30:00)
