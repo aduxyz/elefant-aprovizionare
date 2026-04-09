@@ -1,8 +1,6 @@
 # Evoluția proiectului — aprovizionare Elefant.ro
 
-Scris pentru cineva cu înțelegere tehnică medie care vrea să înțeleagă ce s-a construit și de ce.
 
----
 
 ## Punctul de plecare
 
@@ -12,7 +10,6 @@ ERP-ul (EBS) poate exporta un snapshot al catalogului: ~60.000 de titluri cu sto
 
 **Obiectivul**: un script care citește acest export și propune automat cantitățile de comandat.
 
----
 
 ## Pasul 1 — Înțelegerea datelor
 
@@ -23,7 +20,6 @@ Primul lucru a fost să înțelegem structura datelor disponibile:
 
 S-a stabilit că o carte are nevoie de reaprovizionare dacă: vinde cel puțin o bucată pe an (`SalesLY > 0`) **și** stocul e mai mic decât ce s-a vândut luna trecută (`SalesLM > StocOnline`, adică `Necesar >= 0`).
 
----
 
 ## Pasul 2 — Prima formulă de cantitate
 
@@ -31,7 +27,6 @@ Formula inițială: comandă cât să acoperi 30 de zile de vânzări medii.
 
 Problema: nu ținea cont de spike-uri (titluri care brusc s-au vândut mult luna trecută dar săptămâna asta se vând normal) și nici de suprastoc (titluri cu mulți ani de stoc).
 
----
 
 ## Pasul 3 — Backtesting pe date istorice
 
@@ -44,7 +39,6 @@ Logica de backtesting: alegi o dată din trecut (ex. 1 septembrie 2025), simulez
 
 S-au rulat simulări pe 8 date din intervalul iulie 2025 – februarie 2026.
 
----
 
 ## Pasul 4 — Formula v4_adaptive
 
@@ -61,7 +55,6 @@ Nu comanda niciodată mai mult decât ~4 săptămâni de vânzări recente. Prev
 
 **MOQ = 2**: cantitate minimă de comandat dacă e nevoie de reaprovizionare (nu merită o comandă pentru un singur exemplar).
 
----
 
 ## Pasul 5 — Reeditări
 
@@ -69,7 +62,6 @@ Problema: același titlu poate apărea de mai multe ori în ERP cu EAN-uri difer
 
 Soluția: grupăm titlurile cu același Titlu+Autor+Furnizor și EAN-uri diferite ca reeditări. Suma vânzărilor grupului se folosește pentru decizia de aprovizionare. Din grup apare în lista de comandă **doar ediția cea mai recentă** (cea cu data publicării cea mai mare) — pentru că edițiile vechi nu mai pot fi comandate de la furnizor.
 
----
 
 ## Pasul 6 — Titluri noi
 
@@ -77,7 +69,6 @@ Titlurile lansate recent (`DataCreare < 30 zile`) au `SalesLY = 0` prin definiț
 
 Soluția: dacă `SalesLY = 0` **și** titlul e lansat în ultimele 30 de zile, îl includem cu o cantitate calculată pe baza vânzărilor disponibile. Aceste titluri sunt marcate cu flag `Noutăți=1` și colorate verde deschis în sheet.
 
----
 
 ## Pasul 7 — Google Apps Script
 
@@ -92,7 +83,6 @@ Formula finală a fost implementată ca script Google Apps Script atașat unui G
    - **dashboard furnizori** — KPI-uri per furnizor (SKU-uri, stoc, vânzări, rupturi)
    - **listă comenzi** — log al exporturilor generate
 
----
 
 ## Pasul 8 — Librărie GAS partajată
 
@@ -100,7 +90,6 @@ Inițial scriptul era atașat unui singur spreadsheet. Cum echipa folosea 2-3 sp
 
 Avantaj: orice modificare în librărie se reflectă automat în spreadsheet-ul de test. Spreadsheet-urile de producție rămân pe o versiune numerotată și se actualizează doar când se decide explicit.
 
----
 
 ## Pasul 9 — Optimizare performanță
 
@@ -110,7 +99,6 @@ Soluția: un sheet ajutător ascuns (`_proc_helper`) cu formule ARRAYFORMULA car
 
 Rezultat: **~46 secunde** în loc de 118.
 
----
 
 ## Starea actuală (v2.44)
 
