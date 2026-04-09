@@ -1,0 +1,267 @@
+PROPUNERE FORMULĂ CANTITATE — v2.0
+====================================
+Data: 2026-03-22
+Baza: analiza pe 59,264 rânduri MAIN (8,041 filtrate în aprovizionare)
+      + insight-uri din transcript-01, transcript-02, recording-gmeet VTT
+
+
+FORMULA ACTUALĂ (NECESAR)
+=========================
+  =(O2/30)*30 - I2  →  simplu: SalesLM - Stoc
+
+  Probleme descoperite (v1.0):
+  • Nu scade marfa din recepții (M2 = Disponibil RECEPTII)
+  • Nu ține cont de rezervări (Y2 = Total Rezervări)
+  • Folosește doar SalesLM → orice spike din luna trecută se propagă 1:1
+  • Nu diferențiază între trend ascendent/descendent/stagnant
+  • 53% din rândurile filtrate sunt STAGNANTE (L1W=0, LM=0)
+
+  Probleme suplimentare descoperite din transcrieri (v2.0):
+  • CAMPANIILE umflă SalesLM temporar (discount 70% → vânzări x3-x5)
+    - Simona: „nu se poate deduce din Excel dacă a fost campanie" → dar
+      Reducere (H) mare + spike = indiciu puternic
+  • COMENZI CORPORATE / CADOU = spike artificial (ex: Malnata 657/săpt)
+    - identice ca pattern cu post-spike, formula le prinde deja
+  • PRECOMENZI FULFILLATE = spike artificial (900 precomenzi livrate odată)
+    - aceeași detecție post-spike funcționează
+  • CHILIPIR-URI: când se termină prețul mic, vânzările se prăbușesc
+    - detectabil via AP (Chilipir) sau AL/G (preț achiz < 20% din RRP)
+  • REEDITĂRI: stocul din edițiile vechi trebuie considerat
+    - AM=1 → adună stocul celorlalte ediții la stoc_disponibil
+  • ZOMBIE: titlu epuizat/indisponibil dar cu stoc → nu mai comanda!
+    - AT=1 → cantitate = 0 automat
+  • REGULA 3 LUNI: dacă nu s-a vândut nimic în 6 luni → candidat retur
+
+
+CE ARATĂ DATELE
+===============
+Distribuție trenduri (din 8,041 rânduri aprovizionare):
+  STAGNANT (L1W=0, LM=0):     53.4%  → vz zilnică = 0, necesar ar trebui ≈ 0
+  CREȘTERE (LM >> LY):         17.2%  → cerere recentă peste medie anuală
+  STABIL:                      15.3%  → vânzări consistente
+  POST-SPIKE / PRĂBUȘIRE:       9.9%  → luna trecută mare, acum scade rapid
+  DECLIN (LM << LY):            2.8%  → cerere în scădere
+  ACCELERARE (L1W >> LM):       1.4%  → vânzări explodează acum
+
+Post-spike — cazuri reale descoperite:
+  "Mândrie și prejudecată"     L1W=13  LM=963  → Necesar=868, Smart=288 (Δ=580!)
+  "Fiicele doctorului March"   L1W=-2  LM=917  → Necesar=783, Smart=205 (Δ=578!)
+  "Enigma Otiliei"             L1W=1   LM=644  → Necesar=635, Smart=241 (Δ=394!)
+  → Toate sunt LECTURI OBLIGATORII → spike de început de semestru, previzibil
+  → Sau CAMPANII/CORPORATE → aceeași detecție post-spike
+
+Recepții: 0% au marfă în recepție (dar coloana există → viitor)
+Rezervări: 13.4% au rezervări active
+Chilipir: ~5% din rânduri au flag Chilipir (AP=1)
+Reeditări: ~8% din rânduri au flag Reeditare (AM=1)
+Zombie: ~2% din rânduri au flag Zombie (AT=1)
+
+
+INSIGHT-URI CHEIE DIN DISCUȚIILE CU ECHIPA
+===========================================
+
+1. CAMPANII (imposibil de detectat complet din date)
+   Simona: „dacă săptămâna trecută am vândut 100 de bucăți dintr-un titlu,
+   asta înseamnă că ele au fost într-o promoție. Formula calculează cu
+   vânzarea de săptămâna trecută, ceea ce a fost ceva punctual."
+
+   → Soluție parțială: dacă Reducere (H) > 60% ȘI există spike,
+     aplicăm un factor de amortizare (0.5×) pe cererea zilnică.
+   → Rațiune: când discount-ul e foarte mare, e probabil campanie activă;
+     vânzările post-campanie vor fi ~50% din cele din campanie.
+
+2. CHILIPIR-URI (detectabil via AP sau AL/G)
+   Simona: „când iau o listă de chilipir, le pun în față, le promovez,
+   îmi iau un stoc mai mare. Dar încep conservativ și cresc."
+
+   → Soluție: pentru AP=1, formula nu trebuie să comande agresiv.
+     Folosim cerere_zilnică × 0.6 (Simona oricum suplimentează manual).
+
+3. REEDITĂRI (detectabil via AM + alte_EAN)
+   Simona: „trebuie să mă uit dacă am din edițiile anterioare și să iau
+   mai puțin din noua ediție. Că e aceeași carte."
+
+   → Soluție: la stoc_disponibil, adăugăm un SUMIF pe stocul online
+     al celorlalte ediții (AO = lista EAN-uri vechi).
+   → ÎN PRACTICĂ: greu de implementat ca formulă simplă în Sheets.
+     Alternativă: scriptul calculează și pune valoarea direct.
+
+4. ZOMBIE (detectabil via AT)
+   → Soluție simplă: AT=1 → Cantitate = 0. Nu mai comanda.
+
+5. FRONTLIST / BESTSELLER-E (nu e detectabil automat)
+   Mihaela: „bestseller-ele — de alea avem grijă să nu rămânem fără"
+
+   → Nu putem automatiza complet. DAR putem adăuga un „buffer de siguranță"
+     pentru titluri cu VZ medie > 3/zi: target 35 zile în loc de 30.
+
+6. SEZONALITATE (detectabilă parțial prin comparație LM vs LS vs LY)
+   Exemplu: lecturile obligatorii explodează feb-mar, apoi se prăbușesc.
+
+   → Detecția post-spike prinde deja asta retroactiv.
+   → Proactiv: ar necesita un calendar sezonier (viitor).
+
+7. COMANDĂ FRECVENTĂ (nu e în date)
+   Furnizorii mari: de 2 ori/săptămână. Mici: săptămânal sau bilunar.
+
+   → Target de 30 zile e OK ca default. Furnizori cu frecvență mare
+     ar putea avea target 14-21 zile (reducere stoc). VIITOR.
+
+
+FORMULA PROPUSĂ v2.0 — CANTITATE (K2)
+=======================================
+
+Structura: IF zombie → 0
+           ELSE → MAX(0, ROUND(cerere_zilnică × factor × 30 − stoc_disp, 0))
+
+Unde:
+  stoc_disponibil = I2 + M2    (stoc online + recepții)
+
+  factor = factor de ajustare contextual:
+    • Chilipir (AP=1):        × 0.6  (conservativ, Simona suplimentează manual)
+    • Discount mare (H>60%):  × 0.7  (probabil campanie activă, va scădea)
+    • Bestseller (S2>3):      × 1.17 (target ~35 zile în loc de 30)
+    • Normal:                 × 1.0
+
+  cerere_zilnică = depinde de trend:
+
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ TREND            │ CONDIȚIE                      │ CERERE ZILNICĂ       │
+  ├──────────────────┼───────────────────────────────┼──────────────────────┤
+  │ POST-SPIKE       │ N2 < O2*0.10                  │ N2/7                 │
+  │                  │ AND O2 > (P2-O2)*3            │ (doar ritmul actual) │
+  │                  │ AND O2 > 50                   │                      │
+  │                  │                               │ Prinde: campanii     │
+  │                  │                               │ terminante, corporate│
+  │                  │                               │ precomenzi, lecturi  │
+  ├──────────────────┼───────────────────────────────┼──────────────────────┤
+  │ ACCELERARE       │ N2/7 > O2/30 * 2             │ N2/7×0.7             │
+  │                  │ AND O2 > 5                    │ + O2/30×0.3          │
+  ├──────────────────┼───────────────────────────────┼──────────────────────┤
+  │ STAGNANT         │ N2 = 0 AND O2 = 0            │ IF R2>0:             │
+  │                  │                               │   R2/365 × 0.2      │
+  │                  │                               │ ELSE: 0              │
+  │                  │                               │ (dacă nici anual nu  │
+  │                  │                               │  s-a vândut → 0)     │
+  ├──────────────────┼───────────────────────────────┼──────────────────────┤
+  │ DECLIN           │ O2/30 < R2/365 * 0.5         │ O2/30×0.6            │
+  │  (NOU v2.0)      │ AND R2 > 20                   │ + R2/365×0.4         │
+  │                  │                               │ (blend conservativ)  │
+  ├──────────────────┼───────────────────────────────┼──────────────────────┤
+  │ NORMAL / STABIL  │ restul cazurilor              │ N2/7×0.35            │
+  │                  │                               │ + O2/30×0.35         │
+  │                  │                               │ + Q2/180×0.15        │
+  │                  │                               │ + R2/365×0.15        │
+  └──────────────────┴───────────────────────────────┴──────────────────────┘
+
+
+FORMULA GOOGLE SHEETS (K2) — v2.0:
+====================================
+
+=IF(AT2=1, 0,
+  MAX(0, ROUND(
+    IF(AND(N2<O2*0.1, O2>(P2-O2)*3, O2>50),
+      N2/7,
+      IF(AND(N2/7>O2/30*2, O2>5),
+        N2/7*0.7 + O2/30*0.3,
+        IF(AND(N2=0, O2=0),
+          IF(R2>0, R2/365*0.2, 0),
+          IF(AND(O2/30<R2/365*0.5, R2>20),
+            O2/30*0.6 + R2/365*0.4,
+            N2/7*0.35 + O2/30*0.35 + Q2/180*0.15 + R2/365*0.15
+          )
+        )
+      )
+    )
+    * IF(AP2=1, 0.6, IF(H2>60, 0.7, IF(S2>3, 1.17, 1)))
+    * 30 - I2 - M2
+  , 0))
+)
+
+
+EXPLICAȚIE PE SCURT (v2.0):
+============================
+1. Zombie (AT=1)? → Cantitate = 0, nu mai comanda
+2. Post-spike? → ia doar ritmul săptămânii curente (prinde campanii,
+   corporate, precomenzi, lecturi obligatorii)
+3. Accelerare? → 70% săptămâna + 30% luna
+4. Stagnant total? → 20% din media anuală (sau 0 dacă nici anual nimic)
+5. Declin? → blend conservativ 60% luna + 40% anul (NOU v2.0)
+6. Normal? → medie ponderată: 35% săpt + 35% lună + 15% sem + 15% an
+
+Apoi aplică factori contextuali:
+  • Chilipir → ×0.6 (conservativ, Simona ajustează manual)
+  • Discount mare (>60%) → ×0.7 (probabil campanie, va scădea)
+  • Bestseller (VZ>3/zi) → ×1.17 (buffer siguranță ~35 zile)
+
+Înmulțește cu 30 zile target, scade stocul + recepțiile.
+
+
+CE NU POATE FACE FORMULA (necesită intervenție manuală):
+=========================================================
+Aceste situații au fost identificate în discuțiile cu echipa și NU pot
+fi automatizate doar din datele din Excel:
+
+1. CAMPANII VIITOARE — „luna viitoare facem campanie pe editura X"
+   → Simona trebuie să suplimenteze manual cantitățile
+   → Posibil viitor: coloană „Campanie planificată" cu multiplicator
+
+2. PROMOVĂRI FURNIZOR — „furnizorul ne anunță pe email că promovează"
+   → Nu e în sistem, vine prin email/comunicare directă
+   → Efect spillover: alte titluri ale aceluiași autor/colecție cresc
+
+3. NOUTĂȚI FĂRĂ ISTORIC — carte nouă pe autor cunoscut
+   → Simona: „te uiți la celelalte titluri ale autorului și îți faci calcul"
+   → Posibil viitor: cerere_zilnică = media VZ a celorlalte titluri autor
+
+4. SEZONALITATE PROACTIVĂ — lecturi obligatorii în feb-mar
+   → Formula prinde RETROACTIV (post-spike), dar nu ANTICIPEAZĂ
+   → Posibil viitor: calendar sezonier cu multiplicatori lunari
+
+5. EDITURĂ LUNII — discount suplimentar o lună → spike temporar
+   → Identic cu campanie: discount mare (H) poate fi indiciu
+   → Formula v2.0 aplică deja factor 0.7 pentru H>60%
+
+6. EFECT FILM/NETFLIX — carte explodează după lansare film
+   → Imprevizibil din date. Echipa urmărește manual.
+
+
+SIMULARE REZULTAT PE DATE REALE (v2.0):
+=========================================
+  Necesar actual (formula veche):    22,832 unități
+  Cantitate v1.0:                    21,893 unități (−939, 4.1%)
+  Cantitate v2.0 (estimat):        ~20,100 unități (−2,732, 12.0%)
+
+  Surse principale de economii v2.0 vs v1.0:
+  → Zombie blocați:        ~200 unități (AT=1 → 0)
+  → Chilipir amortizat:    ~400 unități (AP=1 → ×0.6)
+  → Declin detectat:       ~300 unități (trend descendent → blend conservativ)
+  → Stagnant mai agresiv:  ~900 unități (0.2 în loc de 0.3 + zero dacă R=0)
+
+  Titluri post-spike (neschimbat față de v1.0):
+  → "Mândrie și prejudecată": 868 → 288 (−580 unități)
+  → "Fiicele doctorului March": 783 → 205 (−578 unități)
+  → 11 titluri post-spike economisesc singure ~4,000 unități
+
+
+EVOLUȚIE PROPUSĂ (ROADMAP):
+============================
+v2.0 (ACUM):
+  ✓ Post-spike, accelerare, stagnant, declin, normal
+  ✓ Factor chilipir (×0.6)
+  ✓ Factor discount mare (×0.7)
+  ✓ Factor bestseller (×1.17)
+  ✓ Blocaj zombie (=0)
+
+v2.1 (URMĂTORUL PAS):
+  □ Reeditări: script calculează stocul cumulat al edițiilor vechi
+    și îl adaugă la stoc_disponibil → reduce cantitatea automat
+  □ Target zile variabil per furnizor (14/21/30 zile)
+  □ Coloană nouă „Motiv" care explică de ce formula a ales acel trend
+
+v3.0 (VIITOR):
+  □ Calendar sezonier (lecturi obligatorii, Paște, Crăciun, Black Friday)
+  □ Efect autor: media VZ a celorlalte titluri → estimare noutăți
+  □ Coloană „Campanie planificată" cu multiplicator manual
+  □ Raport „Notify me when back in stock" din site → cerere latentă
+  □ Analiză retur: dacă retur > 30% din achiz → reduce factorul

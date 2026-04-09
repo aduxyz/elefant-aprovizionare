@@ -1,0 +1,82 @@
+COLOANE MAIN (A–AL, 38 coloane)
+================================
+Ultima actualizare: 2026-03-22
+
+COL  NUME                SEMNIFICAȚIE
+---  ------------------  ------------------------------------------------------------
+A    ElefantSKU          ID intern Elefant
+B    EAN                 Cod de bare / ISBN
+C    Cod Articol         Cod articol intern
+D    Articol             Titlul cărții
+E    Autor               Autorul
+F    Furnizor            Furnizorul principal
+G    RRP                 Prețul de raft recomandat (Recommended Retail Price)
+H    Reducere            Reducerea aplicată (%)
+I    Stoc Online         Stoc disponibil online în momentul exportului
+J    Necesar             Cantitatea necesară de aprovizionat  [FORMULĂ]
+                         filtru aprovizionare: doar >= 0
+K    Cantitate           ?
+L    DOS                 Days of Stock — câte zile mai acoperă stocul curent  [FORMULĂ]
+M    Disp. Rec.          Disponibil în recepție (comandat, în drum spre depozit)
+N    SalesL1W            Vânzări în ultima săptămână (7 zile)
+O    SalesLM             Vânzări în ultima lună (30 zile)
+P    SalesL2M            Vânzări în ultimele 2 luni (60 zile)
+Q    SalesLS             Vânzări în ultimele 6 luni (sezon)
+R    SalesLY             Vânzări în ultimul an (365 zile)
+                         filtru aprovizionare: doar > 0
+S    VZ medie/zi         Vânzări medii zilnice  [FORMULĂ]
+T    Data Creare         Data publicării / intrării în catalog  [VALOARE SIMPLĂ]
+U    Categorie           Categoria principală
+V    Subcategorie        Subcategoria
+W    Producator          Editura / producătorul
+X    Cod Furnizor        Codul produsului la furnizor
+Y    Total Rez.          Total rezervări active
+Z    Disp. MM/Auchan     Disponibil în rețeaua MM/Auchan
+AA   Colectie            Colecția editorială
+AB   Format              Formatul fizic (carte, ebook, audio etc.)
+AC   Varsta              Grupa de vârstă vizată
+AD   Cod SKU Abon        Codul SKU pentru abonamente
+AE   Achiz. All          Total achiziții cumulat (all time)
+AF   Sales All           Total vânzări cumulat (all time)
+AG   Epuizat             Flag: titlu epuizat la editură (1/DA/true)
+                         folosit la flag Zombie
+AH   Inactiv             Flag: titlu inactiv
+AI   Indisponibil        Flag: titlu indisponibil (1/DA/true)
+                         folosit la flag Zombie
+AJ   Disp. Custf.        Disponibil în depozitul Custf
+AK   Disp. Stpr.         Disponibil în depozitul Stpr
+AL   Pret Achiz. Frz.    Prețul de achiziție de la furnizor
+                         folosit la flag Chilipir (< 20% din RRP)
+
+
+COLOANE EXTRA calculate de script (AM–AT)
+==========================================
+COL  NUME          SEMNIFICAȚIE / LOGICĂ
+---  ------------  ------------------------------------------------------------------
+AM   REEDITARE     1 dacă titlul face parte dintr-un grup de reeditări (același
+                   Title|Author|Supplier cu ≥2 EAN-uri distincte), 0 altfel
+AN   Nr_Editii     Numărul de ediții distincte (EAN-uri unice) din grup; 1 dacă nu e reeditare
+AO   Alte_EAN      EAN-urile celorlalte ediții din grup, separate prin virgulă
+AP   Chilipir      1 dacă Pret Achiz. Frz. < 20% din RRP (și ambele > 0)
+AQ   Spike_vz      1 dacă SalesL1W > SalesLM * 0.5
+                   (vânzările săpt. curente depășesc 50% din luna trecută → trend brusc ascendent)
+AR   Suprastoc     1 dacă Stoc Online > 100 și VZ medie/zi <= 2
+AS   Ruptură       1 dacă Stoc Online = 0 și VZ medie/zi > 5
+                   (cerere activă fără acoperire)
+AT   Zombie        1 dacă (Epuizat = 1 SAU Indisponibil = 1) și Stoc Online > 0
+                   (titlu „mort" pe hârtie dar cu stoc fizic)
+
+
+NOTE INTERPRETARE VÂNZĂRI
+==========================
+SalesL1W / SalesLM / SalesL2M / SalesLS / SalesLY sunt ferestre glisante,
+probabil cumulative (fiecare include perioadele mai mici).
+
+Exemplu de lectură:
+  SalesLM - SalesL2M  = vânzări din luna penultimă
+  SalesLY - SalesLS   = vânzări din prima jumătate a anului
+
+Spike expirat (de detectat în viitor):
+  SalesL1W < SalesLM * 0.05  ȘI  SalesLM > SalesL2M * 5
+  → luna trecută a explodat, acum vânzările au revenit la normal
+  → Necesar calculat pe SalesLM va supraevalua dramatic cererea reală

@@ -1,0 +1,23 @@
+# Database
+elefant-erp.db
+elefant-erp.db-shm
+elefant-erp.db-wal
+
+# Date ERP (download din GDrive, nu în repo)
+data/export-erp/
+data/*.xlsx
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS / FUSE
+.DS_Store
+.fuse_hidden*
+.tmp*
+.lock*
+
+# Drive sync folder (local only)
+elefant-aprovizionare-gdrive/
+

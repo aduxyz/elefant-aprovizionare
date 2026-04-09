@@ -1,0 +1,563 @@
+behavior_profile_schema:
+  version: 1
+  notes:
+    - "Aceste profile sunt pentru MVP."
+    - "Un ingredient primește un singur behavior_profile ales manual."
+    - "Profilele sunt definite folosind doar proprietățile existente din sursa on food - proprietăți ingrediente."
+    - "coagulation_temp și gelatinization_temp sunt orientative și utile mai ales ca logică de engine, nu ca precizie științifică per ingredient."
+
+behavior_profiles:
+
+  - id: muscle_lean
+    label: Lean muscle protein
+    match_hint:
+      onfood_structure_type: muscle
+      protein_level: high
+      fat_level: low
+      carb_type: none
+      onfood_texture_raw:
+        - tender
+        - fibrous
+    heat_behavior:
+      coagulation_temp_c: "55-70"
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "140-180"
+      water_loss_behavior: high_shrink
+      structure_change:
+        - firms
+        - dries_if_overcooked
+    cooking_bias:
+      preferred_methods:
+        - saute
+        - pan_fry
+        - roast
+        - grill
+        - poach
+      avoid_methods:
+        - long_dry_heat
+      notes:
+        - "are nevoie de control bun al timpului"
+        - "apa mare cere uscare la suprafață pentru browning"
+
+  - id: muscle_medium_fat
+    label: Medium-fat muscle protein
+    match_hint:
+      onfood_structure_type: muscle
+      protein_level: high
+      fat_level: medium
+      carb_type: none
+      onfood_texture_raw:
+        - tender
+        - fibrous
+    heat_behavior:
+      coagulation_temp_c: "55-70"
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "140-190"
+      water_loss_behavior: moderate
+      structure_change:
+        - firms
+        - browns_well
+        - stays_juicier_than_lean
+    cooking_bias:
+      preferred_methods:
+        - saute
+        - pan_fry
+        - roast
+        - grill
+      avoid_methods: []
+      notes:
+        - "tolerează ceva mai bine gătirea decât muscle_lean"
+
+  - id: muscle_fatty
+    label: Fatty muscle protein
+    match_hint:
+      onfood_structure_type: muscle
+      protein_level: high
+      fat_level: high
+      carb_type: none
+    heat_behavior:
+      coagulation_temp_c: "55-70"
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "140-200"
+      water_loss_behavior: moderate
+      structure_change:
+        - firms
+        - renders_fat
+        - browns_deeply
+    cooking_bias:
+      preferred_methods:
+        - roast
+        - grill
+        - pan_fry
+        - braise
+      avoid_methods: []
+      notes:
+        - "grăsimea ajută la toleranță termică"
+        - "merge bine cu aciditate în layerul de pairing"
+
+  - id: fish_lean_delicate
+    label: Lean delicate fish
+    match_hint:
+      onfood_category: fish
+      protein_level: high
+      fat_level: low
+      water_content: high
+      onfood_texture_raw:
+        - tender
+    heat_behavior:
+      coagulation_temp_c: "45-60"
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "140-170"
+      water_loss_behavior: high_shrink
+      structure_change:
+        - firms_fast
+        - flakes
+        - dries_very_fast
+    cooking_bias:
+      preferred_methods:
+        - steam
+        - poach
+        - saute
+        - roast_short
+      avoid_methods:
+        - long_dry_heat
+        - long_braise
+      notes:
+        - "mai delicat decât muscle_lean"
+
+  - id: fish_fatty
+    label: Fatty fish
+    match_hint:
+      onfood_category: fish
+      protein_level: high
+      fat_level:
+        - medium
+        - high
+      water_content: high
+    heat_behavior:
+      coagulation_temp_c: "45-60"
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "140-180"
+      water_loss_behavior: moderate
+      structure_change:
+        - firms_fast
+        - flakes
+        - renders_fat
+    cooking_bias:
+      preferred_methods:
+        - roast
+        - grill
+        - saute
+      avoid_methods:
+        - long_dry_heat
+      notes:
+        - "mai iertător decât fish_lean_delicate"
+
+  - id: leaf_delicate
+    label: Delicate leafy vegetable
+    match_hint:
+      onfood_structure_type: leaf
+      water_content: high
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: false
+      browning_temp_range_c: null
+      water_loss_behavior: high_evaporation
+      structure_change:
+        - wilts_fast
+        - softens_fast
+        - collapses
+    cooking_bias:
+      preferred_methods:
+        - saute_short
+        - steam_short
+        - fold_in_at_end
+      avoid_methods:
+        - roast_long
+        - braise_long
+      notes:
+        - "ingredient delicat"
+
+  - id: root_starchy
+    label: Starchy root vegetable
+    match_hint:
+      onfood_structure_type: root
+      carb_type: starch
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: "60-80"
+      browning_possible: true
+      browning_temp_range_c: "140-190"
+      water_loss_behavior: low
+      structure_change:
+        - softens
+        - gelatinizes
+        - can_crisp_on_surface
+    cooking_bias:
+      preferred_methods:
+        - boil
+        - roast
+        - steam
+        - fry
+      avoid_methods: []
+      notes:
+        - "apa + căldura dau gelatinizare"
+
+  - id: root_fibrous
+    label: Fibrous root vegetable
+    match_hint:
+      onfood_structure_type: root
+      carb_type: fiber
+      onfood_texture_raw:
+        - fibrous
+        - tough
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "140-190"
+      water_loss_behavior: low
+      structure_change:
+        - softens_slow
+        - sweetens_if_roasted
+    cooking_bias:
+      preferred_methods:
+        - roast
+        - braise
+        - boil
+      avoid_methods: []
+      notes:
+        - "are nevoie de timp mai lung decât leaf_delicate"
+
+  - id: watery_vegetable
+    label: Watery non-leafy vegetable
+    match_hint:
+      onfood_category: vegetable
+      water_content: high
+      onfood_structure_type:
+        - root
+        - seed
+        - emulsion
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "140-180"
+      water_loss_behavior: high_evaporation
+      structure_change:
+        - softens
+        - collapses
+        - releases_water
+    cooking_bias:
+      preferred_methods:
+        - saute
+        - roast
+        - grill
+      avoid_methods: []
+      notes:
+        - "browning slab dacă nu elimini apa"
+
+  - id: fruit_watery_sugary
+    label: Watery sugary fruit
+    match_hint:
+      onfood_category: fruit
+      water_content: high
+      carb_type: sugar
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: limited
+      browning_temp_range_c: "150-190"
+      water_loss_behavior: high_evaporation
+      structure_change:
+        - softens_fast
+        - breaks_down
+        - concentrates_sugars
+    cooking_bias:
+      preferred_methods:
+        - roast
+        - stew
+        - poach
+      avoid_methods: []
+      notes:
+        - "se duce spre compot / sos mai degrabă decât crustă puternică"
+
+  - id: fruit_firm_fibrous
+    label: Firm fibrous fruit
+    match_hint:
+      onfood_category: fruit
+      carb_type: fiber
+      onfood_texture_raw:
+        - fibrous
+        - tough
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "140-190"
+      water_loss_behavior: moderate
+      structure_change:
+        - softens
+        - concentrates
+    cooking_bias:
+      preferred_methods:
+        - roast
+        - saute
+        - stew
+      avoid_methods: []
+      notes:
+        - "mai stabil decât fruit_watery_sugary"
+
+  - id: grain_starch_dry
+    label: Dry starchy grain
+    match_hint:
+      onfood_category: grain
+      carb_type: starch
+      water_content:
+        - low
+        - medium
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: "60-80"
+      browning_possible: true
+      browning_temp_range_c: "140-190"
+      water_loss_behavior: low
+      structure_change:
+        - gelatinizes
+        - softens
+        - dries_if_uncovered_after_cooking
+    cooking_bias:
+      preferred_methods:
+        - boil
+        - steam
+        - bake
+        - toast
+      avoid_methods: []
+      notes:
+        - "nevoie clară de apă pentru miez moale"
+
+  - id: seed_starch
+    label: Starchy seed or legume
+    match_hint:
+      onfood_structure_type: seed
+      carb_type: starch
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: "70-90"
+      browning_possible: true
+      browning_temp_range_c: "140-190"
+      water_loss_behavior: low
+      structure_change:
+        - softens_slow
+        - gelatinizes
+    cooking_bias:
+      preferred_methods:
+        - boil
+        - braise
+        - pressure_cook
+        - roast_after_softening
+      avoid_methods: []
+      notes:
+        - "mai lent decât grain_starch_dry"
+
+  - id: seed_fatty
+    label: Fatty seed or nut
+    match_hint:
+      onfood_structure_type: seed
+      fat_level:
+        - medium
+        - high
+      carb_type:
+        - fiber
+        - none
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "130-170"
+      water_loss_behavior: low
+      structure_change:
+        - toasts
+        - crisps
+        - releases_oils
+    cooking_bias:
+      preferred_methods:
+        - toast
+        - roast
+      avoid_methods:
+        - long_high_heat
+      notes:
+        - "arde relativ ușor"
+
+  - id: dairy_high_fat
+    label: High-fat dairy
+    match_hint:
+      onfood_category: dairy
+      fat_level: high
+    heat_behavior:
+      coagulation_temp_c: "depends_on_acidity"
+      gelatinization_temp_c: null
+      browning_possible: limited
+      browning_temp_range_c: "140-170"
+      water_loss_behavior: low
+      structure_change:
+        - melts
+        - emulsifies
+        - may_split_if_overheated
+    cooking_bias:
+      preferred_methods:
+        - melt_gently
+        - emulsify
+        - enrich
+      avoid_methods:
+        - violent_boil_if_acidic
+      notes:
+        - "mai stabil decât dairy_low_fat dacă are multă grăsime"
+
+  - id: dairy_low_fat_protein
+    label: Low-fat protein-rich dairy
+    match_hint:
+      onfood_category: dairy
+      protein_level: high
+      fat_level:
+        - low
+        - medium
+    heat_behavior:
+      coagulation_temp_c: "60-85"
+      gelatinization_temp_c: null
+      browning_possible: limited
+      browning_temp_range_c: "140-170"
+      water_loss_behavior: low
+      structure_change:
+        - thickens
+        - curdles_if_acid_or_overheated
+    cooking_bias:
+      preferred_methods:
+        - warm_gently
+        - thicken_gently
+      avoid_methods:
+        - hard_boil
+      notes:
+        - "aciditatea și căldura mare cresc riscul de curdling"
+
+  - id: pure_fat
+    label: Fat ingredient
+    match_hint:
+      onfood_category: fat
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: false
+      browning_temp_range_c: null
+      water_loss_behavior: low
+      structure_change:
+        - melts
+        - lubricates
+        - carries_flavor
+    cooking_bias:
+      preferred_methods:
+        - saute
+        - fry
+        - finish
+      avoid_methods: []
+      notes:
+        - "nu generează singur structură, doar mediu"
+
+  - id: aromatic_watery
+    label: Fresh watery aromatic
+    match_hint:
+      onfood_category: aromatic
+      water_content: high
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: limited
+      browning_temp_range_c: "140-170"
+      water_loss_behavior: high_evaporation
+      structure_change:
+        - softens_fast
+        - loses_freshness
+    cooking_bias:
+      preferred_methods:
+        - saute_short
+        - add_late
+        - use_raw
+      avoid_methods:
+        - long_high_heat
+      notes:
+        - "aroma volatilă se pierde repede"
+
+  - id: aromatic_dry
+    label: Dry aromatic or spice
+    match_hint:
+      onfood_category: aromatic
+      water_content: low
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: false
+      browning_temp_range_c: null
+      water_loss_behavior: low
+      structure_change:
+        - blooms_in_fat
+        - scorches_fast
+    cooking_bias:
+      preferred_methods:
+        - bloom_short
+        - toast_short
+        - infuse
+      avoid_methods:
+        - long_direct_high_heat
+      notes:
+        - "nu are nevoie de gătire lungă"
+
+  - id: fallback_delicate
+    label: Generic delicate ingredient
+    match_hint:
+      onfood_texture_raw: tender
+      water_content: high
+      protein_level: low
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: limited
+      browning_temp_range_c: "140-170"
+      water_loss_behavior: moderate
+      structure_change:
+        - softens_fast
+    cooking_bias:
+      preferred_methods:
+        - cook_short
+      avoid_methods:
+        - long_dry_heat
+      notes:
+        - "fallback"
+
+  - id: fallback_tough_fibrous
+    label: Generic tough or fibrous ingredient
+    match_hint:
+      onfood_texture_raw:
+        - tough
+        - fibrous
+    heat_behavior:
+      coagulation_temp_c: null
+      gelatinization_temp_c: null
+      browning_possible: true
+      browning_temp_range_c: "140-190"
+      water_loss_behavior: low
+      structure_change:
+        - softens_slow
+    cooking_bias:
+      preferred_methods:
+        - braise
+        - stew
+        - roast_long
+      avoid_methods: []
+      notes:
+        - "fallback"

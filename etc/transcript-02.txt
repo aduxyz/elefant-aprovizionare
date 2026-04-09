@@ -1,0 +1,602 @@
+Speaker 3
+Bună! Te-ai uitat la cuniatul ăla?
+Speaker 1
+Acum mă uit și trebuie să dau share screen. Bănuiesc că coloana cea mai importantă de aici este JNECESAR.
+Speaker 5
+Acolo e informația. Ia pune puțin click.
+Speaker 1
+Am văzut, da. La asta mă uitam la formulă că este media de vânzări pe zi înmulțită cu 30 de zile și minus cât ai în stoc deja. Deci dacă toate lucrurile ar fi perfecte, asta ar trebui să fie suficient.
+Speaker 3
+Ce-i drept mi-e asta cu achizițiile, având în mădere că, repet, intervin fetele foarte mult punctual, if, if, la if, la if, depinde de perioadă, de vânzări și așa mai departe. Cam asta ar fi fost cu ultima chestie în optimizare lucruri. Avem multe altele care ard într-un fel, dar hai să poate reușim și aici să facem ceva.
+Speaker 1
+Care sunt provocările aici? Ce vă halește cel mai mult timp și nervi și frustrări?
+Speaker 4
+Reeditările. Adică atunci când se reeditează, de exemplu la Cartex am eu și la Humanita, site-ul foarte multe simănă, când se reeditează trebuie să iei la mână foarte multe produse.
+Speaker 1
+Ce înseamnă să iei la mână?
+Speaker 4
+Adică un titlu e reeditat pe 5 coduri și trebuie cumva să le iei la mână și să vezi care e codul actual, ce s-a vândut înainte și cât ar trebui să aduci pe codul nou.
+Speaker 1
+Dar cum adică pe 5 coduri?
+Speaker 4
+Adică un titlu se reeditează de mai multe ori. Și îi schimbă și codul de bare.
+Speaker 2
+În mod normal așa este corect. De câte ori se reeditează, se îi dă alt cod de bare. Ceilalți nu fac așa.
+Mi-am spus și Cartexul, ăștia respectă regle. De exemplu, dacă eu am un titlu, jurnalul Alain Franck, mi-a apărut acum luni, asta mi-l reeditează din nou. Poate să fie același preț, dar are alt cod de bare.
+De exemplu, cu maintaj rar schimbă prețul, dar schimbă codurile de bare. Atunci eu trebuie să mă uit dacă am din edițiile anterioare și să iau mai puțin din noua ediție sau să nu iau deloc dacă am prea multe din celelalte. Că nu are rost.
+Adică este aceeași carte totul și nu are rost să iau. Sau eventual iau 2-3 ca să am și pe noul cod.
+Speaker 1
+Deci codul de bare este EANU ăsta, nu?
+Speaker 5
+Da.
+Speaker 1
+Cărțile nu au un ISBN care rămâne forever?
+Speaker 3
+ISBN-ul e codul de bare.
+Speaker 2
+Dar asta spun. El dacă scoate prin care cereri în piață și scoate cartea aia odată la 3 luni, el o scoate cu alt cod de bare.
+Speaker 1
+Nu, dar ISBN-ul nu este altceva decât EANU sau codul de bare?
+Speaker 3
+Nu, este același lucru. Deci ISBN-ul e codul de bare. Eu nu știu cât ar putea interveni automatizarea în această speță.
+Adică nu cred.
+Speaker 1
+Dar tu de unde știi după aia? Ai o listă de la furnizori cu toate cărțile lui și practic tu vezi... Hai să luăm un exemplu care tocmai s-a reeditat.
+Speaker 4
+Ce v-a zis Simona? Jurnalul la anii franci, nu? Stai să iau unul mai imediat.
+Da, cumva noi nu avem o listă. Pur și simplu unele le știm.
+Speaker 2
+Ei ne dau lista de noutări și reeditări și dacă vrem cerem și o bază de date. Și ei ne-o dau.
+Speaker 4
+Dar baza de date vine și al lor măslui, adică nu... O bază de date a lor. Nu, mă refer că avem toate produsele cumva listate.
+Speaker 1
+Eu nu găsesc aici jurnalul al anii franc.
+Speaker 4
+Cu doi de N, cred că. Stai că dai o altă. Da.
+Alta, în liniuă. A apărut acum.
+Speaker 1
+Cărți care au schimbat istoria.
+Speaker 4
+Te-a găsit pe A? Da, da, da. Trebuie selectate toate.
+Speaker 1
+Am văzut... A, stai, da, corect că ai același lucru dar de mai multe ori. Bun.
+Și ai mai multe ISBN-uri.
+Speaker 2
+Adică practic e aceeași carte.
+Speaker 1
+Am înțeles. Deci practic e aceeași carte, dar... Tu de unde știi acum că trebuie să comanzi pe codul ăsta și nu pe ăsta?
+Sau de unde-ți vine codul?
+Speaker 2
+Pentru că el mi-a dat info că s-a reeditat. Eu am dat-o la listat și atunci știu că ultima este cea pe care trebuie să o comand.
+Speaker 1
+Și când zici ultima, după ce te iei? După data...
+Speaker 2
+După data de creare. După știu că am pus-o la listat. Am un SKU.
+Un tabelu de noutăți.
+Speaker 3
+SKU este codul nostru intern, Adrian.
+Speaker 1
+Da, am înțeles. Nu mă uitam după coloană de data. Asta.
+Data creare. Deci, practic, eu dacă ordonez aici după de la Z la A, asta e ultima. Dar ideea este că eu când mă uit la astea, bănuiesc că mă uit doar la astea care au fix titlu ăsta, nu?
+Nu și la adaptare grafică.
+Speaker 2
+Nu, că aia este grafică. Da, și uite aici, ca exemplu, vezi? Mie mi se agerează 33 de bucăți din titluri unde eu mai am stoc 8 bucăți.
+Mă rog, dacă le mai am sau nu. Dar el s-a reeditat pe un alt cod de bare. El l-ai ascuns cumva.
+Speaker 1
+E ascuns?
+Speaker 2
+Mai era acolo un titlu, zic eu.
+Speaker 1
+Cărți care au schimbat istoria, nu știu ce. Deci sunt doar 3 din astea care conțin jurnalul Anei. Dar tu zici că e unul ascuns și aici încercam să înțeleg...
+Speaker 2
+Stai puțin, că așa am văzut și eu din ăsta tot. M-a dus tot pe Humanitas la mine.
+Speaker 4
+Mă gândesc că ăla de la i-ai văzut era pe litera, Simona.
+Speaker 1
+Păi da, dar eu n-am...
+Speaker 4
+Am pus-o pe Humanitas.
+Speaker 1
+Eu n-am pus filtrul decât pe titlu, atât.
+Speaker 2
+Da, da, da, ăsta este. Și uite, dacă te uiți... Deci am 8 bucăți, mi se generează 33.
+Ok, deci aici este bine. Celelalte au stock 0, după cum vezi, fiindcă ele nu mai sunt disponibile la fundizor. Cele cu 19 erau pe grafic, de aia nu-și mai pare.
+Speaker 1
+Bun. Tu când dai titlul ăsta la publicare, că ei zic Am un titlu nou pe care vreau să-l pun la vânzare. Tu știi în momentul ăla că ai aceeași carte și cu alte coduri?
+Adică atunci când se listează, oamenii care listează ultimul titlu Ei știu că, de fapt, toate astea sunt același lucru?
+Speaker 2
+Nu, ei dau de unde să știe și nu e treaba lor. Doar dacă eu le dau pișerul de la fundizor și ei regăsesc că au acel cod de bare listat și știu că este...
+Speaker 1
+Păi nu, că tu îl vii... Humanitas a venit aici cu un cod de bare care n-a mai fost până acum. Deci ei nu se pot lua după codul de bare.
+Speaker 5
+Nu, și îl listează din nou. Îl consideră ca un produs nou, nu e nimic legat. Bun.
+Speaker 1
+Și asta este una dintre probleme, corect?
+Speaker 2
+Nu este una dintre probleme. Fiindcă așa e corect să facă fundizorul.
+Speaker 1
+Nu, pentru voi, în sensul că e una dintre chestiile care vă ia mult timp pentru că trebuie să ai grijă că, de fapt, trebuie să te uiți cumva că ai același titlu dar ai deja în stoc și nu trebuie să e în stoc deși e alt EAN. Aici e...
+Speaker 4
+Da, ocupă puțin mai mult timp.
+Speaker 1
+Ok. Asta nu cred că e... dacă ne putem baza pe titlu plus autor plus furnizor, ceva de genul, cred că pot fi identificate cumva semiautomat, adică sistemul să propună să zică nu cumva cartea asta e aceeași cu asta și voi să ziceți da sau nu și cumva să le lege între ele și când faceți chestia asta să fie văzute că aia nu mai e valabilă și că asta alta e valabilă.
+Speaker 3
+Dar totodată trebuie să fim atente că pe codurile vechi să ne uităm la stoc pentru că dacă...
+Speaker 1
+Da, da, da, păi asta e ideea.
+Speaker 3
+Nu să zică uite ăsta, nu știu ce...
+Speaker 1
+Exact, că tu trebuie să vezi...
+Speaker 3
+Alos, fetele se uită să vadă dacă mai este stoc pe ăla, dacă îl comandă sau nu sau exact cum a zis Simona, îl comandă mai puține decât ar fi comandat de obicei.
+Speaker 1
+Exact, deci el trebuie să vadă stocul, să zicem că aici ar mai fi 2 și aici ar mai fi 3 El când se uită la stoc trebuie să vadă că-s 13, nu că-s 8. Asta ar fi ceva ar trebui ca să vă ușureze ca o primă chestie. Ok.
+Speaker 3
+Andreea, mai am o întrebare. De la descrierea articol, încercați să-l listați, să listați pe măsură ce vine câte un cod nou de bare, să listați descrierea identică? Da.
+Speaker 4
+Mai rar se întâmplă să fie puțin diferit, dar în general se...
+Speaker 3
+E o căie de a găsi aceste produse. Descrierea și exact cum a zis și el, furnizorul și autorul.
+Speaker 4
+Putem să vorbim și la content, să fie foarte atenți în momentul în care avem reeditări, să folosească același nume și autor. Cumva formatul să fie același. Adică cred că asta se rezolvă.
+Speaker 1
+Și voi știți clar că este o reeditare, nu? Deci când vă vine codul ăsta, ei zic, vedeți că avem niște reeditări. Teoretic ar trebui ca 100% să fie găsite în sistem, nu?
+Speaker 6
+Da.
+Speaker 1
+Și atunci, practic, ar putea fi mutată un pic munca și la procesul de listare, ca cei care listează reeditările să mai facă ceva în plus și să facă o legătură între cartea veche și cartea nouă, astfel încât sistemul să știe că e vorba de aceiași carte, dar cu un cod nou. Mhm. Mhm, ok.
+Bun, altă chestie. Aici am înțeles și îmi dau seama că este muncă destul de nasoală să stai să vezi care-i care, că sunt mai multe, de fapt.
+Speaker 3
+Da, practic n-ai cum să folosești formula aia de sus până jos. Adică să o iei de bună.
+Speaker 1
+Da. Bun, altceva. Ce mai e?
+Deci ziceam că aici e. Practic, ăsta este rezultatul final al muncji, să completezi coloana asta, corect?
+Speaker 5
+Da.
+Speaker 1
+Unele se completează direct din formulă, dar la unele trebuie să interveniți manual.
+Speaker 4
+Da, trebuie să interveniți, da. Și în funcție de campanie, pentru că avem campanie în care avem discount suplimentar pe anumite produse, și atunci, dacă am niște produse într-o campanie cu, să zicem, 70% discount față de 40% în mod normal, luna viitoare mi se va genera un necesar mai mare, dar eu nu trebuie să le iau, pentru că nu o să mai am acele suplimente.
+Speaker 2
+Au fost comuni de corporate sau au fost sau sau sau. Sunt multe variante. Și mai avem și listele de echilibri pe care noi le tratăm separat.
+Speaker 4
+Dacă ai înțeles ce am zis eu Adrian prima dată, dacă nu mai am...
+Speaker 3
+Nu, vreau să spun Adrian, dacă săptămâna trecută am vândut 100 de bucăți dintr-un titlu, asta înseamnă că ele au fost într-o promoție. Și săptămâna asta nu vor mai fi în acea promoție. Formula dacă ea, el calculează cu vânzarea de săptămâna trecută, ceea ce a fost ceva punctual.
+Speaker 1
+Da, da, da. Și pot să-mi dau seama că a fost într-o promoție uitându-mă pe coloana cu reducere sau cum era aia, nu? Nu.
+Nu. Dar cum?
+Speaker 2
+Știți voi că a fost într-o campanie.
+Speaker 1
+Știți voi că a fost într-o campanie. Deci nu este ceva ce poți să deduci din acest Excel?
+Speaker 6
+Nu.
+Speaker 1
+Ok. Și campanie ce înseamnă? În afară de faptul că este redusă, cartea este și împinsă în față cumva, nu?
+E promovată.
+Speaker 2
+În faptul că e ancore, înseamnă că a fost pusă în skin, în față.
+Speaker 1
+Păi și nu ar fi normal ca informația asta să fie adusă aici ca să o vedeți? Cineva care nu știe ce campanie au fost, ar trebui să poată totuși să o vadă aici.
+Speaker 3
+Da, ar fi utilă asta pentru noi. Da, să treci și săptămâna trecută sau în luna curentă ce campanie au fost la nivel de produs.
+Speaker 1
+Bine, pe de altă parte poți să-ți dai seama de chestia asta și din evoluția vânzărilor pe cartea respectivă. Că dacă tu ai 5 bucăți pe zi și după aia într-o săptămână ai 50 de bucăți pe zi și după aia revine aia la... Mă rog, tu nu știi că o să...
+tu trebuie să intuiești că o să revină că se termină campania. Dar trebuie să știi că se termină campania și când se termină, că altfel... Bun, deci asta ar mai fi o treabă de ținut cont de campanie cumva automat.
+Ok. Bun, am înțeles și asta. La ce altceva vă mai uitați?
+Speaker 2
+La autor, la colecție.
+Speaker 1
+În ce sens? Adică dacă îți vine o nouătate pe un autor care se vinde bine, presupui că o să se vândă și nouătatea. Că tu practic când ai o carte nouă nu știi, n-ai niciun istoric de vânzări și totuși trebuie să-i...
+Da, că te aduci.
+Speaker 2
+Și atunci te uiți la celelalte și ți-i faci un calcul.
+Speaker 3
+Aici intervine experiența în achiziții și...
+Speaker 1
+Da, adică intuiești că...
+Speaker 2
+Sau da, sau te lei de promovarea pe care o face furnizorul și atunci știi că o să o promovezi intens și asta înseamnă că o să aibă vânzări bune și atunci cumva trebuie și la celelalte titluri ale acestui autor sau din colecție să suplimentezi cumva. Încă dacă furnizorul face o campanie agresivă pe acel titlu, automat le trage și pe celelalte după el.
+Speaker 1
+Și promovarea furnizorului nu are nicio legătură cu sistemul Elefant. Nu are nicio legătură.
+Speaker 2
+Își face promovarea lui și atunci normal că lumea începe să caute cartea respectivă și unde o găsește, acolo și la un preț mai bun sau știu eu, acolo se duce.
+Speaker 1
+Și promovarea, da, deci o face, poate să fie orice tip de promovare care... Păi și voi de unde știți că el își promovează anumite titluri?
+Speaker 2
+De la furnizorul.
+Speaker 1
+A, deci el vă dă totuși informație. Vedeți că eu o să promovez cartea asta agresivă.
+Speaker 2
+Nu ține nimic secret.
+Speaker 1
+Ok, dar astea sunt lucruri pe care ei le anunță pe mail?
+Speaker 2
+Mai avem un sistem de precomandă. Adică furnizorul o să scoată o carte interesantă și atunci ne o dă la listat. Noi o listăm în site ca într-o secțiune în curând și noi punem acolo o eta la client.
+De exemplu, o să apară pe 16 aprilie cartea. Noi insertăm eta 16 aprilie, îi urcăm un stoc generic acolo în sistem. Și în momentul în care furnizorul ne anunță mâine îți librezi cartea asta că am primit un stoc, noi trebuie să vedem câte precomenzi am avut în perioada asta și atunci să-i spunem, astea sunt precomenzile și estimez că mai am nevoie de.
+Speaker 1
+Da, înțeleg. E bine cu precomenzile că acolo ai o imagine mult mai sigură despre ce o să vinzi.
+Speaker 2
+Da, doar că nu putem să listăm tot pe precomandă. Listăm anumite cliențuri.
+Speaker 1
+Bun. Hai să ne mai uităm și la întrebările alea ce mai zisesem eu acolo. Deci la Excel-ul ăsta cum lucrați?
+Lucrați în fiecare zi? Sunt mai mulți oameni. Cum?
+Speaker 2
+Suntem doar noi două, ne generăm în fiecare zi și ne uităm. Asta e biblia noastră, o să spun.
+Speaker 1
+Înțeles. Și rezultatul final cum arată? Pentru fiecare furnizor tu trebuie să îi zici practic necesarul.
+Cum faci? Cum scoți de aici? Că tu trebuie să zici la Humanitas vreau să comand 33 bucăți din codul ăsta.
+Speaker 2
+Păi pe coloana cu cantitate eu coloam trei cantitatea și eu furnizorul îi dau doar anumite câmpuri de acolo. Nu-i dau tot.
+Speaker 1
+Și cum faci? Îți scoți manual? Adică filtrezi pe furnizor?
+Speaker 2
+Da, da, da. Pun filtru pe Humanitas, dau cantitate și lui îi dau cod de bare, autor, denumire, RRP, discount și cantitate. Atât.
+Asta e comanda pe care o trebuie.
+Speaker 1
+Și cum faci? Faci copy-paste și poi într-un mail sau cum?
+Speaker 2
+Să aveți într-un fișier Excel, fiindcă apoi o să-mi dă confirmarea tot în Excel ca eu să import comanda în RRP. Deci noi cu furnizorul avem comun codul de bare, ea în lângul ăla. Și după aceea noi ne aducem codul nostru intern și importăm comanda în soft.
+Codul, cum aici nu ai prescurtat. Dar pentru asta ar trebui să emiți comanda direct în RRP și de acolo să o trimiți furnizorului?
+Speaker 1
+Nu neapărat. Mă gândesc la ceva de genul că apeși un buton și scoate exact ce faci tu de mână într-un Excel. Ca să nu fie nevoie să pui filtrul, să faci copy-paste, să salvezi fișierul.
+Adică pur și simplu zici dăm acum pentru toți furnizorii și îți generează câți furnizori ai în ales tu sau așa, să-ți genereze cât un fișier pentru fiecare și după aceea…
+Speaker 4
+Aceste băsăți pui, nu?
+Speaker 1
+Ăla ce ziceați voi, că puneți doar ea nouă, titlu, autorul și…
+Speaker 3
+Comanda.
+Speaker 1
+Da, comanda cum ar veni, exact.
+Speaker 3
+Și el să ți-l facă să-i ceri exact pentru a trimite…
+Speaker 1
+Hai să mă mai uit aici la astea. Deci cele mai mari probleme ați zis că sunt reeditările și promoțiile, care practic dacă nu știi că sunt niște promoții nu prea ieși. Deci sunt două feluri de promoții.
+Unele care sunt la voi și care teoretic se pot scoate din sistem, dar sunt și de la furnizori care sunt anunțate pe mail direct către voi. Vă dă mail și vă zice că o să facem promovare pentru titlurile cu tare, nu?
+Speaker 5
+Da.
+Speaker 3
+Păi sunt două chestii diferite într-un fel, pentru că el ne anunță că o să facă și promovare și noi cumva vrem să facem în același timp cu furnizorul ca să avem rezultate. Deci dacă furnizorul, nu știu, BookZone săptămâna asta pune foarte mult accent pe un titlu, el ne anunță să punem și noi accent pe titlu astfel încât în piață să fie un hype și să avem rezultate comune. Asta nu înseamnă că am o matematică, că el face o promoție în piață.
+N-are nicio legătură. Dar ajută la mărirea cantității de vânzare. Dacă e strict de marketing, că te anunță și îți spune, nu știu, avem la podcast, promovăm cartea asta și atunci pentru noi e important să o scoatem în față pentru că o să înceapă căutările în Google.
+Deci cumva n-are legătură cât ajută informația de la furnizor, ne ajută pe noi să împingem un produs comun de altfel, cu interese comun. Furnizorul că ne dă o informație vine către client. Dar matematic nu este decât vânzarea noastră, din sistemul nostru.
+Speaker 2
+Și aici este lista de echilipirul, de care le ziceam mai devreme.
+Speaker 3
+Adică un produs cu un discount mai mare.
+Speaker 2
+Când iau o listă, se spune la astea, o să-ți dau 70% discount. Ori pe achiziție, pe factura de achiziție, ori pe raportul de vânzări. Și atunci văd lista și zic așa, astea le pun în față, o să le promovez.
+Deci o să îmi iau un stock mai mare, fiindcă o să le bag în campania X. În R1 nu schimbăm prețurile, pe R2 rămâne la fel. Noi avem listă separată și știm, îi schimbăm noi în XL-ul furnizorului prețul.
+Nu este o listă pe site, lista o avem noi în XL, dar aici în lichidare sunt, dar nu sunt tot timpul astea. Ele se regăsesc și în site, în campanii cu discount-uri de 70%, 80%, 65%, 63%, în funcție de marja pe care o vrem, stabilim prețul în site. Dar ele rămân tot timpul la RRP, nu schimbăm RRP-ul.
+Speaker 1
+Hai să găsim un titlu care are chestia asta. Că sunt curios cum e marcat pe site.
+Speaker 2
+Imediat să-ți dau un titlu.
+Speaker 3
+Nu e marcat pe site, are un discount mai mare.
+Speaker 2
+Și aici cine face campania pe site știe despre lucrul ăsta și se folosește de prețul pe care o avem la furnizor.
+Speaker 5
+Da, ce are? Imediat să-ți dau un titlu.
+Speaker 4
+Cred că Adrian poți face o filtrare după discount în site și cred că găsim acolo ceva.
+Speaker 2
+Uite, unde ți-a trimit ăsta?
+Speaker 1
+Zim ce să caut.
+Speaker 2
+Uite, e puraș, fuge de acasă.
+Speaker 6
+Bun.
+Speaker 2
+Este la 73%.
+Speaker 1
+Deci există informația undeva în sistem că este 73% reducere.
+Speaker 3
+Sunt anumite titluri într-o anumită perioadă. Adică Simona, ce caută Adrian acum este cumva o cheie de identificare.
+Speaker 2
+Bine, asta este o listă permanentă. Dar sunt și alte care sunt pe perioade.
+Speaker 3
+Deci nu e neapărat după discount. Pentru că sunt unele produse de care noi vrem să scăpăm de foarte mult timp și o să le găsești cu 70% discount.
+Speaker 2
+Nu, ăsta nu este în genul ăla. Adică sunt mai multe situații. De exemplu, ăsta eu de la Editura 3 dat de direct în site este 2643.
+Eu de la Editura 3 le-am dat cu 5 lei prețul meu de achiziție. El mi-l dă cu 11.10 cu TVA și discount de 50%. Eu să pot în site să dau acel 73%.
+Speaker 3
+Am înțeles, dar nu ai cum să faci o verificare automatiscă. Ca să identifici aceste produse cu un preț special. Pentru că în tot cârnatul ăla de fișieri...
+
+
+Speaker 1
+Pe bază deodată trebuie să fie undeva acest. Fie acest 73%, fie pot să-l deduc pentru că dacă am RRP 26 de lei și prețul de vânzoare 7 lei, eu pot să-o potesc că de fapt aici am o reducere de 73% și cumva să țin cont că produse... Și până la urmă, ce vă spune vă asta?
+Că dacă e cu reducere mare, sunt șanse mari să fie vânduți? Cum folosiți informația asta?
+Speaker 4
+Da, dacă are un discount mult mai mare, înseamnă că se va vinde mult mai bine.
+Speaker 1
+Aici e șmecheria. Dacă tu de fapt cartea asta, dacă până acum ai vândut-o cu 20 de lei sau cu 15 lei și acum au vins cu 7 lei, te aștept să ai o creștere de vânzare de față de cum aveai avut până acum, dar creșterea asta de fapt vine din modificarea prețului de vânzare sau al discount-ului.
+Speaker 4
+Da, mă gândesc că poate în sistem se poate trece informația asta, că este un chilipir, de exemplu, și să se actualizeze periodic, în funcție de cum numești listele de la furnizor.
+Speaker 3
+Nu este un discount mai mare decât condițiile comerciale recurente. Vor să-și vindeze stocul. Habar n-am.
+Speaker 1
+Asta vine și de la ei. Adică și ei vă zic că nu este neapărat decizia voastră să reduceți prețul ca să scăpați de ele. Poate să fie și a voastră, dar poate să fie și a furnizorului.
+Deci, în general, reducerile astea sunt făcute de către furnizor, nu de către voi.
+Speaker 3
+Există posibilitatea să avem și noi produse în stoc, cu un aging mare, pe care să le facem și noi chilipiruri.
+Speaker 2
+Acolo unde nu ai drept de retur.
+Speaker 1
+Care e regula cu returul sau e fiecare furnizor are regulile lui? Adică după cât timp nu mai poți să faci retur sau care sunt condițiile de retur?
+Speaker 2
+Nu. În general, poți să faci retur după 3 luni. Nu agreează să faci mai devreme, fiindcă durata vieții unei cărți ar fi de 3 luni.
+Nu o să vinde 3 luni. Atunci, clar, nu mai ai șansă să o vinzi. Că noi o să le facem mai devreme pe viitor, asta este altceva.
+Speaker 1
+Ok, dar după 3 luni, practic, nu mai ai o limită și superioră. Adică dacă ai deja de un an cărtea, nu poți să zici că aia o ai de un an. De ce n-ai mai dat-o până acum?
+Deci, practic, te limitează invers. Să o ții și tu măcar 3 luni.
+Speaker 3
+Exact.
+Speaker 1
+Da, ok.
+Speaker 3
+Mă rog, are sens ce spune. Adică nu poți să îi dai...
+Speaker 1
+Da, până la urmă, problema este ca aceste comezi Excel-ul ăsta să fie bine făcut astfel încât să nu rămâi cu ele pe capă, Iurea, și să blochezi banii în depozit.
+Speaker 4
+Da, cumva el e calculat corect, adică conform vânzărilor din ultimele 30 de zile. Dar, da, vânzările se mai schimbă cu parcurs și mai rămâi și cu produse.
+Speaker 2
+Da, încă dacă ne gândim la vânzările pe ultimele două luni, e o situație. Dacă te gândești pe ultima lună cum vânzările au mers mai prost, este altă situație.
+Speaker 1
+Din momentul în care voi dați o comandă, cam cât îmi durează până aveți cărțile în depozit?
+Speaker 2
+Două, trei zile, patru, cinci, cam pe acolo. Depinde de furnizor. Cine vine de la Iași, de exemplu, îmi livrează în fiecare joi.
+Asta e ziua de intrare de la Iași, Gama și PoliRom. Ceilalți sunt mai... adică vin mai...
+bine, mai avem în țară că le trimit prin curier și acolo depinde dacă mai târziu e curierul sau... Dar, în general, cam așa avem. Trei zile, să spun eu.
+În general.
+Speaker 1
+Sunt condiții de genul ăsta să ai cantitate minimă pe titlu, pe furnizor? Deci, puteai să comanda și trei cărți.
+Speaker 2
+Ne condiționăm doar noi în funcție de banii pe care le avem.
+Speaker 1
+Nu, dar zic, un furnizor, dacă-i comanda trei cărți, nu strâmbă din ea să zică, bă, dar măcar ia și tu măcar zece că...
+Speaker 2
+Nu, nu.
+Speaker 1
+Ok.
+Speaker 2
+Nu, doar că te gândești tu să îi pui ceva acolo în comandă din mai multe titluri, că, na, depozitul e unde e destul de departe și atunci nu prea e la îndemână să trimită până acolo.
+Speaker 4
+Nu, era vorba pe titlu, Simona.
+Speaker 1
+Nu, neapărat nu. Ori pe titlu, ori pe furnizor.
+Speaker 4
+Pe comandă, cumva, trebuie să te gândești și la costul de transport al furnizorului și atunci să ai o comandă.
+Speaker 3
+Da, în general nu e minim ordăr pentru ceva vreun plafon.
+Speaker 1
+Deci e mai mult, așa, gentleman agreement, cum se zice.
+Speaker 2
+În general la carte este așa.
+Speaker 1
+Da.
+Speaker 3
+Da, sunt diferite achizițiile pe carte, cumva, față de piață cu orice alt produs. E cumva o înțelegere din toate părțile.
+Speaker 2
+Aici contează mai mult relația umană.
+Speaker 1
+Bănuiesc că nu se întâmplă să vreți mai multe cărți decât pot ei să vândă, nu? Să aibă stoc limitat sau ceea ceva de genul.
+Speaker 2
+Se întâmplă să dea greșei cu o carte, adică să scoată un tiraș prea mic și atunci să rămână fără și să fie nevoi să scoată... Bine, dar asta cred că nu se întâmplă desigur, nu?
+Speaker 6
+Ar fi bine, da.
+Speaker 2
+Dar mai întâmplar, le urcăm pe plusul de precomandă, ne descurcăm.
+Speaker 1
+Stocul inițial pentru un titlu nou bănuiesc că este la experiența achiziitorului.
+Speaker 3
+Da și ești în funcție de cum promovează și furnizorul. Că dacă spune că o să promoveze titlul respectiv, o să facă mare gălăgie prin piață, ține-i în pont și de asta. Sau dacă este ediție de film.
+Da, exact. Dacă pe Netflix rulează... sau în cinema.
+Sau în cinema și asta este un...
+Speaker 1
+Deci, practic, tu ai o carte care zăcea acolo, avea trei vânzări pe săptămână, dar pentru că se lansează un film după cartea aia, ți explodează vânzările, că vrea lumea să...
+Speaker 2
+Da, și o scoate în ediția de film. Adică o reeditează toată coperta cu...
+Speaker 1
+Aaa, ce șmecherie, da.
+Speaker 2
+Ediția de film. Da, dar scrie pe Netflix sau ce scrie, unde îi apare.
+Speaker 1
+Mai spanzorizează și Netflix-ul un pic. Titluri sezoniere clar există, nu mă aștept să nu existe. Care sunt sezoanele voastre?
+Aveți manuale, de exemplu?
+Speaker 2
+Paște, da, manuale, Crăciun. Cam astea, cu domnul.
+Speaker 1
+Aveți ceva titluri de care aveți grijă să nu rămâneți niciodată fără?
+Speaker 5
+Da, bestseller-ele.
+Speaker 1
+Și bestseller ce înseamnă? Adică dacă mă uit în Excel-ul ăsta, acum văd care sunt bestseller-ele.
+Speaker 2
+Pune după două luni, ultimele două luni, așa zile după vânzările din ultimele două luni, de exemplu. Da. Da, dar uite, de exemplu, Mândrie și Prejudecată și picerea doctorului Marci au fost date ca două.
+Într-o campanie. Ele mi se generează acolo câteva sute de bucătări. Nu le mai aduc, fiindcă eu nu o să mai fac campanie pe ele.
+Speaker 1
+Deci asta e. În continuare apare din nou ideea că ar trebui să legi cumva și campanile de Excel-ul ăsta. Să știi și tu că dacă ai fost în concediu și schimbi cu colega, ce faci?
+Întrebi la marketing. Ce campanie ați avut?
+Speaker 3
+După o săptămână nu se poate așa mai mare.
+Speaker 2
+Adică știi cam ce urmează, ce campanie sunt și îți dai seama după o săptămână că mai mult de o săptămână nu ai concediu.
+Speaker 4
+Și cumva lucrând tot timpul cu aceste titluri, deja le știi și îți dai seama dacă generează vânzare pe ceva ce nu ai avut până acum. Adică sau nu ai avut vânzare atât de mare.
+Speaker 1
+De ce am presupus că e lunarda? Înțeleg că faceți comezi și de două ori pe săptămână, nu?
+Speaker 2
+La furnizorii mari, da.
+Speaker 1
+La furnizorii mari de două ori pe săptămână.
+Speaker 2
+Sau și la cei mici dacă au nouătăți.
+Speaker 1
+Dacă au nouătăți. Am înțeles. Și practic e un ping-pong.
+Adică ei vă trimit nouătățile, voi le listați, după care faceți comandă. Și ca să știți cam ce să comandați pentru titlurile noi, vă uitați la autor, la colecție și la ce face el cu titlul respectiv, dacă face, dacă nu, nu. Și dacă vă zice că o să-l promoveze.
+Am înțeles. Și colecția de fapt ce este? E ca o categorie, nu?
+Speaker 2
+Exact. Deci în colecția respectivă au ieșit niște cărți care au același format.
+Speaker 1
+Deci nu este ceva ca o categorie. Este ceva care ține fix de cartea. Aia și încă câteva pe lângă.
+Speaker 2
+Da. Și acolo poate furnizorul și ne încadrează el în colecția. SMART, de exemplu, de la MENIRA, Scoshe-Sden-Hassel și alți autori, dar l-au făcut într-un anumit format și le-au denumit colecția SMART.
+Speaker 1
+Da. Și e frumos acolo să-l ai în bibliotecă, așa aranjată, să vadă lumea că ai o colecție, nu?
+Speaker 2
+Exact. Sau în colecția noastră, într-o spectivă, o litera, de exemplu, în care intră anumite cărți sau colecția de psihologie și furnizorul ne catalogează acolo. În colecția respectivă.
+Colecție de autori români. Cărțile scrise de autori români.
+Speaker 1
+Aveți un buget limitat? Adică tu, să zicem, la următoarea comandă constați că, conform Excel-ului, ar trebui să comazi de 50.000 de euro și Dan vine și zice, bă, pardon, mai mult de 10.000 n-am.
+Speaker 2
+Dacă nu o să vină și o să zic așa, să avem. Vine, vine, vine. Dacă vine, aia e.
+Îi face ăsta Excel-ul ăsta de toate.
+Speaker 3
+Da. Vine și cu bugetul.
+Speaker 1
+Și atunci ce faceți? Cum știți să tăiați?
+Speaker 2
+Nu știm cum va tăia provul ăsta, care va face acum în Excel automat.
+Speaker 1
+Păi nu, nu. Eu îmi întreb ce faceți voi acum.
+Speaker 2
+În momentul ăsta nu avem, dar dacă am fi avut, am fi luat tot așa. Din bățelele mai mulți, din noutate, așa. Mai tăiam din celelalte.
+Adică le ajustam.
+Speaker 3
+În momentul de față este un work in progress. Da. Trebuie să faci tot ce e necesar de achiziții pe tot anul și atunci trebuie controlat, să zic așa, nu neapărat că avem un buget de achiziție Trebuie să controlăm plățile, respectiv achizițiile, astfel încât să ne încadrăm într-un cashflow și un buget.
+Dăm retur, comandăm, adică...
+Speaker 6
+Da.
+Speaker 3
+Că și retururile astea fac parte din...
+Speaker 1
+Da, clar. E o balanță.
+Speaker 2
+Exact. Da. Fiindcă tot așa în trecut, eu spun din vremuri de demult, aveam un buget pe fiecare curmizor.
+Și la un moment dat s-a atingea pravul respectiv și atunci trebuia să ne gândim să dăm la financiat și să solicităm să se mai modifice pravul cu X lei. Și între timp, până venea comanda, mai generam și un retur, mai se vindea, îi se diminua timp.
+Speaker 3
+Dar dacă, nu știu, în dezvoltarea lui, da, ar trebui pus și un...
+Speaker 1
+Voi aveți o măsurătoare care să vă spună că ați achiziționat bine sau nu? Adică vă uitați la niște cifre că am dat retururi foarte puține luna asta înseamnă? Cum ziceam și la întâlnirea de mai devreme, eu văd două lucruri pe care ar trebui să le urmăriți.
+Unul, că nu ratați vânzări. În sensul că oamenii ar cumpăra o carte, dar văzând că nu este stoc... Putem să ajungem la o carte pentru care nu este stoc?
+Că sunt curios cum arată pagina unei cărți.
+Speaker 2
+Asta a fost, mă rog, data și asta, ca două chestii în sucie. Acum nu mai există, dar ca să vezi cum arată. Dar nu, căută un t-shirt în Excel ca să iei scaunul, să-l duci în site.
+Speaker 1
+Da, deci tu nu poți vedea nicăieri că niște oameni au intrat pe cartea asta și n-au cum să facă click aici. Asta e o chestie care ar trebui să o știți. Și pe de altă parte, cealaltă măsurătoare ar fi cât retur dai.
+Cu cât returul e mai mic, cu atât înseamnă că ai făcut mai bine Excel-ul. Deci comeziile sunt făcute de voi trei, practic, nu? Două.
+Andrea și Simona. Eu cam astea am avut întrebări. Ce mi-am notat?
+Cu cine iau legătura dacă vreau să accesez baza de date? Cosmin Pleșoiu. Andrea, noi am mai fost colegi într-o viață anterioară, așa e?
+Speaker 4
+Da. Eu asta am zis, dar nu cred că m-ai recunoscut din primul rând.
+Speaker 1
+Nu te-a recunoscut din primul rând.
+Speaker 4
+Mi-am întrebat la început și, mă rog, că n-ai auzit-o.
+Speaker 1
+Cred că n-am auzit, da.
+Speaker 4
+Nu mai știam dacă la vivră sau în altă parte. Eram puțin așa în ceață.
+Speaker 1
+La vivră, sigur, da.
+Speaker 4
+Mi-am dat seama mai mult după întrebări, știi?
+Speaker 1
+Parcă am mai auzit pe unul care punea întrebări de astea.
+Speaker 4
+Nu, în sensul că se lega cu ce era acolo.
+Speaker 1
+A, ok. Bine, deocamdată cred că am destule informații ca să încep ceva așa și dacă reușesc să obțin și acces la baza datei și mai bine pentru că încerc să văd dacă pot să mă leg de reducerile de prețuri și dacă există informații despre campanii, astea pe care le face Elefantul. Cărțile care sunt împinse în față, cum le văd?
+Speaker 4
+În skin. În HP avem skin-ul Black Friday. Și tot ce ai pus acolo, cumva noi considerăm că ai pus în față.
+Speaker 1
+Skin-ul Black Friday...
+Speaker 4
+Nu, nu, nu. Pe categorie.
+Speaker 2
+Vine pe elefant.ro Apasă pe elefant.ro A, direct în homepage. Și uite, astea sunt bestsellerele, de exemplu. Și ele aici, în față, sunt puse topurile noastre ca să spun, uite, du-te în ficțiune.
+Speaker 1
+Așa.
+Speaker 2
+Uite, derulează puțin în jos. Până găsești una mai mare cu 50% Ia uite, 61. Deci asta, sigur, este într-o listă.
+Deci asta este cu, de exemplu, vine cu 70% de la Nemira. Mhm.
+Speaker 1
+Da, acest 70%, mă rog, eu pot să-mi dau seama din RRP vs. prețul de vânzare că e o reducere mare. Dar voi băgați lista asta manual, corect?
+Există un CMS undeva unde voi ziceți, aveți o bifă și ziceți titlu ăsta...
+Speaker 2
+Ia, du-te puțin mai sus, de exemplu, la bestseller. Du-te puțin mai sus. Ia să-i dăm aici.
+Nu, stai puțin. Așa unde avem 50% Uite, deci ăsta, ficele din Shandong. Al 5-lea de pe rândul ăsta.
+Speaker 4
+Da, pur și simplu, noi eu...
+Speaker 2
+El are 50% în campania asta. Eu, pe act de la litera, pe factura de intrare, am 50%. Dar ea îmi dă un extra 10% la raportul de vânzări.
+Calculez un extra 10% în campania asta. Deci ea este în site cu 50%, adică cu atât este și pe act, cu atât o iau de la furnizor.
+Speaker 3
+Păi nu-l interesează asta. Ce vrei tu să-i spui este că este tot un produs în promo. Că iei tu banii after sales, că iei...
+Speaker 1
+Da, nu contează. Contează ce vede cumpărătorul.
+Speaker 4
+Simona, oricum, astea cred că pot fi ușor bifate pentru că ele au begiul ăla. Adică colega noastră care se ocupă de campanii trimite o listă pentru că era în campanie. Și acele produse au niște begiuri.
+De exemplu, cum are acest titlu Black Friday. Cred că chiar Mihai poate să facă bifa asta. Odată ce pune begiurile, cumva să le bifeze în sistem, ca prin în promo.
+Da.
+Speaker 1
+Păi begiul ăsta bănuiesc că apare în sistem. Adică nu cred că e pus...
+Speaker 4
+Da, exact.
+Speaker 1
+Adică el e deja bifat undeva în sistem.
+Speaker 4
+Da, se face un import de produse. E în ICM, nu e în ERP. Da, dar credeți că poate fi transmisă informația către ERP.
+Speaker 3
+Păi nu, că Adrian sigur din ICM o să lucreze cu Cosmin, nu din ERP.
+Speaker 1
+Ce înseamnă ICM?
+Speaker 3
+Site-ul. Site-ul și ERP-ul este Intersoft-ul. Site-ul trimite comenzile către ERP și informații și acolo.
+Dar pe tine te interesează câte click-uri, pe tine te interesează site-ul.
+Speaker 1
+Mă interesează RRP-ul și prețul de vânzare și dacă e băgat într-o campanie, cum e asta, că are acest Black Friday, care ai pus acolo, înseamnă că e într-o campanie și probabil că mai sunt și alte tipuri de campanii.
+Speaker 3
+Sunt denumite toate listele de preț au denumire în site.
+Speaker 1
+În momentul ăsta, de exemplu, în afară de acest Black Friday, care ar mai fi alte promovări, liste?
+Speaker 2
+Astea care sunt deja aici.
+Speaker 4
+De exemplu, mai avem în editura lunii Storia.
+Speaker 3
+Cred că și pe litera e separat. Unde ai al doilea banner, acolo. Al treilea banner, de jos.
+Speaker 1
+Asta, nu?
+Speaker 3
+Nu. Mai jos. Nu, dar zic, cred că și asta e o listă separată.
+Speaker 4
+Aici, acolo, dar al treilea. Da. Aici, în fiecare lună, de fapt, fiecare editură este editura lunii.
+Și atunci ne oferă un discount suplimentar pentru a face o promoție specială doar pentru ei. Nu, nu e făcut automat. Se face tot prin selecție și import de produse ulterior.
+Adică cineva face asta manual. Face selecția și apoi îi importă în ICF.
+Speaker 1
+Aici ai o categorie și astea sunt subcategorii ale lui ăsta?
+Speaker 2
+Da. Aportul e singură destul de mult timp.
+Speaker 1
+Deci avem odată acel Black Friday, avem acestă editură a lunii și mai sunt și altele? A, Lichidare Art.
+Speaker 4
+Lichidare Art, da.
+Speaker 1
+Promoții speciale. Ia uite ce frumos.
+Speaker 3
+Și cred că și litera Andreea, nu? Litera Mastering. Da, da, da.
+Era acolo. Pipi sunt băgate și ăla. Cam astea cred că sunt în momentul de față.
+Black Friday, astea pe care le-a zis toate pe carte.
+Speaker 1
+Best Seller, CMS, bla, bla, bla.
+Speaker 3
+Da, au denumirea listei, să zic. Are legătură. Nu vei putea porela ce conține link-ul cu lista din spate.
+Speaker 1
+Bine. Ținem legătura. Deci cu informațiile pe care le-am acum…
+Speaker 3
+O luăm pas cu pas. Vedem cum testăm.

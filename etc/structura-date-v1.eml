@@ -1,0 +1,1245 @@
+MIME-Version: 1.0
+Date: Thu, 12 Mar 2026 14:31:51 +0200
+References: <CAPRpxSCkD=v3TNNLefUVwmvyKe=FiWnLhmRk-CO9Q_Cfzc=oqw@mail.gmail.com>
+	<CW1P302MB2039F3AD92071FE646A0D7F0A47AA@CW1P302MB2039.GBRP302.PROD.OUTLOOK.COM>
+	<CAPRpxSA1hX0k63sjCs_MQDDhvUUYvm-N8osx_GJUDyyC26HFdg@mail.gmail.com>
+	<CABBD0b0WXTQZScuvX7YdWPJRWrGD8MFzDoutr=eJ8OBVhaRTkQ@mail.gmail.com>
+	<CAPRpxSA-Hv+Dg6nCt=X7vDcu4zDhd3LSq_Z0H04dnqHHZBBbCg@mail.gmail.com>
+	<CABBD0b14kwC9zun9FQVZb5XQTG_2JNVS=ySRzACEbSkTbNrsxA@mail.gmail.com>
+	<CA+4QmeX7GVkwi7DDWnLrB-9bRBMEmOnc0CYuhLvD_gbzJ9G-2g@mail.gmail.com>
+	<CAPRpxSD5vkwa9NBYvOcnj1wOKNr-1OWd+hPh=z_=Gg8X84M35Q@mail.gmail.com>
+	<CA+4QmeVOmnNGeok-OKBWD8XazZPcR8JG_eoBj=KV=1c3kjAX9w@mail.gmail.com>
+	<CAPRpxSAfLkqAc-Cv4iYKjyie+3EDA-bA4DdD6xAJ6Va_sGPEQA@mail.gmail.com>
+	<CA+4QmeWHxHKyag1Atz6=sT3u-Kg=io3T4EtOW0puCOJkigJ=hw@mail.gmail.com>
+	<CALRoe=snTRnahpNZ6p4TeS5GvQMEYYaQ3V089DWBbWCavAOH0g@mail.gmail.com>
+In-Reply-To: <CALRoe=snTRnahpNZ6p4TeS5GvQMEYYaQ3V089DWBbWCavAOH0g@mail.gmail.com>
+Message-ID: <CAPRpxSC73SAz3O2YUKnnT5XFkhEZ6zYmx9LT=Kbzm+_rsR51Ww@mail.gmail.com>
+Subject: Re: procesul de aprovizionare carte in romana din elefant
+From: Adrian Ciutureanu <adrian.ciutureanu@voxa.ro>
+To: Tiberiu Chirea <t.chirea@litera.ro>
+Cc: Cosmin Plesoiu <cosmin.plesoiu@elefant.ro>, 
+	Alexandru Prozoreanu <alexandru.prozoreanu@elefant.ro>
+Content-Type: multipart/alternative; boundary="000000000000e5e290064cd2ef40"
+
+--000000000000e5e290064cd2ef40
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Salut Tiberiu,
+
+Mul=C8=9Bumesc pentru clarific=C4=83ri, are sens abordarea cu exporturi off=
+line.
+
+Am definit structura de date de care a=C8=99 avea nevoie ca s=C4=83 m=C4=83=
+ apuc de
+treab=C4=83, =C8=99i vreau s=C4=83-=C8=9Bi explic un pic logica din capul m=
+eu, ca s=C4=83 putem
+evalua =C3=AEmpreun=C4=83 ce e fezabil.
+
+*Ce vreau s=C4=83 construiesc*
+
+Un tool care automatizeaz=C4=83 c=C3=A2t mai mult procesul de aprovizionare=
+, dar care
+va r=C4=83m=C3=A2ne cel pu=C8=9Bin o perioad=C4=83 sub strict=C4=83 suprave=
+ghere uman=C4=83.
+
+Ce ar trebui s=C4=83 fac=C4=83:
+
+
+   - *Propuneri de comenzi* per furnizor, care s=C4=83 =C8=9Bin=C4=83 cont =
+de v=C3=A2nz=C4=83rile
+   istorice (p=C3=A2n=C4=83 aici deja face XLS-ul), de sezonalitate =C8=99i=
+ de perioade
+   speciale per titlu (campanii elefant, promov=C4=83ri furnizor, lans=C4=
+=83ri externe)
+   - *Generare automat=C4=83 a fi=C8=99ierelor de comand=C4=83* per furnizo=
+r, elimin=C3=A2nd
+   copy-paste-urile manuale din XLS-ul de 60k r=C3=A2nduri
+   - *Tratarea automat=C4=83 a reedit=C4=83rilor* - c=C3=A2nd un titlu apar=
+e cu un cod nou
+   dar acela=C8=99i titlu+autor+editur=C4=83, toolul s=C4=83 detecteze c=C4=
+=83 e o reeditare, s=C4=83
+   agrege istoricul de v=C3=A2nz=C4=83ri al edi=C8=9Biilor anterioare =C8=
+=99i s=C4=83 propun=C4=83 smart un
+   stoc (=C3=AEn loc de zero cum e acum =C3=AEn XLS)
+   - *Tratarea nout=C4=83=C8=9Bilor absolute* - pentru titluri f=C4=83r=C4=
+=83 niciun istoric,
+   toolul s=C4=83 estimeze un stoc ini=C8=9Bial bazat pe performan=C8=9Ba i=
+storic=C4=83 a
+   aceluia=C8=99i autor / colec=C8=9Bie / editur=C4=83, similar cu ce fac a=
+cum fetele pe baza
+   experien=C8=9Bei
+
+Pentru asta a=C8=99 avea nevoie de date despre v=C3=A2nz=C4=83ri =C8=99i ac=
+hizi=C8=9Bii cu
+granularitate zilnic=C4=83.
+
+Planul e s=C4=83 ob=C8=9Bin un export one-time, s=C4=83 construiesc =C8=99i=
+ calibrez modelul
+local (pe laptopul meu), iar odat=C4=83 ce func=C8=9Bioneaz=C4=83 decent s=
+=C4=83 trecem la un
+export incremental de 2x pe s=C4=83pt=C4=83m=C3=A2n=C4=83 cu impact minim p=
+e DB.
+
+=C3=8Enainte de a pune toolul la treab=C4=83 pe date reale, voi calibra mod=
+elul pe
+date istorice - m=C4=83 plasez la o dat=C4=83 din trecut, rulez modelul, co=
+mpar
+propunerile generate cu ce s-a v=C3=A2ndut efectiv =C8=99i ajustez p=C3=A2n=
+=C4=83 ob=C8=9Bin
+rezultate satisf=C4=83c=C4=83toare. Odat=C4=83 lansat, voi face sync period=
+ic cu echipa de
+achizi=C8=9Bii pentru a colecta feedback despre cazurile unde modelul gre=
+=C8=99e=C8=99te
+=C8=99i ajust=C4=83m p=C3=A2n=C4=83 hot=C4=83r=C3=A2m c=C4=83 e ce trebuie.
+
+*Structura de date propus=C4=83 pt export one-time ini=C8=9Bial*
+
+M-am g=C3=A2ndit la 4 fi=C8=99iere CSV =C8=99i am folosit denumirile coloan=
+elor din XLS cu
+care lucreaz=C4=83 acum fetele pt achizi=C8=9Bii:
+
+
+   - *products*: ElefantSKU, EAN, Cod articol, Cod furnizor, Articol,
+   Autor, Furnizor, Categorie, Subcategorie, Producator, Colectie, Data
+   creare, RRP, Epuizat, Inactiv, Indisponibil
+   - *sales:* Date, ElefantSKU, *SoldQuantity*, *SalePrice*
+   - *purchases*: Date, ElefantSKU, *Quantity*, *Status* (ordered /
+   received) - posibil s=C4=83 fie util=C4=83 coloana *Disponibil RECEPTII*=
+ din XLS,
+   dar nu =C8=99tiu dac=C4=83 am intuit corect semnifica=C8=9Bia ei
+   - *stock*: aici e o zon=C4=83 gri pentru mine =C8=99i am nevoie de ajuto=
+rul t=C4=83u:
+   am nevoie s=C4=83 =C8=99tiu stocul per titlu per zi (sau cel pu=C8=9Bin =
+la momentul
+   fiec=C4=83rei comenzi). Dac=C4=83 exist=C4=83 un snapshot zilnic de stoc=
+ =C3=AEn DB, e ideal.
+   Dac=C4=83 nu, pot reconstitui din SALES + PURCHASES, dar depinde dac=C4=
+=83/cum sunt
+   logate mi=C8=99c=C4=83rile de stoc.
+
+*=C3=8Entreb=C4=83ri:*
+
+   1. Exist=C4=83 retururi de la clien=C8=9Bi care reintr=C4=83 =C3=AEn sto=
+cul elefant? Dac=C4=83
+   da, sunt capturate =C3=AEn DB =C8=99i cum apar =C3=AEn date?
+   2. Exist=C4=83 snapshot de stoc zilnic per produs =C3=AEn DB, sau doar s=
+tocul
+   curent?
+
+A=C8=99tept p=C4=83reri, =C3=AEntreb=C4=83ri, orice crezi c=C4=83 e nevoie =
+ca s=C4=83 mergem =C3=AEnainte.
+
+
+Mul=C8=9Bumesc,
+Adu
+0722 786 437
+
+
+On Thu, Mar 12, 2026 at 11:28=E2=80=AFAM Tiberiu Chirea <t.chirea@litera.ro=
+> wrote:
+
+> Salut,
+> Incantat de e-cunostinta Adrian,
+> As dori va rog aici sa detaliem putin nevoia de acces (la ERP/db ERP) si
+> sa eveluam toate optiunile alternative pentru ca:
+>  - accesul la ERP este recomandat a se face doar daca va fi folosit
+> constant si consistent si pe viitor. Daca va fi utilizat "one-time", doar
+> pentru o analiza a istoricul vanzarilor  atunci nu cred ca aceasta ar fi
+> directia cea mai adecvata
+>  - licentele de acces in ERP sunt limitate; know-how utilizare ERP - de
+> tinut cont si de acest aspect ...
+>  - existinderea interogarii vanzarilor direct in ERP trebuie sa se faca d=
+e
+> catre cineva care cunoaste sistemul si limitarile lui altfel riscam bloca=
+je
+> mari in ERP
+>  - baza de date DOI este relativ noua - are tranzactii doar de la
+> inceputului lui 2025
+>  - interogarea directa a bazei de date sql se face exclusiv prin
+> intermediul echipei tehnice (nu numai din considerente de securitate ci m=
+ai
+> degraba datorita performantei)
+>
+> Eu cred ca eficientizarea procesului de achizitie ar trebui sa se faca
+> pornind de la un istoric al vanzarilor (fisiere csv/xls off-line cred ca =
+ar
+> trebui sa fie suficiente) dar si definierea datelor recurente preluate
+> pentru procesare automatizare
+>
+> Multumesc frumos,
+> TC
+>
+> On Wed, Mar 11, 2026 at 5:58=E2=80=AFPM Cosmin Plesoiu <cosmin.plesoiu@el=
+efant.ro>
+> wrote:
+>
+>> Salutari Tiberiu,
+>>
+>> Il poti ajuta pe @Adrian Ciutureanu <adrian.ciutureanu@voxa.ro> cu acces
+>> in ERP?
+>>
+>> Multumesc!
+>>
+>> On Wed, 11 Mar 2026 at 17:52, Adrian Ciutureanu <
+>> adrian.ciutureanu@voxa.ro> wrote:
+>>
+>>> Despre fluxul de achizi=C8=9Bie am avut discu=C8=9Bii cu colegele, am v=
+=C4=83zut un XLS
+>>> cu 60k rows care este exportat din ERP =C8=99i procesat manual destul d=
+e mult.
+>>> Din acel XLS se genereaz=C4=83 comenzile c=C4=83tre fz. Scopul e s=C4=
+=83 =C3=AEncerc s=C4=83
+>>> automatizez c=C3=A2t de mult se poate acest proces.
+>>>
+>>> Ce a=C8=99 avea nevoie este stocul =C8=99i istoricul de v=C3=A2nz=C4=83=
+ri. Adic=C4=83 vreau s=C4=83 am
+>>> flexibilitate s=C4=83 v=C4=83d mai mult =C3=AEn urm=C4=83 =C8=99i mai g=
+ranular, nu doar ce e acum =C3=AEn
+>>> XLS (o lun=C4=83, 3 luni, 1 an). Ideal ar fi s=C4=83 pot rula SQL, nu s=
+=C4=83
+>>> interac=C8=9Bionez cu o interfa=C8=9B=C4=83 din care s=C4=83 export. Fo=
+arte probabil am tot
+>>> ce-mi trebuie =C3=AEn ERP. Dac=C4=83 m=C4=83 po=C8=9Bi ajuta cu acces l=
+a acel DB, cred c=C4=83 e mai
+>>> mult dec=C3=A2t suficient.
+>>>
+>>> Mul=C8=9Bumesc!
+>>>
+>>>
+>>> On Wed, Mar 11, 2026 at 4:32=E2=80=AFPM Cosmin Plesoiu <
+>>> cosmin.plesoiu@elefant.ro> wrote:
+>>>
+>>>> Salutari,
+>>>>
+>>>> Imi pare bine de e-cunostinta!
+>>>>
+>>>> Site-ul si DB-ul folosesc infrastructura lor, insa ERP este separat,
+>>>> servere intretinute de Spearhead, la care avem acces, inclusiv in DB. =
+Daca
+>>>> vrei aici acces, se poate rezolva rapid cred, doar anunta-ma.
+>>>>
+>>>> Legat de documentatia API Intershop, cred ca este publica, noi avem
+>>>> versiunea 7.1 ICM:
+>>>> https://knowledge.intershop.com/kb/index.php/Display/2U9566
+>>>> Vezi, te rog, daca poti vedea si daca exista acele capabilitati, adica
+>>>> generarea prin API a comenzilor de aprovizionare.
+>>>> Eu as recomanda intai sa vezi exact fluxul de achizitie de la Comercia=
+l
+>>>> (asta daca nu ai facut-o deja), din ce stiu eu, e folosit doar ERP pen=
+tru
+>>>> acesti comenzi, stocul e tot acolo si nu cred ca e nevoie de Intershop=
+ in
+>>>> vreun fel.
+>>>>
+>>>> Ma anunti daca ai nevoie de ceva de la mine.
+>>>>
+>>>>
+>>>> Multumesc!
+>>>>
+>>>>
+>>>>
+>>>> On Wed, 11 Mar 2026 at 14:57, Adrian Ciutureanu <
+>>>> adrian.ciutureanu@voxa.ro> wrote:
+>>>>
+>>>>> Salut Cosmin,
+>>>>>
+>>>>> =C3=8Emi pare bine de cuno=C8=99tin=C8=9B=C4=83!
+>>>>>
+>>>>> Mul=C8=9Bumesc pentru clarificare, nu =C8=99tiam c=C4=83 platforma e =
+Intershop, =C3=AEn
+>>>>> capul meu era o dezvoltare inhouse :-)
+>>>>>
+>>>>> Am c=C4=83utat ce-i cu Intershop =C8=99i v=C4=83d c=C4=83 e o platfor=
+m=C4=83 enterprise
+>>>>> complet=C4=83 - site-ul, ERP-ul =C8=99i DB-ul ruleaz=C4=83 toate pe i=
+nfrastructura lor.
+>>>>> Accesul direct la DB nu cred c=C4=83 e o idee bun=C4=83 =C3=AEn acest=
+e condi=C8=9Bii.
+>>>>>
+>>>>> Cea mai rapid=C4=83 cale ar fi s=C4=83 =C3=AEntrebi Intershop dac=C4=
+=83 putem ob=C8=9Bine acces
+>>>>> la API-ul lor.
+>>>>>
+>>>>> Nu am experien=C8=9B=C4=83 cu Intershop =C8=99i =C3=AEmi dau doar cu =
+presupusul: din ce am
+>>>>> reu=C8=99it s=C4=83 g=C4=83sesc pe site-ul lor, documenta=C8=9Bia com=
+plet=C4=83 a API-ului e
+>>>>> restric=C8=9Bionat=C4=83 =C8=99i necesit=C4=83 un cont de Intershop E=
+ntra ID, pe care
+>>>>> elefant.ro =C3=AEl are, fiind client =C3=AEnregistrat.
+>>>>>
+>>>>> Pa=C8=99ii cei mai probabili ar fi:
+>>>>> 1. S=C4=83 te loghezi pe knowledge.intershop.com cu contul *Intershop
+>>>>> Entra ID* al elefant.ro =C8=99i s=C4=83 verifici c=C4=83 ai acces la =
+documenta=C8=9Bia
+>>>>> REST API
+>>>>> 2. S=C4=83 deschizi un ticket pe service.intershop.com pt a cere
+>>>>> creden=C8=9Biale de acces la REST API pentru un sistem extern, use ca=
+se-ul fiind
+>>>>> generarea automat=C4=83 a comenzilor de aprovizionare
+>>>>>
+>>>>> Dac=C4=83 nu e a=C8=99a, vedem cum proced=C4=83m =C3=AEn continuare.
+>>>>>
+>>>>>
+>>>>> Mul=C8=9Bumesc,
+>>>>> Adu
+>>>>> 0722 786 437
+>>>>>
+>>>>>
+>>>>>
+>>>>> On Wed, Mar 11, 2026 at 1:41=E2=80=AFPM Cosmin Plesoiu <
+>>>>> cosmin.plesoiu@elefant.ro> wrote:
+>>>>>
+>>>>>> Salut Adrian,
+>>>>>>
+>>>>>> Sa inteleg ca ai nevoie de acces la baza de date si repository-ul Gi=
+t
+>>>>>> aferente website-ului?
+>>>>>> Baza de date si serverele noastre sunt la un provider 3rd party,
+>>>>>> Intershop. Din ce stiu sunt restrictionate si nu avem inca acces.
+>>>>>>
+>>>>>> Daca aici ai nevoie de acces le pot solicita si vedem ulterior ce ne
+>>>>>> raspund.
+>>>>>>
+>>>>>> Multumesc!
+>>>>>>
+>>>>>> On Wed, 11 Mar 2026 at 13:14, Mihaela Gorgan <
+>>>>>> mihaela.gorgan@elefant.ro> wrote:
+>>>>>>
+>>>>>>>
+>>>>>>> Buna Cosmin,
+>>>>>>>
+>>>>>>> Adrian ne va ajuta s=C4=83 eficientizam procesul de aprovizionare =
+=C3=AEn
+>>>>>>> departamentul de achizi=C8=9Bii.
+>>>>>>> Ai putea sa-l ajuti cu accesele solicitate?
+>>>>>>>
+>>>>>>> Ms,
+>>>>>>>
+>>>>>>> Mihaela
+>>>>>>> ---------- Forwarded message ---------
+>>>>>>> De la: Adrian Ciutureanu <adrian.ciutureanu@voxa.ro>
+>>>>>>> Date: mie., 11 mar. 2026 la 09:26
+>>>>>>> Subject: Re: procesul de aprovizionare carte in romana din elefant
+>>>>>>> To: Mihaela Gorgan <mihaela.gorgan@elefant.ro>
+>>>>>>> Cc: Dan Vidrascu <d.vidrascu@litera.ro>
+>>>>>>>
+>>>>>>>
+>>>>>>> Bun=C4=83 Mihaela,
+>>>>>>>
+>>>>>>> A=C8=99 avea nevoie de dou=C4=83 lucruri pentru a putea =C3=AEncepe=
+:
+>>>>>>> 1. Acces (read-only) la repository-ul Git - ca s=C4=83 =C3=AEn=C8=
+=9Beleg structura
+>>>>>>> datelor =C8=99i logica existent=C4=83 f=C4=83r=C4=83 s=C4=83 deranj=
+ez echipa tehnic=C4=83
+>>>>>>> 2. Acces (read-only) la baza de date - produc=C8=9Bie sau o replic=
+=C4=83,
+>>>>>>> pentru a putea analiza datele reale
+>>>>>>>
+>>>>>>> Po=C8=9Bi s=C4=83 m=C4=83 pui =C3=AEn leg=C4=83tur=C4=83 cu Cosmin =
+Ple=C8=99oiu pentru a aranja ambele
+>>>>>>> accese?
+>>>>>>>
+>>>>>>>
+>>>>>>> Mul=C8=9Bumesc,
+>>>>>>> Adu
+>>>>>>>
+>>>>>>>
+>>>>>>> On Mon, 9 Mar 2026 at 10:25=E2=80=AFAM, Mihaela Gorgan <
+>>>>>>> mihaela.gorgan@elefant.ro> wrote:
+>>>>>>>
+>>>>>>>> Buna Adrian,
+>>>>>>>>
+>>>>>>>> Noi suntem ok cu ora 14:00, fac eu link de gmeet?
+>>>>>>>>
+>>>>>>>> Ms,
+>>>>>>>> Mihaela
+>>>>>>>>
+>>>>>>>> =C3=8En dum., 8 mar. 2026 la 08:59, Adrian Ciutureanu <
+>>>>>>>> adrian.ciutureanu@voxa.ro> a scris:
+>>>>>>>>
+>>>>>>>>> Bun=C4=83 Mihaela =C8=99i Simona,
+>>>>>>>>>
+>>>>>>>>> =C3=8Enc=C3=A2ntat de cuno=C8=99tin=C8=9B=C4=83.
+>>>>>>>>>
+>>>>>>>>> Pt luni, v=C4=83 propun 3 intervale =C3=AEn care ne putem auzi: 1=
+1:00 -
+>>>>>>>>> 12:00, 13:00 - 14:00 sau 16:00 - 17:00. Dac=C4=83 sunte=C8=9Bi ok=
+ cu vreunul dintre
+>>>>>>>>> ele, voi pune =C3=AEn calendar s=C4=83 ne vedem pe Google Meet.
+>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> Mul=C8=9Bumesc,
+>>>>>>>>> Adrian
+>>>>>>>>> 0722 786 437
+>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> On Fri, Mar 6, 2026 at 5:24=E2=80=AFPM Dan Vidrascu <d.vidrascu@l=
+itera.ro>
+>>>>>>>>> wrote:
+>>>>>>>>>
+>>>>>>>>>>
+>>>>>>>>>> Salut,
+>>>>>>>>>>
+>>>>>>>>>> Adrian o sa va ajute sa fluidizam/automatizam procesul de
+>>>>>>>>>> aprovizionare cu carte din elefant. La nivel de AI lucram cu Cla=
+ude, va
+>>>>>>>>>> poate activa Tiberiu Chirea licen=C8=9Bele necesare.
+>>>>>>>>>>
+>>>>>>>>>> Ar fi bine sa va auzi=C8=9Bi luni pentru a detalia.
+>>>>>>>>>>
+>>>>>>>>>> Spor,
+>>>>>>>>>>
+>>>>>>>>>> DV
+>>>>>>>>>> ------------------------------
+>>>>>>>>>> *From:* Adrian Ciutureanu <adrian.ciutureanu@voxa.ro>
+>>>>>>>>>> *Sent:* Friday, March 6, 2026 11:37:27 AM
+>>>>>>>>>> *To:* d.vidrascu@litera.ro <d.vidrascu@litera.ro>
+>>>>>>>>>> *Subject:* procesul de aprovizionare carte in romana din elefant
+>>>>>>>>>>
+>>>>>>>>>>
+>>>>>>>>>>
+>>>>>>>> Acest email a fost transmis de societatea DROP OF INK PUBLISHING
+>>>>>>>> S.R.L. Acest e-mail, continutul sau precum si atasamentele constit=
+uie
+>>>>>>>> informatii confidentiale ce se afla in proprietatea societ=C4=83=
+=C8=9Bii, putand fi
+>>>>>>>> protejate din punct de vedere legal sau protejate in orice alt mod
+>>>>>>>> impotriva oricarei dezvaluiri. Prezentul mesaj este adresat doar
+>>>>>>>> destinatarului (destinatarilor). Daca nu sunteti destinatarul aces=
+tui
+>>>>>>>> e-mail, nu este permisa copierea, transmiterea mai departe, dezval=
+uirea sau
+>>>>>>>> folosirea in orice alt mod a acestuia sau a unei parti a acestuia =
+in orice
+>>>>>>>> forma, sau transmiterea catre orice alta persoana. Daca ati primit
+>>>>>>>> prezentul mesaj din eroare, va rugam sa notificati expeditorul cu =
+privire
+>>>>>>>> la aceasta si sa il stergeti din sistemul Dumneavoastra. Opiniile,
+>>>>>>>> concluziile sau orice alta informatie continuta in prezentul e-mai=
+l sau
+>>>>>>>> orice atasamente care nu sunt legate de activitatea desfasurata de
+>>>>>>>> societate nu sunt emise si nici confirmate de aceasta. Orice utili=
+zare
+>>>>>>>> neautorizata, reproducere sau diseminare a acestui mesaj sunt stri=
+ct
+>>>>>>>> interzise. Va rugam sa luati in considerare faptul ca mesajele e-m=
+ail pot
+>>>>>>>> fi modificate, societatea nefiind raspunzator pentru transmiterea =
+incorecta
+>>>>>>>> sau incompleta a informatiei continute in prezentul sau pentru int=
+arzierea
+>>>>>>>> in primirea sa.
+>>>>>>>>
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> This e-mail was sent by  DROP OF INK PUBLISHING S.R.L. This
+>>>>>>>> e-mail, its content and attachments are confidential and may be
+>>>>>>>> legally privileged and are classified as Company=E2=80=99s Confide=
+ntial and
+>>>>>>>> Proprietary Information.  This message is intended solely for the
+>>>>>>>> addressee(s). If you are not the intended recipient of this e-mail
+>>>>>>>>  message, you may not copy, forward, disclose, otherwise use it or=
+ any part
+>>>>>>>> of it in any form whatsoever, nor deliver this to anyone else. If =
+you have
+>>>>>>>> received this e-mail message in error, please notify the sender by=
+ return
+>>>>>>>> e-mail and delete this message from your system. Opinions,
+>>>>>>>> conclusions and other information in this e-mail and any attachmen=
+ts that
+>>>>>>>> do not relate to the official business of the firm are neither giv=
+en nor
+>>>>>>>> endorsed by it. Any unauthorized use, reproduction, or
+>>>>>>>> dissemination of this message is strictly prohibited.  Please note=
+ that
+>>>>>>>> e-mails are susceptible to change. The Company shall not be liable=
+ for the
+>>>>>>>> improper or incomplete transmission of the information contained i=
+n this
+>>>>>>>> e-mail, nor shall it be liable for any delay in its receipt
+>>>>>>>>
+>>>>>>>
+>>>>>> Acest email a fost transmis de societatea DROP OF INK PUBLISHING
+>>>>>> S.R.L. Acest e-mail, continutul sau precum si atasamentele constitui=
+e
+>>>>>> informatii confidentiale ce se afla in proprietatea societ=C4=83=C8=
+=9Bii, putand fi
+>>>>>> protejate din punct de vedere legal sau protejate in orice alt mod
+>>>>>> impotriva oricarei dezvaluiri. Prezentul mesaj este adresat doar
+>>>>>> destinatarului (destinatarilor). Daca nu sunteti destinatarul acestu=
+i
+>>>>>> e-mail, nu este permisa copierea, transmiterea mai departe, dezvalui=
+rea sau
+>>>>>> folosirea in orice alt mod a acestuia sau a unei parti a acestuia in=
+ orice
+>>>>>> forma, sau transmiterea catre orice alta persoana. Daca ati primit
+>>>>>> prezentul mesaj din eroare, va rugam sa notificati expeditorul cu pr=
+ivire
+>>>>>> la aceasta si sa il stergeti din sistemul Dumneavoastra. Opiniile,
+>>>>>> concluziile sau orice alta informatie continuta in prezentul e-mail =
+sau
+>>>>>> orice atasamente care nu sunt legate de activitatea desfasurata de
+>>>>>> societate nu sunt emise si nici confirmate de aceasta. Orice utiliza=
+re
+>>>>>> neautorizata, reproducere sau diseminare a acestui mesaj sunt strict
+>>>>>> interzise. Va rugam sa luati in considerare faptul ca mesajele e-mai=
+l pot
+>>>>>> fi modificate, societatea nefiind raspunzator pentru transmiterea in=
+corecta
+>>>>>> sau incompleta a informatiei continute in prezentul sau pentru intar=
+zierea
+>>>>>> in primirea sa.
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> This e-mail was sent by  DROP OF INK PUBLISHING S.R.L. This e-mail,
+>>>>>> its content and attachments are confidential and may be legally
+>>>>>> privileged and are classified as Company=E2=80=99s Confidential and =
+Proprietary
+>>>>>> Information.  This message is intended solely for the addressee(s).
+>>>>>> If you are not the intended recipient of this e-mail  message, you m=
+ay not
+>>>>>> copy, forward, disclose, otherwise use it or any part of it in any f=
+orm
+>>>>>> whatsoever, nor deliver this to anyone else. If you have received th=
+is
+>>>>>> e-mail message in error, please notify the sender by return e-mail a=
+nd
+>>>>>> delete this message from your system. Opinions, conclusions and
+>>>>>> other information in this e-mail and any attachments that do not rel=
+ate to
+>>>>>> the official business of the firm are neither given nor endorsed by =
+it. Any
+>>>>>> unauthorized use, reproduction, or dissemination of this message is
+>>>>>> strictly prohibited.  Please note that e-mails are susceptible to ch=
+ange.
+>>>>>> The Company shall not be liable for the improper or incomplete trans=
+mission
+>>>>>> of the information contained in this e-mail, nor shall it be liable =
+for any
+>>>>>> delay in its receipt
+>>>>>>
+>>>>>
+>>>> Acest email a fost transmis de societatea DROP OF INK PUBLISHING S.R.L=
+.
+>>>> Acest e-mail, continutul sau precum si atasamentele constituie informa=
+tii
+>>>> confidentiale ce se afla in proprietatea societ=C4=83=C8=9Bii, putand =
+fi protejate
+>>>> din punct de vedere legal sau protejate in orice alt mod impotriva ori=
+carei
+>>>> dezvaluiri. Prezentul mesaj este adresat doar destinatarului
+>>>> (destinatarilor). Daca nu sunteti destinatarul acestui e-mail, nu este
+>>>> permisa copierea, transmiterea mai departe, dezvaluirea sau folosirea =
+in
+>>>> orice alt mod a acestuia sau a unei parti a acestuia in orice forma, s=
+au
+>>>> transmiterea catre orice alta persoana. Daca ati primit prezentul mesa=
+j din
+>>>> eroare, va rugam sa notificati expeditorul cu privire la aceasta si sa=
+ il
+>>>> stergeti din sistemul Dumneavoastra. Opiniile, concluziile sau orice a=
+lta
+>>>> informatie continuta in prezentul e-mail sau orice atasamente care nu =
+sunt
+>>>> legate de activitatea desfasurata de societate nu sunt emise si nici
+>>>> confirmate de aceasta. Orice utilizare neautorizata, reproducere sau
+>>>> diseminare a acestui mesaj sunt strict interzise. Va rugam sa luati in
+>>>> considerare faptul ca mesajele e-mail pot fi modificate, societatea ne=
+fiind
+>>>> raspunzator pentru transmiterea incorecta sau incompleta a informatiei
+>>>> continute in prezentul sau pentru intarzierea in primirea sa.
+>>>>
+>>>>
+>>>>
+>>>> This e-mail was sent by  DROP OF INK PUBLISHING S.R.L. This e-mail,
+>>>> its content and attachments are confidential and may be legally
+>>>> privileged and are classified as Company=E2=80=99s Confidential and Pr=
+oprietary
+>>>> Information.  This message is intended solely for the addressee(s). If
+>>>> you are not the intended recipient of this e-mail  message, you may no=
+t
+>>>> copy, forward, disclose, otherwise use it or any part of it in any for=
+m
+>>>> whatsoever, nor deliver this to anyone else. If you have received this
+>>>> e-mail message in error, please notify the sender by return e-mail and
+>>>> delete this message from your system. Opinions, conclusions and other
+>>>> information in this e-mail and any attachments that do not relate to t=
+he
+>>>> official business of the firm are neither given nor endorsed by it. An=
+y
+>>>> unauthorized use, reproduction, or dissemination of this message is
+>>>> strictly prohibited.  Please note that e-mails are susceptible to chan=
+ge.
+>>>> The Company shall not be liable for the improper or incomplete transmi=
+ssion
+>>>> of the information contained in this e-mail, nor shall it be liable fo=
+r any
+>>>> delay in its receipt
+>>>>
+>>>
+>> Acest email a fost transmis de societatea DROP OF INK PUBLISHING S.R.L.
+>> Acest e-mail, continutul sau precum si atasamentele constituie informati=
+i
+>> confidentiale ce se afla in proprietatea societ=C4=83=C8=9Bii, putand fi=
+ protejate
+>> din punct de vedere legal sau protejate in orice alt mod impotriva orica=
+rei
+>> dezvaluiri. Prezentul mesaj este adresat doar destinatarului
+>> (destinatarilor). Daca nu sunteti destinatarul acestui e-mail, nu este
+>> permisa copierea, transmiterea mai departe, dezvaluirea sau folosirea in
+>> orice alt mod a acestuia sau a unei parti a acestuia in orice forma, sau
+>> transmiterea catre orice alta persoana. Daca ati primit prezentul mesaj =
+din
+>> eroare, va rugam sa notificati expeditorul cu privire la aceasta si sa i=
+l
+>> stergeti din sistemul Dumneavoastra. Opiniile, concluziile sau orice alt=
+a
+>> informatie continuta in prezentul e-mail sau orice atasamente care nu su=
+nt
+>> legate de activitatea desfasurata de societate nu sunt emise si nici
+>> confirmate de aceasta. Orice utilizare neautorizata, reproducere sau
+>> diseminare a acestui mesaj sunt strict interzise. Va rugam sa luati in
+>> considerare faptul ca mesajele e-mail pot fi modificate, societatea nefi=
+ind
+>> raspunzator pentru transmiterea incorecta sau incompleta a informatiei
+>> continute in prezentul sau pentru intarzierea in primirea sa.
+>>
+>>
+>>
+>> This e-mail was sent by  DROP OF INK PUBLISHING S.R.L. This e-mail, its
+>> content and attachments are confidential and may be legally privileged
+>> and are classified as Company=E2=80=99s Confidential and Proprietary Inf=
+ormation.
+>> This message is intended solely for the addressee(s). If you are not the
+>> intended recipient of this e-mail  message, you may not copy, forward,
+>> disclose, otherwise use it or any part of it in any form whatsoever, nor
+>> deliver this to anyone else. If you have received this e-mail message in
+>> error, please notify the sender by return e-mail and delete this message
+>> from your system. Opinions, conclusions and other information in this
+>> e-mail and any attachments that do not relate to the official business o=
+f
+>> the firm are neither given nor endorsed by it. Any unauthorized use,
+>> reproduction, or dissemination of this message is strictly prohibited.
+>> Please note that e-mails are susceptible to change. The Company shall no=
+t
+>> be liable for the improper or incomplete transmission of the information
+>> contained in this e-mail, nor shall it be liable for any delay in its
+>> receipt
+>>
+>
+>
+> --
+> *Tiberiu Chirea*
+> *Director tehnologie*
+>
+>
+>
+> *Editura LITERA =E2=80=93 O carte deschis=C4=83! *
+>
+> V=C4=83 mul=C5=A3umim pentru =C3=AEncrederea acordat=C4=83 =C5=9Fi v=C4=
+=83 invit=C4=83m pe www.litera.ro =C5=9Fi
+> pe www.facebook.com/Litera.ro.
+>
+> Str. Moeciu, nr. 7A
+> Bucure=C5=9Fti, Rom=C3=A2nia
+> Mobil: +40758 035 541
+> t.chirea@litera.ro
+> www.litera.ro
+>
+>
+
+--000000000000e5e290064cd2ef40
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p>Salut Tiberiu,</p>
+<p>Mul=C8=9Bumesc pentru clarific=C4=83ri, are sens abordarea cu exporturi =
+offline.</p>
+<p>Am definit structura de date de care a=C8=99 avea nevoie ca s=C4=83 m=C4=
+=83 apuc de treab=C4=83, =C8=99i vreau s=C4=83-=C8=9Bi explic un pic logica=
+ din capul meu, ca s=C4=83 putem evalua =C3=AEmpreun=C4=83 ce e fezabil.</p=
+>
+<p><strong>Ce vreau s=C4=83 construiesc</strong></p><p>Un tool care automat=
+izeaz=C4=83 c=C3=A2t mai mult procesul de aprovizionare, dar care va r=C4=
+=83m=C3=A2ne cel pu=C8=9Bin o perioad=C4=83 sub strict=C4=83 supraveghere u=
+man=C4=83.</p><p>Ce ar trebui s=C4=83 fac=C4=83:</p><p>
+
+</p><ul>
+<li><strong>Propuneri de comenzi</strong> per furnizor, care s=C4=83 =C8=9B=
+in=C4=83 cont de v=C3=A2nz=C4=83rile istorice (p=C3=A2n=C4=83 aici deja fac=
+e XLS-ul), de sezonalitate =C8=99i de perioade speciale per titlu (campanii=
+ elefant, promov=C4=83ri furnizor, lans=C4=83ri externe)</li>
+<li><strong>Generare automat=C4=83 a fi=C8=99ierelor de comand=C4=83</stron=
+g> per furnizor, elimin=C3=A2nd copy-paste-urile manuale din XLS-ul de 60k =
+r=C3=A2nduri</li>
+<li><strong>Tratarea automat=C4=83 a reedit=C4=83rilor</strong> - c=C3=A2nd=
+ un titlu apare cu un cod nou dar acela=C8=99i titlu+autor+editur=C4=83, to=
+olul s=C4=83 detecteze c=C4=83 e o reeditare, s=C4=83 agrege istoricul de v=
+=C3=A2nz=C4=83ri al edi=C8=9Biilor anterioare =C8=99i s=C4=83 propun=C4=83 =
+smart un stoc (=C3=AEn loc de zero cum e acum =C3=AEn XLS)</li>
+<li><strong>Tratarea nout=C4=83=C8=9Bilor absolute</strong> - pentru titlur=
+i f=C4=83r=C4=83 niciun istoric, toolul s=C4=83 estimeze un stoc ini=C8=9Bi=
+al bazat pe performan=C8=9Ba istoric=C4=83 a aceluia=C8=99i autor / colec=
+=C8=9Bie / editur=C4=83, similar cu ce fac acum fetele pe baza experien=C8=
+=9Bei</li></ul>
+<p>Pentru asta a=C8=99 avea nevoie de date despre v=C3=A2nz=C4=83ri =C8=99i=
+ achizi=C8=9Bii cu granularitate zilnic=C4=83.</p>
+<p>Planul e s=C4=83 ob=C8=9Bin un export one-time, s=C4=83 construiesc =C8=
+=99i calibrez modelul local (pe laptopul meu), iar odat=C4=83 ce func=C8=9B=
+ioneaz=C4=83 decent s=C4=83 trecem la un export incremental de 2x pe s=C4=
+=83pt=C4=83m=C3=A2n=C4=83 cu impact minim pe DB.</p><p>=C3=8Enainte de a pu=
+ne toolul la treab=C4=83 pe date reale, voi calibra modelul pe date istoric=
+e - m=C4=83 plasez la o dat=C4=83 din trecut, rulez modelul, compar propune=
+rile generate cu ce s-a v=C3=A2ndut efectiv =C8=99i ajustez p=C3=A2n=C4=83 =
+ob=C8=9Bin rezultate satisf=C4=83c=C4=83toare. Odat=C4=83 lansat, voi face =
+sync periodic cu echipa de achizi=C8=9Bii pentru a colecta feedback despre =
+cazurile unde modelul gre=C8=99e=C8=99te =C8=99i ajust=C4=83m p=C3=A2n=C4=
+=83 hot=C4=83r=C3=A2m c=C4=83 e ce trebuie.</p>
+<p><strong>Structura de date propus=C4=83 pt export one-time ini=C8=9Bial</=
+strong></p><p>M-am g=C3=A2ndit la 4 fi=C8=99iere CSV =C8=99i am folosit den=
+umirile coloanelor din XLS cu care lucreaz=C4=83 acum fetele pt achizi=C8=
+=9Bii:</p>
+<p></p><ul><li><b>products</b>: ElefantSKU, EAN, Cod articol, Cod furnizor,=
+ Articol, Autor, Furnizor, Categorie, Subcategorie, Producator, Colectie, D=
+ata creare, RRP, Epuizat, Inactiv, Indisponibil</li><li><b>sales:</b> Date,=
+ ElefantSKU, <b><font color=3D"#0000ff">SoldQuantity</font></b>, <font colo=
+r=3D"#0000ff"><b>SalePrice</b></font></li><li><b>purchases</b>: Date, Elefa=
+ntSKU, <b><font color=3D"#0000ff">Quantity</font></b>, <b><font color=3D"#0=
+000ff">Status</font></b> (ordered / received) - posibil s=C4=83 fie util=C4=
+=83 coloana=C2=A0<b>Disponibil RECEPTII</b> din XLS, dar nu =C8=99tiu dac=
+=C4=83 am intuit corect semnifica=C8=9Bia ei</li><li><b>stock</b>: aici e o=
+ zon=C4=83 gri pentru mine =C8=99i am nevoie de ajutorul t=C4=83u: am nevoi=
+e s=C4=83 =C8=99tiu stocul per titlu per zi (sau cel pu=C8=9Bin la momentul=
+ fiec=C4=83rei comenzi). Dac=C4=83 exist=C4=83 un snapshot zilnic de stoc =
+=C3=AEn DB, e ideal. Dac=C4=83 nu, pot reconstitui din SALES + PURCHASES, d=
+ar depinde dac=C4=83/cum sunt logate mi=C8=99c=C4=83rile de stoc.</li></ul>=
+<p></p>
+<p><strong>=C3=8Entreb=C4=83ri:</strong></p>
+<ol>
+<li>Exist=C4=83 retururi de la clien=C8=9Bi care reintr=C4=83 =C3=AEn stocu=
+l elefant? Dac=C4=83 da, sunt capturate =C3=AEn DB =C8=99i cum apar =C3=AEn=
+ date?</li>
+<li>Exist=C4=83 snapshot de stoc zilnic per produs =C3=AEn DB, sau doar sto=
+cul curent?</li>
+</ol>
+<p>A=C8=99tept p=C4=83reri, =C3=AEntreb=C4=83ri, orice crezi c=C4=83 e nevo=
+ie ca s=C4=83 mergem =C3=AEnainte.</p>
+<p><br>Mul=C8=9Bumesc,<br>Adu<br>0722 786 437</p><p></p></div><br><div clas=
+s=3D"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_att=
+r">On Thu, Mar 12, 2026 at 11:28=E2=80=AFAM Tiberiu Chirea &lt;<a href=3D"m=
+ailto:t.chirea@litera.ro">t.chirea@litera.ro</a>&gt; wrote:<br></div><block=
+quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1=
+px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"lt=
+r">Salut,</div><div dir=3D"ltr">Incantat de e-cunostinta Adrian,</div><div =
+dir=3D"ltr">As dori va rog aici sa detaliem putin nevoia de acces (la ERP/d=
+b ERP) si sa eveluam toate optiunile alternative pentru ca:</div><div>=C2=
+=A0- accesul la ERP este recomandat a se face doar daca va fi folosit const=
+ant si consistent si pe viitor. Daca va fi utilizat &quot;one-time&quot;, d=
+oar pentru o analiza a istoricul vanzarilor=C2=A0 atunci nu cred ca aceasta=
+ ar fi directia cea mai adecvata</div><div>=C2=A0- licentele de acces in ER=
+P sunt limitate; know-how utilizare ERP - de tinut cont si de acest aspect =
+...</div><div>=C2=A0- existinderea interogarii vanzarilor direct in ERP tre=
+buie sa se faca de catre cineva care cunoaste sistemul si limitarile lui al=
+tfel riscam blocaje mari in ERP=C2=A0</div><div>=C2=A0- baza de date DOI es=
+te relativ noua - are tranzactii doar de la inceputului lui 2025</div><div>=
+=C2=A0- interogarea directa a bazei de date sql se face exclusiv prin inter=
+mediul echipei tehnice (nu numai din considerente de securitate ci mai degr=
+aba datorita performantei)</div><div><br></div><div>Eu cred ca eficientizar=
+ea procesului de achizitie ar trebui sa se faca pornind de la un istoric al=
+ vanzarilor (fisiere csv/xls off-line cred ca ar trebui sa fie suficiente) =
+dar si definierea datelor recurente preluate pentru procesare automatizare<=
+/div><div><br></div><div dir=3D"ltr"><div>Multumesc frumos,</div><div>TC</d=
+iv></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_att=
+r">On Wed, Mar 11, 2026 at 5:58=E2=80=AFPM Cosmin Plesoiu &lt;<a href=3D"ma=
+ilto:cosmin.plesoiu@elefant.ro" target=3D"_blank">cosmin.plesoiu@elefant.ro=
+</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:verdana,=
+sans-serif">Salutari Tiberiu,<br><br>Il poti ajuta pe=C2=A0<a class=3D"gmai=
+l_plusreply" id=3D"m_2760853113850999166m_-2412721105508456951m_30260996439=
+04038109plusReplyChip-0" href=3D"mailto:adrian.ciutureanu@voxa.ro" target=
+=3D"_blank">@Adrian Ciutureanu</a>=C2=A0cu acces in ERP?</div><div class=3D=
+"gmail_default" style=3D"font-family:verdana,sans-serif"><br>Multumesc!</di=
+v></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr=
+">On Wed, 11 Mar 2026 at 17:52, Adrian Ciutureanu &lt;<a href=3D"mailto:adr=
+ian.ciutureanu@voxa.ro" target=3D"_blank">adrian.ciutureanu@voxa.ro</a>&gt;=
+ wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr"><div>Despre fluxul de achizi=C8=9Bie am avut discu=C8=9Bii cu cole=
+gele, am v=C4=83zut un XLS cu 60k rows care este exportat din ERP =C8=99i p=
+rocesat manual destul de mult. Din acel XLS se genereaz=C4=83 comenzile c=
+=C4=83tre fz. Scopul e s=C4=83 =C3=AEncerc s=C4=83 automatizez c=C3=A2t de =
+mult se poate acest proces.</div><div><br></div><div>Ce a=C8=99 avea nevoie=
+ este stocul =C8=99i istoricul de v=C3=A2nz=C4=83ri. Adic=C4=83 vreau s=C4=
+=83 am flexibilitate s=C4=83 v=C4=83d mai mult =C3=AEn urm=C4=83 =C8=99i ma=
+i granular, nu doar ce e acum =C3=AEn XLS (o lun=C4=83, 3 luni, 1 an). Idea=
+l ar fi s=C4=83 pot rula SQL, nu s=C4=83 interac=C8=9Bionez cu o interfa=C8=
+=9B=C4=83 din care s=C4=83 export. Foarte probabil am tot ce-mi trebuie =C3=
+=AEn ERP. Dac=C4=83 m=C4=83 po=C8=9Bi ajuta cu acces la acel DB, cred c=C4=
+=83 e mai mult dec=C3=A2t suficient.<br></div><div><br></div><div>Mul=C8=9B=
+umesc!</div><div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D=
+"ltr" class=3D"gmail_attr">On Wed, Mar 11, 2026 at 4:32=E2=80=AFPM Cosmin P=
+lesoiu &lt;<a href=3D"mailto:cosmin.plesoiu@elefant.ro" target=3D"_blank">c=
+osmin.plesoiu@elefant.ro</a>&gt; wrote:<br></div><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_default" style=
+=3D"font-family:verdana,sans-serif">Salutari,<br><br>Imi pare bine de e-cun=
+ostinta!<br><br>Site-ul si DB-ul folosesc infrastructura lor, insa ERP este=
+ separat, servere intretinute de Spearhead, la care avem acces, inclusiv in=
+ DB. Daca vrei aici acces, se poate rezolva rapid cred, doar anunta-ma.<br>=
+<br>Legat de documentatia API Intershop, cred ca este publica, noi avem ver=
+siunea 7.1 ICM:=C2=A0<a href=3D"https://knowledge.intershop.com/kb/index.ph=
+p/Display/2U9566" target=3D"_blank">https://knowledge.intershop.com/kb/inde=
+x.php/Display/2U9566</a><br>Vezi, te rog, daca poti vedea si daca exista ac=
+ele capabilitati, adica generarea prin API a comenzilor de aprovizionare.<b=
+r>Eu as recomanda intai sa vezi exact fluxul de achizitie de la Comercial (=
+asta daca nu ai facut-o deja), din ce stiu eu, e folosit doar ERP pentru ac=
+esti comenzi, stocul e tot acolo si nu cred ca e nevoie de Intershop in vre=
+un fel.<br><br>Ma anunti daca ai nevoie de ceva de la mine.<br><br><br>Mult=
+umesc!<br><br><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"lt=
+r" class=3D"gmail_attr">On Wed, 11 Mar 2026 at 14:57, Adrian Ciutureanu &lt=
+;<a href=3D"mailto:adrian.ciutureanu@voxa.ro" target=3D"_blank">adrian.ciut=
+ureanu@voxa.ro</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex"><div dir=3D"ltr">Salut Cosmin,<div><br></div><div>=C3=8Emi pa=
+re bine de cuno=C8=99tin=C8=9B=C4=83!</div><div><br></div><div>Mul=C8=9Bume=
+sc pentru clarificare, nu =C8=99tiam c=C4=83 platforma e Intershop, =C3=AEn=
+ capul meu era o dezvoltare inhouse :-)<br><br>Am c=C4=83utat ce-i cu Inter=
+shop =C8=99i v=C4=83d c=C4=83 e o platform=C4=83 enterprise complet=C4=83 -=
+ site-ul, ERP-ul =C8=99i DB-ul ruleaz=C4=83 toate pe infrastructura lor. Ac=
+cesul direct la DB nu cred c=C4=83 e o idee bun=C4=83 =C3=AEn aceste condi=
+=C8=9Bii.<br><br>Cea mai rapid=C4=83 cale ar fi s=C4=83 =C3=AEntrebi Inters=
+hop dac=C4=83 putem ob=C8=9Bine acces la API-ul lor.</div><div><br>Nu am ex=
+perien=C8=9B=C4=83 cu Intershop =C8=99i =C3=AEmi dau doar cu presupusul: di=
+n ce am reu=C8=99it s=C4=83 g=C4=83sesc pe site-ul lor, documenta=C8=9Bia c=
+omplet=C4=83 a API-ului e restric=C8=9Bionat=C4=83 =C8=99i necesit=C4=83 un=
+ cont de Intershop Entra ID, pe care <a href=3D"http://elefant.ro" target=
+=3D"_blank">elefant.ro</a> =C3=AEl are, fiind client =C3=AEnregistrat.<br><=
+br>Pa=C8=99ii cei mai probabili ar fi:<br>1. S=C4=83 te loghezi pe <a href=
+=3D"http://knowledge.intershop.com" target=3D"_blank">knowledge.intershop.c=
+om</a> cu contul <b>Intershop Entra ID</b> al <a href=3D"http://elefant.ro"=
+ target=3D"_blank">elefant.ro</a> =C8=99i s=C4=83 verifici c=C4=83 ai acces=
+ la documenta=C8=9Bia REST API<br>2. S=C4=83 deschizi un ticket pe <a href=
+=3D"http://service.intershop.com" target=3D"_blank">service.intershop.com</=
+a> pt a cere creden=C8=9Biale de acces la REST API pentru un sistem extern,=
+ use case-ul fiind generarea automat=C4=83 a comenzilor de aprovizionare<br=
+><br>Dac=C4=83 nu e a=C8=99a, vedem cum proced=C4=83m =C3=AEn continuare.</=
+div><div><br></div><div><br></div><div>Mul=C8=9Bumesc,</div><div>Adu</div><=
+div>0722 786 437</div><div><br></div><div><br></div></div><br><div class=3D=
+"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Mar 11, 2026 at=
+ 1:41=E2=80=AFPM Cosmin Plesoiu &lt;<a href=3D"mailto:cosmin.plesoiu@elefan=
+t.ro" target=3D"_blank">cosmin.plesoiu@elefant.ro</a>&gt; wrote:<br></div><=
+blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
+eft:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div clas=
+s=3D"gmail_default" style=3D"font-family:verdana,sans-serif">Salut Adrian,<=
+br><br>Sa inteleg ca ai nevoie de acces la baza de date si repository-ul Gi=
+t aferente website-ului?<br>Baza de date si serverele noastre sunt la un pr=
+ovider 3rd party, Intershop. Din ce stiu sunt restrictionate si nu avem inc=
+a acces.<br><br>Daca aici ai nevoie de acces le pot solicita si vedem ulter=
+ior ce ne raspund.<br><br>Multumesc!</div></div><br><div class=3D"gmail_quo=
+te"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, 11 Mar 2026 at 13:14, Mih=
+aela Gorgan &lt;<a href=3D"mailto:mihaela.gorgan@elefant.ro" target=3D"_bla=
+nk">mihaela.gorgan@elefant.ro</a>&gt; wrote:<br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
+4,204,204);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr"><br>Buna Cos=
+min,<div><br></div><div>
+Adrian ne va ajuta s=C4=83 eficientizam procesul de aprovizionare =C3=AEn d=
+epartamentul de achizi=C8=9Bii.<br>Ai=C2=A0putea sa-l ajuti cu accesele sol=
+icitate?</div><div><br></div><div>Ms,</div><div><br></div><div>Mihaela<br><=
+div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">---------- =
+Forwarded message ---------<br>De la: <strong class=3D"gmail_sendername" di=
+r=3D"auto">Adrian Ciutureanu</strong> <span dir=3D"auto">&lt;<a href=3D"mai=
+lto:adrian.ciutureanu@voxa.ro" target=3D"_blank">adrian.ciutureanu@voxa.ro<=
+/a>&gt;</span><br>Date: mie., 11 mar. 2026 la 09:26<br>Subject: Re: procesu=
+l de aprovizionare carte in romana din elefant<br>To: Mihaela Gorgan &lt;<a=
+ href=3D"mailto:mihaela.gorgan@elefant.ro" target=3D"_blank">mihaela.gorgan=
+@elefant.ro</a>&gt;<br>Cc: Dan Vidrascu &lt;<a href=3D"mailto:d.vidrascu@li=
+tera.ro" target=3D"_blank">d.vidrascu@litera.ro</a>&gt;<br></div><br><br><d=
+iv dir=3D"auto">Bun=C4=83 Mihaela,=C2=A0</div><div dir=3D"auto"><br></div><=
+div dir=3D"auto"><div style=3D"font-size:inherit"><div style=3D"color:rgb(0=
+,0,0);font-family:-apple-system,sans-serif;font-size:inherit;font-style:nor=
+mal;font-weight:400;letter-spacing:normal;text-indent:0px;text-transform:no=
+ne;white-space:normal;word-spacing:1px" dir=3D"auto">A=C8=99 avea nevoie de=
+ dou=C4=83 lucruri pentru a putea =C3=AEncepe:<br>1. Acces (read-only) la r=
+epository-ul Git - ca s=C4=83 =C3=AEn=C8=9Beleg structura datelor =C8=99i l=
+ogica existent=C4=83 f=C4=83r=C4=83 s=C4=83 deranjez echipa tehnic=C4=83<br=
+>2. Acces (read-only) la baza de date - produc=C8=9Bie sau o replic=C4=83, =
+pentru a putea analiza datele reale<br><br>Po=C8=9Bi s=C4=83 m=C4=83 pui =
+=C3=AEn leg=C4=83tur=C4=83 cu Cosmin Ple=C8=99oiu pentru a aranja ambele ac=
+cese?</div><div style=3D"color:rgb(0,0,0);font-family:-apple-system,sans-se=
+rif;font-size:inherit;font-style:normal;font-weight:400;letter-spacing:norm=
+al;text-indent:0px;text-transform:none;white-space:normal;word-spacing:1px"=
+><br></div><div style=3D"color:rgb(0,0,0);font-family:-apple-system,sans-se=
+rif;font-size:inherit;font-style:normal;font-weight:400;letter-spacing:norm=
+al;text-indent:0px;text-transform:none;white-space:normal;word-spacing:1px"=
+><br></div><div style=3D"color:rgb(0,0,0);font-family:-apple-system,sans-se=
+rif;font-size:inherit;font-style:normal;font-weight:400;letter-spacing:norm=
+al;text-indent:0px;text-transform:none;white-space:normal;word-spacing:1px"=
+>Mul=C8=9Bumesc,</div><div style=3D"color:rgb(0,0,0);font-family:-apple-sys=
+tem,sans-serif;font-size:inherit;font-style:normal;font-weight:400;letter-s=
+pacing:normal;text-indent:0px;text-transform:none;white-space:normal;word-s=
+pacing:1px">Adu</div></div><br></div><div><br><div class=3D"gmail_quote"><d=
+iv dir=3D"ltr" class=3D"gmail_attr">On Mon, 9 Mar 2026 at 10:25=E2=80=AFAM,=
+ Mihaela Gorgan &lt;<a href=3D"mailto:mihaela.gorgan@elefant.ro" target=3D"=
+_blank">mihaela.gorgan@elefant.ro</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex"><div dir=3D"ltr">Buna Adrian,<div><br></di=
+v><div>Noi suntem ok cu ora 14:00, fac eu link de gmeet?</div><div><br></di=
+v><div>Ms,</div><div>Mihaela</div></div><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">=C3=8En dum., 8 mar. 2026 la 08:59, Adria=
+n Ciutureanu &lt;<a href=3D"mailto:adrian.ciutureanu@voxa.ro" target=3D"_bl=
+ank">adrian.ciutureanu@voxa.ro</a>&gt; a scris:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex"><div dir=3D"ltr">Bun=C4=83 Mihaela =C8=99i=
+ Simona,<div><br></div><div>=C3=8Enc=C3=A2ntat de cuno=C8=99tin=C8=9B=C4=83=
+.</div><div><br></div><div>Pt luni, v=C4=83 propun 3 intervale =C3=AEn care=
+ ne putem auzi: 11:00 - 12:00, 13:00 - 14:00 sau 16:00 - 17:00. Dac=C4=83 s=
+unte=C8=9Bi ok cu vreunul dintre ele, voi pune =C3=AEn calendar s=C4=83 ne =
+vedem pe Google Meet.</div><div><br></div><div><br></div><div>Mul=C8=9Bumes=
+c,</div><div>Adrian</div><div>0722 786 437</div><div><br></div></div><br><d=
+iv class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Mar =
+6, 2026 at 5:24=E2=80=AFPM Dan Vidrascu &lt;<a href=3D"mailto:d.vidrascu@li=
+tera.ro" target=3D"_blank">d.vidrascu@litera.ro</a>&gt; wrote:<br></div><bl=
+ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
+t:1px solid rgb(204,204,204);padding-left:1ex">
+
+
+
+<div>
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+<br>
+</div>
+<div id=3D"m_2760853113850999166m_-2412721105508456951m_3026099643904038109=
+m_259010010272332343m_8220294479116536932m_7683112664596889628m_78651331042=
+14258616m_5934505303510125448m_-7702605407568428270m_-8442257003399276495m_=
+-7045976610572834332m_-7534127412062546500m_6227475111781002160m_-416561637=
+4861871704ms-outlook-mobile-body-separator-line" style=3D"font-family:Aptos=
+,Aptos_MSFontService,-apple-system,Roboto,Arial,Helvetica,sans-serif;font-s=
+ize:12pt" dir=3D"auto">
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+Salut,=C2=A0</div>
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+<br>
+</div>
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+Adrian o sa va ajute sa fluidizam/automatizam procesul de aprovizionare cu =
+carte din elefant. La nivel de AI lucram cu Claude, va poate activa Tiberiu=
+ Chirea licen=C8=9Bele necesare.=C2=A0</div>
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+<br>
+</div>
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+Ar fi bine sa va auzi=C8=9Bi luni pentru a detalia.=C2=A0</div>
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+<br>
+</div>
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+Spor,=C2=A0</div>
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+<br>
+</div>
+<div dir=3D"auto" style=3D"font-family:Aptos,Aptos_MSFontService,-apple-sys=
+tem,Roboto,Arial,Helvetica,sans-serif;font-size:12pt;color:rgb(33,33,33)">
+DV</div>
+</div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"m_2760853113850999166m_-2412721105508456951m_3026099643904038109=
+m_259010010272332343m_8220294479116536932m_7683112664596889628m_78651331042=
+14258616m_5934505303510125448m_-7702605407568428270m_-8442257003399276495m_=
+-7045976610572834332m_-7534127412062546500m_6227475111781002160m_-416561637=
+4861871704divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" sty=
+le=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Adrian Ciutureanu &lt;=
+<a href=3D"mailto:adrian.ciutureanu@voxa.ro" target=3D"_blank">adrian.ciutu=
+reanu@voxa.ro</a>&gt;<br>
+<b>Sent:</b> Friday, March 6, 2026 11:37:27 AM<br>
+<b>To:</b> <a href=3D"mailto:d.vidrascu@litera.ro" target=3D"_blank">d.vidr=
+ascu@litera.ro</a> &lt;<a href=3D"mailto:d.vidrascu@litera.ro" target=3D"_b=
+lank">d.vidrascu@litera.ro</a>&gt;<br>
+<b>Subject:</b> procesul de aprovizionare carte in romana din elefant</font=
+>
+<div>=C2=A0</div>
+</div>
+<div>
+<div dir=3D"ltr"><br>
+</div>
+</div>
+</div>
+
+</blockquote></div>
+</blockquote></div>
+
+<br>
+<p style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font=
+-size:small;margin:0px;text-align:justify"><span style=3D"margin:0px"><span=
+ style=3D"margin:0px;font-family:&quot;Century Gothic&quot;,sans-serif"><fo=
+nt size=3D"1">Acest email a fost transmis de societatea=C2=A0DROP OF INK PU=
+BLISHING S.R.L. Acest e-mail, continutul sau precum si atasamentele constit=
+uie informatii confidentiale ce se afla in proprietatea=C2=A0societ=C4=83=
+=C8=9Bii,=C2=A0putand fi protejate din punct de vedere legal sau protejate =
+in orice alt mod impotriva oricarei dezvaluiri. Prezentul mesaj este adresa=
+t doar destinatarului (destinatarilor). Daca nu sunteti destinatarul acestu=
+i e-mail, nu este permisa copierea, transmiterea mai departe, dezvaluirea s=
+au folosirea in orice alt mod a acestuia sau a unei parti a acestuia in ori=
+ce forma, sau transmiterea catre orice alta persoana. Daca ati primit preze=
+ntul mesaj din eroare, va rugam sa notificati expeditorul cu privire la ace=
+asta si sa il stergeti din sistemul Dumneavoastra. Opiniile, concluziile sa=
+u orice alta informatie continuta in prezentul e-mail sau orice atasamente =
+care nu sunt legate de activitatea desfasurata de societate=C2=A0nu sunt em=
+ise si nici confirmate de aceasta. Orice utilizare neautorizata, reproducer=
+e sau diseminare a acestui mesaj sunt strict interzise. Va rugam sa luati i=
+n considerare faptul ca mesajele e-mail pot fi modificate, societatea=C2=A0=
+nefiind raspunzator pentru transmiterea incorecta sau incompleta a informat=
+iei continute in prezentul sau pentru intarzierea in primirea sa.=C2=A0</fo=
+nt></span></span></p><p style=3D"color:rgb(34,34,34);font-family:Arial,Helv=
+etica,sans-serif;font-size:small;margin:0px;text-align:justify"><span style=
+=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Century Gothic&=
+quot;,sans-serif"><font size=3D"1">=C2=A0</font></span></span></p><p style=
+=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:sm=
+all;margin:0px;text-align:justify"><font color=3D"#000000" size=3D"1"><span=
+ style=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Century G=
+othic&quot;,sans-serif">This e-mail was sent by=C2=A0</span></span></font>=
+=C2=A0<span style=3D"font-family:&quot;Century Gothic&quot;,sans-serif;font=
+-size:x-small">DROP OF INK PUBLISHING S.R.L.</span><font color=3D"#000000" =
+size=3D"1"><span style=3D"margin:0px"><span style=3D"margin:0px;font-family=
+:&quot;Century Gothic&quot;,sans-serif">=C2=A0This e-mail, its content and =
+attachments=C2=A0</span></span><span lang=3D"EN-GB" style=3D"margin:0px;fon=
+t-family:&quot;Century Gothic&quot;,sans-serif">are confidential and may be=
+ legally privileged and are classified as Company=E2=80=99s Confidential an=
+d Proprietary Information</span><span style=3D"margin:0px"><span style=3D"m=
+argin:0px;font-family:&quot;Century Gothic&quot;,sans-serif">.=C2=A0 This m=
+essage is intended solely for the addressee(s). If you are not the intended=
+ recipient of this e-mail =C2=A0message, you may not copy, forward, disclos=
+e, otherwise use it or any part of it in any form whatsoever, nor deliver t=
+his to anyone else. If you have received this e-mail message in error, plea=
+se notify the sender by return e-mail and delete this message from your sys=
+tem.=C2=A0</span></span><span lang=3D"EN-GB" style=3D"margin:0px;font-famil=
+y:&quot;Century Gothic&quot;,sans-serif">Opinions, conclusions and other in=
+formation in this e-mail and any attachments that do not relate to the offi=
+cial business of the firm are neither given nor endorsed by it.=C2=A0</span=
+><span style=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Cen=
+tury Gothic&quot;,sans-serif">Any unauthorized use, reproduction, or dissem=
+ination of this message is strictly prohibited.=C2=A0 Please note that e-ma=
+ils are susceptible to change. The Company shall not be liable for the impr=
+oper or incomplete transmission of the information contained in this e-mail=
+, nor shall it be liable for any delay in its receipt</span></span></font><=
+/p></blockquote></div></div>
+</div></div></div>
+</div>
+</blockquote></div>
+
+<br>
+<p style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font=
+-size:small;margin:0px;text-align:justify"><span style=3D"margin:0px"><span=
+ style=3D"margin:0px;font-family:&quot;Century Gothic&quot;,sans-serif"><fo=
+nt size=3D"1">Acest email a fost transmis de societatea=C2=A0DROP OF INK PU=
+BLISHING S.R.L. Acest e-mail, continutul sau precum si atasamentele constit=
+uie informatii confidentiale ce se afla in proprietatea=C2=A0societ=C4=83=
+=C8=9Bii,=C2=A0putand fi protejate din punct de vedere legal sau protejate =
+in orice alt mod impotriva oricarei dezvaluiri. Prezentul mesaj este adresa=
+t doar destinatarului (destinatarilor). Daca nu sunteti destinatarul acestu=
+i e-mail, nu este permisa copierea, transmiterea mai departe, dezvaluirea s=
+au folosirea in orice alt mod a acestuia sau a unei parti a acestuia in ori=
+ce forma, sau transmiterea catre orice alta persoana. Daca ati primit preze=
+ntul mesaj din eroare, va rugam sa notificati expeditorul cu privire la ace=
+asta si sa il stergeti din sistemul Dumneavoastra. Opiniile, concluziile sa=
+u orice alta informatie continuta in prezentul e-mail sau orice atasamente =
+care nu sunt legate de activitatea desfasurata de societate=C2=A0nu sunt em=
+ise si nici confirmate de aceasta. Orice utilizare neautorizata, reproducer=
+e sau diseminare a acestui mesaj sunt strict interzise. Va rugam sa luati i=
+n considerare faptul ca mesajele e-mail pot fi modificate, societatea=C2=A0=
+nefiind raspunzator pentru transmiterea incorecta sau incompleta a informat=
+iei continute in prezentul sau pentru intarzierea in primirea sa.=C2=A0</fo=
+nt></span></span></p><p style=3D"color:rgb(34,34,34);font-family:Arial,Helv=
+etica,sans-serif;font-size:small;margin:0px;text-align:justify"><span style=
+=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Century Gothic&=
+quot;,sans-serif"><font size=3D"1">=C2=A0</font></span></span></p><p style=
+=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:sm=
+all;margin:0px;text-align:justify"><font color=3D"#000000" size=3D"1"><span=
+ style=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Century G=
+othic&quot;,sans-serif">This e-mail was sent by=C2=A0</span></span></font>=
+=C2=A0<span style=3D"font-family:&quot;Century Gothic&quot;,sans-serif;font=
+-size:x-small">DROP OF INK PUBLISHING S.R.L.</span><font color=3D"#000000" =
+size=3D"1"><span style=3D"margin:0px"><span style=3D"margin:0px;font-family=
+:&quot;Century Gothic&quot;,sans-serif">=C2=A0This e-mail, its content and =
+attachments=C2=A0</span></span><span lang=3D"EN-GB" style=3D"margin:0px;fon=
+t-family:&quot;Century Gothic&quot;,sans-serif">are confidential and may be=
+ legally privileged and are classified as Company=E2=80=99s Confidential an=
+d Proprietary Information</span><span style=3D"margin:0px"><span style=3D"m=
+argin:0px;font-family:&quot;Century Gothic&quot;,sans-serif">.=C2=A0 This m=
+essage is intended solely for the addressee(s). If you are not the intended=
+ recipient of this e-mail =C2=A0message, you may not copy, forward, disclos=
+e, otherwise use it or any part of it in any form whatsoever, nor deliver t=
+his to anyone else. If you have received this e-mail message in error, plea=
+se notify the sender by return e-mail and delete this message from your sys=
+tem.=C2=A0</span></span><span lang=3D"EN-GB" style=3D"margin:0px;font-famil=
+y:&quot;Century Gothic&quot;,sans-serif">Opinions, conclusions and other in=
+formation in this e-mail and any attachments that do not relate to the offi=
+cial business of the firm are neither given nor endorsed by it.=C2=A0</span=
+><span style=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Cen=
+tury Gothic&quot;,sans-serif">Any unauthorized use, reproduction, or dissem=
+ination of this message is strictly prohibited.=C2=A0 Please note that e-ma=
+ils are susceptible to change. The Company shall not be liable for the impr=
+oper or incomplete transmission of the information contained in this e-mail=
+, nor shall it be liable for any delay in its receipt</span></span></font><=
+/p></blockquote></div>
+</blockquote></div>
+
+<br>
+<p style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font=
+-size:small;margin:0px;text-align:justify"><span style=3D"margin:0px"><span=
+ style=3D"margin:0px;font-family:&quot;Century Gothic&quot;,sans-serif"><fo=
+nt size=3D"1">Acest email a fost transmis de societatea=C2=A0DROP OF INK PU=
+BLISHING S.R.L. Acest e-mail, continutul sau precum si atasamentele constit=
+uie informatii confidentiale ce se afla in proprietatea=C2=A0societ=C4=83=
+=C8=9Bii,=C2=A0putand fi protejate din punct de vedere legal sau protejate =
+in orice alt mod impotriva oricarei dezvaluiri. Prezentul mesaj este adresa=
+t doar destinatarului (destinatarilor). Daca nu sunteti destinatarul acestu=
+i e-mail, nu este permisa copierea, transmiterea mai departe, dezvaluirea s=
+au folosirea in orice alt mod a acestuia sau a unei parti a acestuia in ori=
+ce forma, sau transmiterea catre orice alta persoana. Daca ati primit preze=
+ntul mesaj din eroare, va rugam sa notificati expeditorul cu privire la ace=
+asta si sa il stergeti din sistemul Dumneavoastra. Opiniile, concluziile sa=
+u orice alta informatie continuta in prezentul e-mail sau orice atasamente =
+care nu sunt legate de activitatea desfasurata de societate=C2=A0nu sunt em=
+ise si nici confirmate de aceasta. Orice utilizare neautorizata, reproducer=
+e sau diseminare a acestui mesaj sunt strict interzise. Va rugam sa luati i=
+n considerare faptul ca mesajele e-mail pot fi modificate, societatea=C2=A0=
+nefiind raspunzator pentru transmiterea incorecta sau incompleta a informat=
+iei continute in prezentul sau pentru intarzierea in primirea sa.=C2=A0</fo=
+nt></span></span></p><p style=3D"color:rgb(34,34,34);font-family:Arial,Helv=
+etica,sans-serif;font-size:small;margin:0px;text-align:justify"><span style=
+=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Century Gothic&=
+quot;,sans-serif"><font size=3D"1">=C2=A0</font></span></span></p><p style=
+=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:sm=
+all;margin:0px;text-align:justify"><font color=3D"#000000" size=3D"1"><span=
+ style=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Century G=
+othic&quot;,sans-serif">This e-mail was sent by=C2=A0</span></span></font>=
+=C2=A0<span style=3D"font-family:&quot;Century Gothic&quot;,sans-serif;font=
+-size:x-small">DROP OF INK PUBLISHING S.R.L.</span><font color=3D"#000000" =
+size=3D"1"><span style=3D"margin:0px"><span style=3D"margin:0px;font-family=
+:&quot;Century Gothic&quot;,sans-serif">=C2=A0This e-mail, its content and =
+attachments=C2=A0</span></span><span lang=3D"EN-GB" style=3D"margin:0px;fon=
+t-family:&quot;Century Gothic&quot;,sans-serif">are confidential and may be=
+ legally privileged and are classified as Company=E2=80=99s Confidential an=
+d Proprietary Information</span><span style=3D"margin:0px"><span style=3D"m=
+argin:0px;font-family:&quot;Century Gothic&quot;,sans-serif">.=C2=A0 This m=
+essage is intended solely for the addressee(s). If you are not the intended=
+ recipient of this e-mail =C2=A0message, you may not copy, forward, disclos=
+e, otherwise use it or any part of it in any form whatsoever, nor deliver t=
+his to anyone else. If you have received this e-mail message in error, plea=
+se notify the sender by return e-mail and delete this message from your sys=
+tem.=C2=A0</span></span><span lang=3D"EN-GB" style=3D"margin:0px;font-famil=
+y:&quot;Century Gothic&quot;,sans-serif">Opinions, conclusions and other in=
+formation in this e-mail and any attachments that do not relate to the offi=
+cial business of the firm are neither given nor endorsed by it.=C2=A0</span=
+><span style=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Cen=
+tury Gothic&quot;,sans-serif">Any unauthorized use, reproduction, or dissem=
+ination of this message is strictly prohibited.=C2=A0 Please note that e-ma=
+ils are susceptible to change. The Company shall not be liable for the impr=
+oper or incomplete transmission of the information contained in this e-mail=
+, nor shall it be liable for any delay in its receipt</span></span></font><=
+/p></blockquote></div>
+</blockquote></div>
+
+<br>
+<p style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font=
+-size:small;margin:0px;text-align:justify"><span style=3D"margin:0px"><span=
+ style=3D"margin:0px;font-family:&quot;Century Gothic&quot;,sans-serif"><fo=
+nt size=3D"1">Acest email a fost transmis de societatea=C2=A0DROP OF INK PU=
+BLISHING S.R.L. Acest e-mail, continutul sau precum si atasamentele constit=
+uie informatii confidentiale ce se afla in proprietatea=C2=A0societ=C4=83=
+=C8=9Bii,=C2=A0putand fi protejate din punct de vedere legal sau protejate =
+in orice alt mod impotriva oricarei dezvaluiri. Prezentul mesaj este adresa=
+t doar destinatarului (destinatarilor). Daca nu sunteti destinatarul acestu=
+i e-mail, nu este permisa copierea, transmiterea mai departe, dezvaluirea s=
+au folosirea in orice alt mod a acestuia sau a unei parti a acestuia in ori=
+ce forma, sau transmiterea catre orice alta persoana. Daca ati primit preze=
+ntul mesaj din eroare, va rugam sa notificati expeditorul cu privire la ace=
+asta si sa il stergeti din sistemul Dumneavoastra. Opiniile, concluziile sa=
+u orice alta informatie continuta in prezentul e-mail sau orice atasamente =
+care nu sunt legate de activitatea desfasurata de societate=C2=A0nu sunt em=
+ise si nici confirmate de aceasta. Orice utilizare neautorizata, reproducer=
+e sau diseminare a acestui mesaj sunt strict interzise. Va rugam sa luati i=
+n considerare faptul ca mesajele e-mail pot fi modificate, societatea=C2=A0=
+nefiind raspunzator pentru transmiterea incorecta sau incompleta a informat=
+iei continute in prezentul sau pentru intarzierea in primirea sa.=C2=A0</fo=
+nt></span></span></p><p style=3D"color:rgb(34,34,34);font-family:Arial,Helv=
+etica,sans-serif;font-size:small;margin:0px;text-align:justify"><span style=
+=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Century Gothic&=
+quot;,sans-serif"><font size=3D"1">=C2=A0</font></span></span></p><p style=
+=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:sm=
+all;margin:0px;text-align:justify"><font color=3D"#000000" size=3D"1"><span=
+ style=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Century G=
+othic&quot;,sans-serif">This e-mail was sent by=C2=A0</span></span></font>=
+=C2=A0<span style=3D"font-family:&quot;Century Gothic&quot;,sans-serif;font=
+-size:x-small">DROP OF INK PUBLISHING S.R.L.</span><font color=3D"#000000" =
+size=3D"1"><span style=3D"margin:0px"><span style=3D"margin:0px;font-family=
+:&quot;Century Gothic&quot;,sans-serif">=C2=A0This e-mail, its content and =
+attachments=C2=A0</span></span><span lang=3D"EN-GB" style=3D"margin:0px;fon=
+t-family:&quot;Century Gothic&quot;,sans-serif">are confidential and may be=
+ legally privileged and are classified as Company=E2=80=99s Confidential an=
+d Proprietary Information</span><span style=3D"margin:0px"><span style=3D"m=
+argin:0px;font-family:&quot;Century Gothic&quot;,sans-serif">.=C2=A0 This m=
+essage is intended solely for the addressee(s). If you are not the intended=
+ recipient of this e-mail =C2=A0message, you may not copy, forward, disclos=
+e, otherwise use it or any part of it in any form whatsoever, nor deliver t=
+his to anyone else. If you have received this e-mail message in error, plea=
+se notify the sender by return e-mail and delete this message from your sys=
+tem.=C2=A0</span></span><span lang=3D"EN-GB" style=3D"margin:0px;font-famil=
+y:&quot;Century Gothic&quot;,sans-serif">Opinions, conclusions and other in=
+formation in this e-mail and any attachments that do not relate to the offi=
+cial business of the firm are neither given nor endorsed by it.=C2=A0</span=
+><span style=3D"margin:0px"><span style=3D"margin:0px;font-family:&quot;Cen=
+tury Gothic&quot;,sans-serif">Any unauthorized use, reproduction, or dissem=
+ination of this message is strictly prohibited.=C2=A0 Please note that e-ma=
+ils are susceptible to change. The Company shall not be liable for the impr=
+oper or incomplete transmission of the information contained in this e-mail=
+, nor shall it be liable for any delay in its receipt</span></span></font><=
+/p></blockquote></div><div><br clear=3D"all"></div><div><br></div><span cla=
+ss=3D"gmail_signature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail=
+_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><d=
+iv><div dir=3D"ltr"><div dir=3D"ltr"><div><b><i>Tiberiu Chirea</i></b></div=
+><div><i style=3D"font-size:x-small"><b>Director tehnologie</b></i></div><d=
+iv dir=3D"ltr"><div><br></div></div><div dir=3D"ltr"><div><img src=3D"http:=
+//www.litera.ro/semnatura/Litera.png" width=3D"96" height=3D"17"><b style=
+=3D"font-size:x-small"><br></b></div><div><b style=3D"font-size:x-small"><b=
+r></b></div><div><b style=3D"font-size:x-small">Editura LITERA =E2=80=93 O =
+carte deschis=C4=83!=C2=A0</b><br></div><div><b style=3D"font-size:x-small"=
+><br></b></div><div><span style=3D"font-family:arial,helvetica,sans-serif">=
+<span style=3D"line-height:19.6px;white-space:pre-wrap"><font color=3D"#000=
+000">V=C4=83 mul=C5=A3umim pentru =C3=AEncrederea acordat=C4=83 =C5=9Fi v=
+=C4=83 invit=C4=83m pe</font><font color=3D"#0000ff"> </font></span><span s=
+tyle=3D"line-height:19.6px;white-space:pre-wrap"><a href=3D"http://www.lite=
+ra.ro/" style=3D"color:rgb(17,85,204)" target=3D"_blank"><font color=3D"#00=
+00ff">www.litera.ro</font></a></span><span style=3D"line-height:19.6px;whit=
+e-space:pre-wrap"><font color=3D"#0000ff"> </font><font color=3D"#000000">=
+=C5=9Fi pe </font></span><span style=3D"color:rgb(0,0,0);line-height:19.6px=
+;white-space:pre-wrap"><a href=3D"http://www.facebook.com/Litera.ro" style=
+=3D"color:rgb(17,85,204)" target=3D"_blank">www.facebook.com/Litera.ro</a><=
+/span><span style=3D"color:rgb(0,0,0);line-height:19.6px;white-space:pre-wr=
+ap">.</span></span><span style=3D"font-size:12.8px">=C2=A0</span><b style=
+=3D"font-size:x-small"><br></b></div><div><font size=3D"1"><br></font></div=
+><div><font size=3D"1">Str. Moeciu, nr. 7A</font></div><div><font size=3D"1=
+">Bucure=C5=9Fti, Rom=C3=A2nia<br>Mobil: +40758 035 541</font></div><div><d=
+iv><a href=3D"mailto:t.chirea@litera.ro" style=3D"font-size:x-small;color:r=
+gb(17,85,204)" target=3D"_blank">t.chirea@litera.ro</a><br></div><font size=
+=3D"1"><a href=3D"http://www.litera.ro/" style=3D"color:rgb(17,85,204)" tar=
+get=3D"_blank">www.litera.ro</a></font></div><div><br></div><div></div></di=
+v></div></div></div></div></div></div></div></div></div>
+</div>
+</blockquote></div>
+
+--000000000000e5e290064cd2ef40--
