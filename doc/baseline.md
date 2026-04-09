@@ -84,28 +84,3 @@ Formula finală a fost implementată ca script Google Apps Script atașat unui G
    - **listă comenzi** — log al exporturilor generate
 
 
-## Pasul 8 — Librărie GAS partajată
-
-Inițial scriptul era atașat unui singur spreadsheet. Cum echipa folosea 2-3 spreadsheet-uri diferite, s-a convertit la **librărie Google Apps Script**: un singur cod sursă, referit de toate spreadsheet-urile.
-
-Avantaj: orice modificare în librărie se reflectă automat în spreadsheet-ul de test. Spreadsheet-urile de producție rămân pe o versiune numerotată și se actualizează doar când se decide explicit.
-
-
-## Pasul 9 — Optimizare performanță
-
-Scriptul inițial dura ~118 secunde pentru ~9000 de rânduri. Principala cauză: trimiterea a ~400k celule prin API-ul Google (Apps Script → Sheets).
-
-Soluția: un sheet ajutător ascuns (`_proc_helper`) cu formule ARRAYFORMULA care citesc din MAIN direct în Sheets (fără să treacă prin script). Scriptul scrie doar coloanele calculate (cantitate, stoc necesar, flag-uri) — ~19 coloane în loc de 45. Restul vine server-side via `copyTo`.
-
-Rezultat: **~46 secunde** în loc de 118.
-
-
-## Starea actuală (v2.44)
-
-- Formula v4_adaptive implementată și testată pe backtesting
-- Reeditări, titluri noi, MOQ, DOS corect (include cantitatea comandată)
-- Performanță: ~46s pentru ~9000 titluri
-- Dashboard furnizori cu checkbox „Activ" pentru export selectiv
-- Export comenzi per furnizor sau pentru toți furnizorii bifați
-- Log de timing în sheet `_log` pentru diagnosticare performanță
-- Librărie GAS cu versionare: test pe HEAD, producție pe versiune numerotată

@@ -4,6 +4,14 @@ Documentație completă pentru continuarea lucrului pe alt cont Claude sau cu al
 
 ---
 
+## Reguli de lucru
+
+- **Nu actualiza fișiere de documentație** (CLAUDE.md, project-steps.md etc.) decât la cerere explicită.
+- **Nu face git push** decât la cerere explicită.
+- **Nu face git commit** decât la cerere explicită.
+
+---
+
 ## Ce este proiectul
 
 Sistem de automatizare a aprovizionării cu carte pentru Elefant.ro. Sursa de date este un export din ERP-ul EBS (fișier Excel ~60k rânduri, sheet MAIN). Un script Google Apps Script procesează MAIN-ul și generează automat sheet-urile de lucru: aprovizionare, comenzi, reeditări, dashboard furnizori, listă comenzi.
