@@ -1,5 +1,5 @@
 // ============================================================
-const VERSION = 'v2.45'; // 2026-04-09 14:30:00
+const VERSION = 'v2.46'; // 2026-05-04 20:01:02
 const RECENT_TITLES = 30; // days — titles with SalesLY=0 created within this window are included
 const MOQ = 2;            // Minimum Order Quantity — applied when Cantitate > 0
 //
@@ -286,13 +286,13 @@ function clearAllContent_(sheet) {
 
 // Evaluate QUANTITY_FORMULA logic in JS so filteredRows can be sorted by Quantity
 // before writing to aprovizionare. Must stay in sync with QUANTITY_FORMULA constant.
-// Optional `sums` = {sumL1W, sumLM, sumL2M} — used for reissue groups (combined editions).
+// Optional `sums` = {sumL1W, sumLM, sumL2M, sumStock} — used for reissue groups (combined editions).
 function evalQuantity_(r, ex, sums) {
   if (ex[EX.ZOMBIE]) return 0;
-  const N  = sums ? sums.sumL1W : (Number(r[C.SalesL1W])    || 0);  // SalesL1W
-  const O  = sums ? sums.sumLM  : (Number(r[C.SalesLM])     || 0);  // SalesLM
-  const P  = sums ? sums.sumL2M : (Number(r[C.SalesL2M])    || 0);  // SalesL2M
-  const I  = Number(r[C.OnlineStock]) || 0;  // OnlineStock
+  const N  = sums ? sums.sumL1W   : (Number(r[C.SalesL1W])    || 0);  // SalesL1W
+  const O  = sums ? sums.sumLM    : (Number(r[C.SalesLM])     || 0);  // SalesLM
+  const P  = sums ? sums.sumL2M   : (Number(r[C.SalesL2M])    || 0);  // SalesL2M
+  const I  = sums ? sums.sumStock : (Number(r[C.OnlineStock]) || 0);  // OnlineStock (all editions)
 
   // 1. Auto-correcting cap: MIN(SalesLM, MAX(prev_month, L2M*0.55))
   const prevMonth = Math.max(0, P - O);
@@ -383,7 +383,8 @@ function generateSheets() {
       const sums = reissueSumMap[key] || null;
       const effectiveLY = sums ? sums.sumLY : (Number(r[C.SalesLY])  || 0);
       const effectiveLM = sums ? sums.sumLM : (Number(r[C.SalesLM])  || 0);
-      if (effectiveLY > 0 && (effectiveLM - (Number(r[C.OnlineStock]) || 0)) >= 0) return true;  // B
+      const effectiveStock = sums ? sums.sumStock : (Number(r[C.OnlineStock]) || 0);
+      if (effectiveLY > 0 && (effectiveLM - effectiveStock) >= 0) return true;  // B
       const created = parseDate_(r[C.PublishDate]);
       return effectiveLY === 0 && created > 0 && created >= recentCutoff;        // C
     });
@@ -412,9 +413,10 @@ function generateSheets() {
   // Note: Required and Quantity use summed SalesLM for reissue articles.
   const quantityCache = filteredRows.map((r, i) => evalQuantity_(r, extraData[i], salesSumsForFiltered[i]));
   const requiredCache = filteredRows.map((r, i) => {
-    const sums = salesSumsForFiltered[i];
-    const slm = sums ? sums.sumLM : (Number(r[C.SalesLM]) || 0);
-    return Math.max(0, slm - (Number(r[C.OnlineStock]) || 0));
+    const sums  = salesSumsForFiltered[i];
+    const slm   = sums ? sums.sumLM    : (Number(r[C.SalesLM])    || 0);
+    const stock = sums ? sums.sumStock : (Number(r[C.OnlineStock]) || 0);
+    return Math.max(0, slm - stock);
   });
 
   const supplierRequiredTotal = {};
@@ -580,22 +582,25 @@ function deduplicateReissues_(filteredPairs, reissueMap, allRows) {
 // ============================================================
 // REISSUE SALES SUMS
 // For each reissue group, sums the sales metrics across ALL editions (allRows).
-// Returns groupKey → {sumL1W, sumLM, sumL2M, sumLS, sumLY}
+// Returns groupKey → {sumL1W, sumLM, sumL2M, sumLS, sumLY, sumStock}
+// sumStock = combined OnlineStock across all editions — used so that stock held
+// on older editions is counted when computing Necesar/Cantitate for the active one.
 // ============================================================
 function buildReissueSumMap_(allRows, reissueMap) {
   const sumMap = {};
   for (const key of Object.keys(reissueMap)) {
     const grp = reissueMap[key];
-    let sumL1W = 0, sumLM = 0, sumL2M = 0, sumLS = 0, sumLY = 0;
+    let sumL1W = 0, sumLM = 0, sumL2M = 0, sumLS = 0, sumLY = 0, sumStock = 0;
     for (const ri of grp.rowIndices) {
       const r = allRows[ri];
-      sumL1W += Number(r[C.SalesL1W]) || 0;
-      sumLM  += Number(r[C.SalesLM])  || 0;
-      sumL2M += Number(r[C.SalesL2M]) || 0;
-      sumLS  += Number(r[C.SalesLS])  || 0;
-      sumLY  += Number(r[C.SalesLY])  || 0;
+      sumL1W  += Number(r[C.SalesL1W])   || 0;
+      sumLM   += Number(r[C.SalesLM])    || 0;
+      sumL2M  += Number(r[C.SalesL2M])   || 0;
+      sumLS   += Number(r[C.SalesLS])    || 0;
+      sumLY   += Number(r[C.SalesLY])    || 0;
+      sumStock += Number(r[C.OnlineStock]) || 0;
     }
-    sumMap[key] = { sumL1W, sumLM, sumL2M, sumLS, sumLY };
+    sumMap[key] = { sumL1W, sumLM, sumL2M, sumLS, sumLY, sumStock };
   }
   return sumMap;
 }
@@ -709,12 +714,12 @@ function generateProcurement_(ss, sortedRows, sortedExtra, sortedSums, sortedOri
     const P  = sums ? sums.sumL2M : (Number(r[C.SalesL2M]) || 0);
     const Qs = sums ? sums.sumLS  : (Number(r[C.SalesLS])  || 0);
     const R  = sums ? sums.sumLY  : (Number(r[C.SalesLY])  || 0);
-    const I  = Number(r[C.OnlineStock]) || 0;
+    const I  = sums ? sums.sumStock : (Number(r[C.OnlineStock]) || 0);  // all editions
     const qty  = sortedQty[i];
     const vzzi = N / 7 * 0.6 + Math.max(0, (P - O) / 30) * 0.4;
     const dos  = vzzi > 0 ? (qty + I) / vzzi : 0;
     outputData.push([
-      r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],r[8],  // A-I: MAIN[0..8]
+      r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],I,     // A-I: MAIN[0..8], I=sumStock for reissues
       O - I, qty, dos,                                 // J,K,L (placeholder values)
       r[9],                                            // M: MAIN[9] = Disp. Rec.
       N, O, P, Qs, R,                                  // N-R: sales sums
@@ -1375,4 +1380,4 @@ function doExportSupplier_(ss, supplierName, headerValues, dataValues) {
     listaSheet.getRange(2, 3).setValue(baseUrl);
   }
 }
-// v2.45 (2026-04-09 14:30:00)
+// v2.46 (2026-05-04 20:01:02)
