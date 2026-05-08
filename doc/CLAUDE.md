@@ -94,7 +94,7 @@ La fiecare modificare: bump VERSION pe linia 2 + actualizează ultima linie.
 
 ### Cum funcționează generateSheets()
 
-1. **Citește MAIN** (export EBS, 33 coloane, ~12k rânduri)
+1. **Citește MAIN** (export EBS, 35 coloane, ~12k rânduri)
 2. **Grupuri reeditări**: same Titlu+Autor+Furnizor, EAN-uri diferite → sumează vânzările grupului
 3. **Filtrare** (în ordine):
    - Excludere: Epuizat=1 sau Indisponibil=1
@@ -102,10 +102,30 @@ La fiecare modificare: bump VERSION pe linia 2 + actualizează ultima linie.
    - Inclus dacă: SalesLY=0 AND DataCreare în ultimele 30 de zile (RECENT_TITLES const)
 4. **Deduplicare reeditări**: per grup, rămâne doar ediția cu PublishDate cel mai recent — și doar dacă aceasta trece filtrul
 5. **Sortare**: Furnizor desc după total Necesar → Necesar desc → PublishDate desc
-6. **Scrie aprovizionare** (46 coloane) via `_proc_helper`
+6. **Scrie aprovizionare** (48 coloane)
 7. **Generează**: reeditări, dashboard furnizori, comenzi, listă comenzi
 
-### Coloanele din aprovizionare (46 total)
+### Coloanele MAIN (export EBS D.O.I. BRUT — 35 col, confirmat)
+
+```
+ 0 A  ElefantSKU           10 K  SalesL1W             20 U  Total Rezervari
+ 1 B  EAN                  11 L  SalesLM              21 V  Disponibil MM Auchan
+ 2 C  Cod articol          12 M  SalesL2M             22 W  Colectie
+ 3 D  Articol              13 N  SalesLS              23 X  Format
+ 4 E  Autor                14 O  SalesLY              24 Y  Varsta
+ 5 F  Furnizor             15 P  Data creare          25 Z  COD SKU ABONAMENT
+ 6 G  RRP                  16 Q  Categorie            26 AA Epuizat
+ 7 H  Reducere             17 R  Subcategorie         27 AB Indisponibil
+ 8 I  Stoc online          18 S  Producator           28 AC Disponibil CUSTF
+ 9 J  Disponibil RECEPTII  19 T  Cod furnizor         29 AD Disponibil CUSTA
+                                                      30 AE Disponibil STPR
+                                                      31 AF Achizitii All Time
+                                                      32 AG Sales All Time
+                                                      33 AH Inactiv
+                                                      34 AI Ultim Pret Achiz
+```
+
+### Coloanele din aprovizionare (48 total)
 
 ```
 A-I   : ElefantSKU, EAN, Cod Articol, Articol, Autor, Furnizor, RRP, Reducere, Stoc Online
@@ -114,10 +134,10 @@ K     : Cantitate — formula v4_adaptive (verde+bold) — formulă în sheet
 L     : DOS (=IFERROR((K+I)/S,0)) — formulă în sheet
 M     : Disp. Rec.
 N-R   : SalesL1W, SalesLM, SalesL2M, SalesLS, SalesLY
-        → pentru reeditări: suma tuturor edițiilor din grup
+        → pentru reeditări: suma tuturor edițiilor din grup (inclusiv Stoc Online)
 S     : VZ medie/zi (=N/7*0.6+MAX(0,(P-O)/30)*0.4) — formulă în sheet
-T-AK  : restul coloanelor din MAIN (PublishDate, Categorie, etc.)
-AL-AT : REEDITARE, Nr_Editii, Alte_EAN, Chilipir, Spike_vz, Suprastoc, Ruptură, Zombie, Noutăți
+T-AM  : restul coloanelor din MAIN (MAIN[15..34], 20 col)
+AN-AV : REEDITARE, Nr_Editii, Alte_EAN, Chilipir, Spike_vz, Suprastoc, Ruptură, Zombie, Noutăți
 ```
 
 ### Formula Cantitate K (v4_adaptive, MOQ=2)
@@ -141,7 +161,7 @@ Implementare JS identică în `evalQuantity_()` (folosită pentru sortare înain
 
 ### Scriere aprovizionare (v2.45+)
 
-Toate cele 46 de coloane sunt construite în JS din `sortedRows[i]` (date MAIN) + `sortedSums[i]` (sume reeditări) + `sortedExtra[i]` (flag-uri), apoi scrise printr-un singur `setValues`. Apoi `setFormulas` suprascrie J, K, L, S cu formulele live.
+Toate cele 48 de coloane sunt construite în JS din `sortedRows[i]` (date MAIN) + `sortedSums[i]` (sume reeditări) + `sortedExtra[i]` (flag-uri), apoi scrise printr-un singur `setValues`. Apoi `setFormulas` suprascrie J, K, L, S cu formulele live.
 
 Nu mai există `_proc_helper` sau ARRAYFORMULA — elimina un bug de sincronizare în care ARRAYFORMULA evalua asincron față de setValues și producea mix de date din rânduri diferite în același rând din aprovizionare.
 
@@ -204,7 +224,7 @@ Date necesare în `data/export-erp/` (download din GDrive: https://drive.google.
 | `purchases` | Recepții (NIR): date, article_code, qty | ~194k |
 | `purchase_returns` | Retururi furnizori (NAC) | ~11k |
 | `sales` | Vânzări: order_date, article_code, order_quantity, order_line_status | ~1M |
-| `procurement_erp` | Snapshot EBS BRUT la 2026-03-22 (33 col, ~60k rânduri) | ~60k |
+| `procurement_erp` | Snapshot EBS BRUT la 2026-03-22 (35 col, ~60k rânduri) | ~60k |
 | `stock_history` | Stoc zilnic reconstruit per articol ⭐ | ~750k |
 | `daily_sales` | Agregate pre-calculate | — |
 | `daily_purchases` | Agregate pre-calculate | — |

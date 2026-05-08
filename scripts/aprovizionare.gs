@@ -1,5 +1,5 @@
 // ============================================================
-const VERSION = 'v2.46'; // 2026-05-04 20:01:02
+const VERSION = 'v2.49'; // 2026-05-08 16:55:09
 const RECENT_TITLES = 30; // days — titles with SalesLY=0 created within this window are included
 const MOQ = 2;            // Minimum Order Quantity — applied when Cantitate > 0
 //
@@ -53,52 +53,60 @@ const DASHBOARD_SHEET_NAME     = 'dashboard furnizori';
 const COMENZI_SHEET_NAME       = 'comenzi';
 const LISTA_COMENZI_SHEET_NAME = 'listă comenzi';
 
-// ── MAIN column indices (0-based) — EBS D.O.I. (BRUT) format, 33 cols ──
+// ── MAIN column map — populated at runtime by buildColMap_() ─────────────────
+// Do NOT read C before generateSheets() runs — indices are 0 until then.
 // Source: EBS ERP export. Script ONLY reads MAIN; never writes to it.
-// Necesar, Cantitate, DOS, VZ medie/zi are calculated by script → aprovizionare.
-const C = {
-  ElefantSKU:           0,  // A
-  EAN:                  1,  // B
-  ArticleCode:          2,  // C
-  Title:                3,  // D
-  Author:               4,  // E
-  Supplier:             5,  // F
-  RRP:                  6,  // G
-  Discount:             7,  // H
-  OnlineStock:          8,  // I
-  AvailRec:             9,  // J  (EBS: Disponibil RECEPTII)
-  SalesL1W:            10,  // K
-  SalesLM:             11,  // L
-  SalesL2M:            12,  // M
-  SalesLS:             13,  // N
-  SalesLY:             14,  // O  ← filter: > 0 only
-  PublishDate:         15,  // P  ← used in reissues (active edition)
-  Category:            16,  // Q
-  Subcategory:         17,  // R
-  Publisher:           18,  // S
-  SupplierCode:        19,  // T
-  TotalReserved:       20,  // U
-  AvailMMAuchan:       21,  // V
-  Collection:          22,  // W
-  Format:              23,  // X
-  AgeGroup:            24,  // Y
-  SubscriptionSkuCode: 25,  // Z
-  AllPurchases:        26,  // AA
-  SalesAll:            27,  // AB
-  OutOfPrint:          28,  // AC  ← flag Zombie
-  Unavailable:         29,  // AD  ← flag Zombie
-  AvailCustf:          30,  // AE
-  AvailStpr:           31,  // AF
-  PurchasePrice:       32   // AG  ← flag Bargain
+var C = {};
+
+// ── Expected header names per semantic key (case-insensitive lookup) ──────────
+// This is the single source of truth. buildColMap_() scans the actual MAIN
+// header row and maps each key to the column index where it is found.
+// Column order in MAIN does not matter — only names are matched.
+// A missing key that appears here is reported as an error at startup.
+const COL_NAMES = {
+  ElefantSKU:           'ElefantSKU',
+  EAN:                  'EAN',
+  ArticleCode:          'Cod articol',
+  Title:                'Articol',
+  Author:               'Autor',
+  Supplier:             'Furnizor',
+  RRP:                  'RRP',
+  Discount:             'Reducere',
+  OnlineStock:          'Stoc online',
+  AvailRec:             'Disponibil RECEPTII',
+  SalesL1W:             'SalesL1W',
+  SalesLM:              'SalesLM',
+  SalesL2M:             'SalesL2M',
+  SalesLS:              'SalesLS',
+  SalesLY:              'SalesLY',
+  PublishDate:          'Data creare',
+  Category:             'Categorie',
+  Subcategory:          'Subcategorie',
+  Publisher:            'Producator',
+  SupplierCode:         'Cod furnizor',
+  TotalReserved:        'Total Rezervari',
+  AvailMMAuchan:        'Disponibil MM Auchan',
+  Collection:           'Colectie',
+  Format:               'Format',
+  AgeGroup:             'Varsta',
+  SubscriptionSkuCode:  'COD SKU ABONAMENT',
+  OutOfPrint:           'Epuizat',
+  Unavailable:          'Indisponibil',
+  AvailCustf:           'Disponibil CUSTF',
+  AvailCusta:           'Disponibil CUSTA',
+  AvailStpr:            'Disponibil STPR',
+  AllPurchases:         'Achizitii All Time',
+  SalesAll:             'Sales All Time',
+  Inactive:             'Inactiv',
+  PurchasePrice:        'Ultim Pret Achiz',
 };
-const NUM_MAIN_COLS = 33;
 
 // ── Calculated column formulas written to aprovizionare ──────────────
 const REQUIRED_FORMULA = '=O2-I2';              // J: Necesar = SalesLM − OnlineStock
 const DOS_FORMULA      = '=IFERROR((K2+I2)/S2,0)';  // L: DOS = (Cantitate + OnlineStock) / VZ medie/zi
 
 // ── Aprovizionare output layout ──────────────────────────────────────
-// MAIN's 33 cols are expanded to 37 derived cols by inserting 4 calculated cols:
+// MAIN's 35 cols are expanded to 39 derived cols by inserting 4 calculated cols:
 //   MAIN[0..8]  → aprov[0..8]   (A–I: ElefantSKU..OnlineStock)
 //   aprov[9]    = Necesar        (J, REQUIRED_FORMULA)
 //   aprov[10]   = Cantitate      (K, QUANTITY_FORMULA)
@@ -106,13 +114,13 @@ const DOS_FORMULA      = '=IFERROR((K2+I2)/S2,0)';  // L: DOS = (Cantitate + Onl
 //   MAIN[9]     → aprov[12]     (M = Disp. Rec.)
 //   MAIN[10..14]→ aprov[13..17] (N–R = SalesL1W..SalesLY)
 //   aprov[18]   = VZ medie/zi   (S, AVG_DAILY_SALES_FORMULA)
-//   MAIN[15..32]→ aprov[19..36] (T–AK)
-//   EXTRA[0..7] → aprov[37..44] (AL–AS)
-const NUM_APROV_DERIVED = 37;  // derived cols before extras (total = 37 + 8 = 45)
+//   MAIN[15..34]→ aprov[19..38] (T–AM)
+//   EXTRA[0..8] → aprov[39..47] (AN–AV)
+const NUM_APROV_DERIVED = 39;  // derived cols before extras (total = 39 + 9 = 48)
 const APROV_CANTITATE   = 10;  // K — Cantitate position in aprovizionare (0-based)
-const APROV_PPC         = 36;  // AK — PurchasePrice position in aprovizionare (0-based)
+const APROV_PPC         = 38;  // AM — PurchasePrice position in aprovizionare (0-based)
 
-// Headers for the aprovizionare sheet (37 derived cols, in output order)
+// Headers for the aprovizionare sheet (39 derived cols, in output order)
 const APROV_HEADERS = [
   // A–I: from MAIN (0–8)
   'ElefantSKU','EAN','Cod Articol','Articol','Autor','Furnizor',
@@ -125,24 +133,33 @@ const APROV_HEADERS = [
   'SalesL1W','SalesLM','SalesL2M','SalesLS','SalesLY',
   // S: calculated by script
   'VZ medie/zi',
-  // T–AK: from MAIN (15–32)
+  // T–AM: from MAIN (order defined by APROV_MAIN_TAIL_KEYS below)
   'Data Creare','Categorie','Subcategorie','Producator',
   'Cod Furnizor','Total Rez.','Disp. MM/Auchan','Colectie','Format',
-  'Varsta','Cod SKU Abon','Achiz. All','Sales All','Epuizat',
-  'Indisponibil','Disp. Custf.','Disp. Stpr.','Pret Achiz. Frz.'
+  'Varsta','Cod SKU Abon','Epuizat','Indisponibil','Disp. Custf.',
+  'Disp. Custa','Disp. Stpr.','Achiz. All','Sales All','Inactiv','Pret Achiz. Frz.'
 ];
 
-// ── Extra columns written by script (AM–AT) ─────────────────
+// ── Ordered COL_NAMES keys for the T–AM block in aprovizionare output ─────────
+// Must stay in sync with the T–AM section of APROV_HEADERS above.
+const APROV_MAIN_TAIL_KEYS = [
+  'PublishDate','Category','Subcategory','Publisher',
+  'SupplierCode','TotalReserved','AvailMMAuchan','Collection','Format',
+  'AgeGroup','SubscriptionSkuCode','OutOfPrint','Unavailable','AvailCustf',
+  'AvailCusta','AvailStpr','AllPurchases','SalesAll','Inactive','PurchasePrice',
+];
+
+// ── Extra columns written by script (AN–AV) ─────────────────
 const EXTRA_HEADERS = [
-  'REEDITARE',   // AL
-  'Nr_Editii',   // AM
-  'Alte_EAN',    // AN
-  'Chilipir',    // AO
-  'Spike_vz',    // AP
-  'Suprastoc',   // AQ
-  'Ruptură',     // AR
-  'Zombie',      // AS
-  'Noutăți'      // AT
+  'REEDITARE',   // AN
+  'Nr_Editii',   // AO
+  'Alte_EAN',    // AP
+  'Chilipir',    // AQ
+  'Spike_vz',    // AR
+  'Suprastoc',   // AS
+  'Ruptură',     // AT
+  'Zombie',      // AU
+  'Noutăți'      // AV
 ];
 const NUM_EXTRA = EXTRA_HEADERS.length; // 9
 
@@ -314,6 +331,38 @@ function evalQuantity_(r, ex, sums) {
 }
 
 // ============================================================
+// MAIN HEADER VALIDATION
+// ============================================================
+// Returns an error string if MAIN is missing columns or has wrong structure,
+// or null if everything looks correct.
+// Scans the actual MAIN header row, populates the global C map (key → index),
+// and returns an error string for any COL_NAMES key not found — or null if OK.
+// Column order is irrelevant; matching is case-insensitive and trimmed.
+// Extra columns in MAIN that are not in COL_NAMES are silently ignored.
+function buildColMap_(headerRow) {
+  // Build lookup: normalised header → index
+  const lookup = {};
+  headerRow.forEach((h, i) => { lookup[String(h).trim().toLowerCase()] = i; });
+
+  // Reset and populate C
+  Object.keys(C).forEach(k => delete C[k]);
+  const missing = [];
+  for (const [key, name] of Object.entries(COL_NAMES)) {
+    const idx = lookup[name.toLowerCase()];
+    if (idx === undefined) {
+      missing.push(`  • "${name}" [${key}]`);
+    } else {
+      C[key] = idx;
+    }
+  }
+
+  if (missing.length === 0) return null;
+  return `MAIN nu conține coloanele necesare (${missing.length} lipsă):\n` +
+         missing.join('\n') + '\n\n' +
+         'Verifică că ai importat formatul corect din ERP (EBS D.O.I. BRUT).';
+}
+
+// ============================================================
 // CUSTOM MENU
 // ============================================================
 function onOpen() {
@@ -346,6 +395,11 @@ function generateSheets() {
   if (!mainSheet) throw new Error('Sheet-ul MAIN nu există!');
 
   const allData = mainSheet.getDataRange().getValues();
+  const colError = buildColMap_(allData[0] || []);
+  if (colError) {
+    SpreadsheetApp.getUi().alert('❌ Coloane lipsă în MAIN', colError, SpreadsheetApp.getUi().ButtonSet.OK);
+    return;
+  }
   const allRows = allData.slice(1); // skip header row
   T.lap('read MAIN: ' + allRows.length + ' rows');
 
@@ -719,14 +773,14 @@ function generateProcurement_(ss, sortedRows, sortedExtra, sortedSums, sortedOri
     const vzzi = N / 7 * 0.6 + Math.max(0, (P - O) / 30) * 0.4;
     const dos  = vzzi > 0 ? (qty + I) / vzzi : 0;
     outputData.push([
-      r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],I,     // A-I: MAIN[0..8], I=sumStock for reissues
-      O - I, qty, dos,                                 // J,K,L (placeholder values)
-      r[9],                                            // M: MAIN[9] = Disp. Rec.
-      N, O, P, Qs, R,                                  // N-R: sales sums
-      vzzi,                                            // S (placeholder value)
-      r[15],r[16],r[17],r[18],r[19],r[20],r[21],r[22],// T-AA: MAIN[15..22]
-      r[23],r[24],r[25],r[26],r[27],r[28],r[29],r[30],r[31],r[32], // AB-AK: MAIN[23..32]
-      ...ex                                            // AL-AT: extra flags
+      r[C.ElefantSKU],r[C.EAN],r[C.ArticleCode],r[C.Title],  // A-D
+      r[C.Author],r[C.Supplier],r[C.RRP],r[C.Discount],I,    // E-I (I=sumStock for reissues)
+      O - I, qty, dos,                                        // J,K,L (placeholder values)
+      r[C.AvailRec],                                          // M: Disp. Rec.
+      N, O, P, Qs, R,                                         // N-R: sales sums
+      vzzi,                                                   // S (placeholder value)
+      ...APROV_MAIN_TAIL_KEYS.map(k => cleanVal_(r[C[k]])),  // T-AM: MAIN tail cols
+      ...ex                                                   // AN-AV: extra flags
     ]);
   }
   sheet.getRange(2, 1, n, allHeaders.length).setValues(outputData);
@@ -766,6 +820,7 @@ function generateProcurement_(ss, sortedRows, sortedExtra, sortedSums, sortedOri
 
   // ── Step 4: CF (every run) ───────────────────────────────────
   const cfFullRow   = sheet.getRange(2, 1, n, allHeaders.length);
+  const reissueCol  = colToLetter_(NUM_APROV_DERIVED + 1 + EX.REISSUE);
   const noutatiCol  = colToLetter_(NUM_APROV_DERIVED + 1 + EX.NOUTATI);
   const bargainCol  = colToLetter_(NUM_APROV_DERIVED + 1 + EX.BARGAIN);
   const stockoutCol = colToLetter_(NUM_APROV_DERIVED + 1 + EX.STOCKOUT);
@@ -775,7 +830,7 @@ function generateProcurement_(ss, sortedRows, sortedExtra, sortedSums, sortedOri
       .whenFormulaSatisfied('=$' + noutatiCol + '2=1')
       .setBackground('#CDED74').setRanges([cfFullRow]).build(),
     SpreadsheetApp.newConditionalFormatRule()
-      .whenFormulaSatisfied('=$AL2=1')
+      .whenFormulaSatisfied('=$' + reissueCol + '2=1')
       .setBackground('#FFF2CC').setRanges([cfFullRow]).build(),
     SpreadsheetApp.newConditionalFormatRule()
       .whenFormulaSatisfied('=$' + bargainCol + '2=1')
@@ -1380,4 +1435,4 @@ function doExportSupplier_(ss, supplierName, headerValues, dataValues) {
     listaSheet.getRange(2, 3).setValue(baseUrl);
   }
 }
-// v2.46 (2026-05-04 20:01:02)
+// v2.49 (2026-05-08 16:55:09)
