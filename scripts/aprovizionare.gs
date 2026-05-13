@@ -1,5 +1,5 @@
 // ============================================================
-const VERSION = 'v2.49'; // 2026-05-08 16:55:09
+const VERSION = 'v2.50'; // 2026-05-13 13:30:43
 const RECENT_TITLES = 30; // days — titles with SalesLY=0 created within this window are included
 const MOQ = 2;            // Minimum Order Quantity — applied when Cantitate > 0
 //
@@ -360,6 +360,20 @@ function buildColMap_(headerRow) {
   return `MAIN nu conține coloanele necesare (${missing.length} lipsă):\n` +
          missing.join('\n') + '\n\n' +
          'Verifică că ai importat formatul corect din ERP (EBS D.O.I. BRUT).';
+}
+
+// ============================================================
+// Lazy column-map initialiser for entry points outside generateSheets_
+// (onEdit, exportOrders, exportAllOrders run in fresh executions with C={}).
+// ============================================================
+function ensureColMap_(ss) {
+  if (Object.keys(C).length > 0) return null;          // already populated in this execution
+  const mainSheet = getSheetByName_(ss, MAIN_SHEET_NAME);
+  if (!mainSheet || mainSheet.getLastRow() < 1) {
+    return 'Sheet MAIN lipsește sau este gol — rulează mai întâi „Pregătire aprovizionare".';
+  }
+  const header = mainSheet.getRange(1, 1, 1, mainSheet.getLastColumn()).getValues()[0];
+  return buildColMap_(header);
 }
 
 // ============================================================
@@ -1163,6 +1177,9 @@ function extractSupplierName_(dropdownValue) {
 function populateOrdersFromProcurement_(ss, ordersSheet, supplier) {
   const T = makeTimer();
 
+  const colErr = ensureColMap_(ss);
+  if (colErr) { SpreadsheetApp.getUi().alert(colErr); return; }
+
   const procSheet = getSheetByName_(ss, APROVIZIONARE_SHEET_NAME);
   if (!procSheet) return;
 
@@ -1274,6 +1291,9 @@ function exportAllOrders_() {
     SpreadsheetApp.getUi().alert('Sheet-ul aprovizionare nu există. Rulează mai întâi scriptul de generare.');
     return;
   }
+
+  const colErr = ensureColMap_(ss);
+  if (colErr) { SpreadsheetApp.getUi().alert(colErr); return; }
 
   // Collect checked suppliers from dashboard col A (Activ) + col C (Furnizor)
   let checkedSuppliers = null;
@@ -1435,4 +1455,4 @@ function doExportSupplier_(ss, supplierName, headerValues, dataValues) {
     listaSheet.getRange(2, 3).setValue(baseUrl);
   }
 }
-// v2.49 (2026-05-08 16:55:09)
+// v2.50 (2026-05-13 13:30:43)

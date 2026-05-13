@@ -107,6 +107,9 @@ La fiecare modificare: bump VERSION pe linia 2 + actualizează ultima linie.
 
 ### Coloanele MAIN (export EBS D.O.I. BRUT — 35 col, confirmat)
 
+Scriptul mapează după **nume** (case-insensitive), nu după poziție — ordinea coloanelor nu contează.
+Ordinea de mai jos reflectă exportul din mai 2026; coloanele 26–32 diferă față de exporturi anterioare.
+
 ```
  0 A  ElefantSKU           10 K  SalesL1W             20 U  Total Rezervari
  1 B  EAN                  11 L  SalesLM              21 V  Disponibil MM Auchan
@@ -114,13 +117,13 @@ La fiecare modificare: bump VERSION pe linia 2 + actualizează ultima linie.
  3 D  Articol              13 N  SalesLS              23 X  Format
  4 E  Autor                14 O  SalesLY              24 Y  Varsta
  5 F  Furnizor             15 P  Data creare          25 Z  COD SKU ABONAMENT
- 6 G  RRP                  16 Q  Categorie            26 AA Epuizat
- 7 H  Reducere             17 R  Subcategorie         27 AB Indisponibil
- 8 I  Stoc online          18 S  Producator           28 AC Disponibil CUSTF
- 9 J  Disponibil RECEPTII  19 T  Cod furnizor         29 AD Disponibil CUSTA
-                                                      30 AE Disponibil STPR
-                                                      31 AF Achizitii All Time
-                                                      32 AG Sales All Time
+ 6 G  RRP                  16 Q  Categorie            26 AA Achizitii All Time
+ 7 H  Reducere             17 R  Subcategorie         27 AB Sales All Time
+ 8 I  Stoc online          18 S  Producator           28 AC Epuizat
+ 9 J  Disponibil RECEPTII  19 T  Cod furnizor         29 AD Indisponibil
+                                                      30 AE Disponibil CUSTF
+                                                      31 AF Disponibil STPR
+                                                      32 AG Disponibil CUSTA
                                                       33 AH Inactiv
                                                       34 AI Ultim Pret Achiz
 ```

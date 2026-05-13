@@ -2,6 +2,29 @@
 
 ---
 
+## v2.50 (2026-05-13)
+
+**Funcționalități majore**
+- Fix bug critic: generarea comenzii din dropdown nu funcționa — sheet comenzi rămânea gol după selectarea furnizorului
+
+**Alte detalii**
+- Cauza: `C` (mapa coloane MAIN) era gol în execuțiile `onEdit` și `exportAllOrders_` (fiecare trigger GAS pornește cu stare nouă); adăugat `ensureColMap_()` care reconstruiește mapa la nevoie
+
+---
+
+## v2.49 (2026-05-08)
+
+**Funcționalități majore**
+- Dacă MAIN nu conține toate coloanele necesare, scriptul afișează un mesaj clar cu ce lipsește și se oprește
+- Stocul edițiilor mai vechi ale aceluiași titlu e acum luat în calcul la calculul cantităților de comandat
+
+**Alte detalii**
+- Maparea coloanelor MAIN se face acum după nume (case-insensitive), nu după poziție — ordinea coloanelor în export nu mai contează
+- Fix bug: indicii pentru Epuizat, Indisponibil și Pret Achiz. Frz. erau greșiți; detecția zombie și bargain lucra pe coloane incorecte
+- MAIN extins la 35 coloane, aprovizionare la 48 coloane
+
+---
+
 ## v2.45 (2026-04-09)
 
 **Funcționalități majore**
